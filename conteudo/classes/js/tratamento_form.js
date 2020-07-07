@@ -1,0 +1,443 @@
+
+
+function autocompletar(){
+    //tratamento dos campos de resultados da Pré Inspeção
+    //variaveis que coletam as informações do formulario
+    var vpw1 = window.document.getElementById('cpw') // Variável do peso inserido (Test Load)
+    var vpe1 = window.document.getElementById('cpe') // Variável da margem de erro inserida
+    var vmincap =  window.document.getElementById("mincapacity") // Variável da medida da balança selecionada
+    var vmeasure =  window.document.getElementById("measure") // Variável da tipo de medida selecionada
+    var vdif =  window.document.getElementById("dif") // Variável da diferença selecionada
+    
+    //variaveis que convetem as informações coletadas do fomrulario para tratamento dentro da função
+    var cmincap = vmincap.options[vmincap.selectedIndex].value    
+    var cmeasure = vmeasure.options[vmeasure.selectedIndex].value
+    var cmeasuretype = cmeasure
+    var cdif = vdif.options[vdif.selectedIndex].value
+    var convpw1 = vpw1.value
+    var ctestload = convpw1
+    var convpe1 = vpe1.value
+    var measureselec = " "
+    var difselec = " "
+    var casasdec = 0
+    var valbase = 0
+    
+    //variaveis para calculo dos valores dos campos
+    var cweight1 = 0
+    var cweight2 = 0
+    var cweight3 = 0
+    var cweight4 = 0
+
+    //variáveis de controle minimo do peso da balança
+    var verror1 = 0
+    var verror2 = 0
+    var verror3 = 0
+    var verror4 = 0
+
+    //variaveis que atribuem o valor aos campos
+    var cerror1 = 0 
+    var cerror2 = 0
+    var cerror3 = 0
+    var cerror4 = 0
+
+
+    //tratamento da variável do fleg do tipo de medida
+    if (cmeasure == 1) {
+        measureselec = "LB"
+    } else if (cmeasure == 2) {
+        measureselec = "g"
+    } else if (cmeasure == 3) {
+        measureselec = "oz"
+    }
+
+    //tratamento da variável do fleg do tipo de medida
+    if (cdif == 1) {
+       difselec = "+"
+    } else if (cdif == 2) {
+        difselec = "-"
+    }
+
+    //tratamento da medida da balança selecionada
+    if (cmincap == 1 || cmincap == 2 || cmincap == 3 ) {
+        
+        casasdec = 2
+
+
+    } else if (cmincap == 4 || cmincap == 5 || cmincap == 6 ) {
+
+        casasdec = 1
+
+    } else if (cmincap == 7 || cmincap == 8 || cmincap == 9 || cmincap == 10 || cmincap == 11  ) {
+
+        casasdec = 0
+
+    }
+
+    if (convpw1 == 10) {
+        cweight1 = 10
+        cweight2 = 5
+        cweight3 = 3
+        cweight4 = 1
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.5*convpe1)
+        cerror3 = (0.3*convpe1)
+        cerror4 = (0.1*convpe1)
+
+    } else if (convpw1 == 25) {
+        cweight1 = 25
+        cweight2 = 20
+        cweight3 = 10
+        cweight4 = 5
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.8*convpe1)
+        cerror3 = (0.4*convpe1)
+        cerror4 = (0.2*convpe1)
+
+    } else if (convpw1 == 30) {
+        cweight1 = 30
+        cweight2 = 20
+        cweight3 = 10
+        cweight4 = 5
+
+        cerror1 = (1*convpe1)
+        cerror2 = ((2/3)*convpe1)
+        cerror3 = ((1/3)*convpe1)
+        cerror4 = ((1/6)*convpe1)
+
+    } else if (convpw1 == 50) {
+        cweight1 = 50
+        cweight2 = 30
+        cweight3 = 20
+        cweight4 = 10
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.6*convpe1)
+        cerror3 = (0.4*convpe1)
+        cerror4 = (0.2*convpe1)
+
+    } else if (convpw1 == 100) {
+        cweight1 = 100
+        cweight2 = 50
+        cweight3 = 25
+        cweight4 = 10
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.5*convpe1)
+        cerror3 = (0.25*convpe1)
+        cerror4 = (0.1*convpe1)
+
+    } else if (convpw1 == 150) {
+        cweight1 = 150
+        cweight2 = 100
+        cweight3 = 50
+        cweight4 = 25
+
+        cerror1 = (1*convpe1)
+        cerror2 = ((2/3)*convpe1)
+        cerror3 = ((1/3)*convpe1)
+        cerror4 = ((1/6)*convpe1)
+
+    } else if (convpw1 == 200) {
+        cweight1 = 200
+        cweight2 = 150
+        cweight3 = 100
+        cweight4 = 50
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.75*convpe1)
+        cerror3 = (0.5*convpe1)
+        cerror4 = (0.25*convpe1)
+
+    } else if (convpw1 == 500) {
+        cweight1 = 500
+        cweight2 = 300
+        cweight3 = 200
+        cweight4 = 100
+    
+        cerror1 = (1*convpe1)
+        cerror2 = (0.6*convpe1)
+        cerror3 = (0.4*convpe1)
+        cerror4 = (0.2*convpe1)
+
+    } else if (convpw1 == 1000) {
+        cweight1 = 1000
+        cweight2 = 500
+        cweight3 = 250
+        cweight4 = 100
+    
+        cerror1 = (1*convpe1)
+        cerror2 = (0.5*convpe1)
+        cerror3 = (0.25*convpe1)
+        cerror4 = (0.1*convpe1)
+
+    } else if (convpw1 == 2000) {
+        cweight1 = 2000
+        cweight2 = 1000
+        cweight3 = 500
+        cweight4 = 250
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.5*convpe1)
+        cerror3 = (0.25*convpe1)
+        cerror4 = (0.125*convpe1)
+
+    } else if (convpw1 == 4000) {
+        cweight1 = 4000
+        cweight2 = 2000
+        cweight3 = 1000
+        cweight4 = 500
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.5*convpe1)
+        cerror3 = (0.25*convpe1)
+        cerror4 = (0.125*convpe1)
+
+    } else if (convpw1 == 14000) {
+        cweight1 = 14000
+        cweight2 = 7000
+        cweight3 = 3500
+        cweight4 = 1750
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.5*convpe1)
+        cerror3 = (0.25*convpe1)
+        cerror4 = (0.125*convpe1)
+
+    } else if (convpw1 == 21500) {
+        cweight1 = 21500
+        cweight2 = 15000
+        cweight3 = 10000
+        cweight4 = 5000
+
+        cerror1 = (1*convpe1)
+        cerror2 = ((150/215)*convpe1)
+        cerror3 = ((100/215)*convpe1)
+        cerror4 = ((50/215)*convpe1)
+
+    } else if (convpw1 == 22000) {
+        cweight1 = 22000
+        cweight2 = 15000
+        cweight3 = 10000
+        cweight4 = 5000
+
+        cerror1 = (1*convpe1)
+        cerror2 = ((15/22)*convpe1)
+        cerror3 = ((10/22)*convpe1)
+        cerror4 = ((5/22)*convpe1)
+
+    }
+
+    if (cmincap == 1 ) {
+        
+        valbase = 0.01
+
+    } else if (cmincap == 2 ) {
+
+        valbase = 0.02
+
+    } else if (cmincap == 3 ) {
+
+        valbase = 0.05
+
+    } else if (cmincap == 4 ) {
+
+        valbase = 0.1
+
+    } else if (cmincap == 5 ) {
+
+        valbase = 0.2
+
+    } else if (cmincap == 6 ) {
+
+        valbase = 0.5
+
+    } else if (cmincap == 7 ) {
+
+        valbase = 1
+
+    } else if (cmincap == 8 ) {
+
+        valbase = 2
+
+    } else if (cmincap == 9 ) {
+
+        valbase = 5
+
+    } else if (cmincap == 10 ) {
+
+        valbase = 10
+
+    } else if (cmincap == 11 ) {
+
+        valbase = 20
+
+    } 
+// 1 = LB
+// 2 = g
+// 3 = oz
+    if (cmeasuretype == 2){
+        document.getElementById('cnistid').value = "180625002"
+        document.getElementById('cstdcert').value = "11886"
+        document.getElementById('cstdcertdate').value = "2018-06"
+        document.getElementById('cstdcertdue').value = "2020-06"
+        
+        document.getElementById('cnistid2').value = "-"
+        document.getElementById('cstdcert2').value = "-"
+        document.getElementById('cstdcertdate2').value = "0000-00"
+        document.getElementById('cstdcertdue2').value = "0000-00"
+        
+    } else if (cmeasuretype == 3){
+        document.getElementById('cnistid').value = "180821002"
+        document.getElementById('cstdcert').value = "12014"
+        document.getElementById('cstdcertdate').value = "2018-08"
+        document.getElementById('cstdcertdue').value = "2020-08"
+        
+        document.getElementById('cnistid2').value = "-"
+        document.getElementById('cstdcert2').value = "-"
+        document.getElementById('cstdcertdate2').value = "0000-00"
+        document.getElementById('cstdcertdue2').value = "0000-00"
+        
+    }else if (cmeasuretype == 1 && ctestload < 50 ){
+        document.getElementById('cnistid').value = "180821002"
+        document.getElementById('cstdcert').value = "12014"
+        document.getElementById('cstdcertdate').value = "2018-08"
+        document.getElementById('cstdcertdue').value = "2020-08"
+        
+        document.getElementById('cnistid2').value = "-"
+        document.getElementById('cstdcert2').value = "-"
+        document.getElementById('cstdcertdate2').value = "0000-00"
+        document.getElementById('cstdcertdue2').value = "0000-00"
+        
+    }else if (cmeasuretype == 1 && ctestload >= 50 && ctestload < 1000){
+        document.getElementById('cnistid').value = "180821002"
+        document.getElementById('cstdcert').value = "13195"
+        document.getElementById('cstdcertdate').value = "2020-01"
+        document.getElementById('cstdcertdue').value = "2022-01"
+        
+        if (ctestload <= 150){
+            document.getElementById('cnistid2').value = "180821002"
+            document.getElementById('cstdcert2').value = "12014"
+            document.getElementById('cstdcertdate2').value = "2018-08"
+            document.getElementById('cstdcertdue2').value = "2020-08"
+        }else{
+            document.getElementById('cnistid2').value = "-"
+            document.getElementById('cstdcert2').value = "-"
+            document.getElementById('cstdcertdate2').value = "0000-00"
+            document.getElementById('cstdcertdue2').value = "0000-00"
+        }
+        
+    }else if (cmeasuretype == 1 && ctestload >= 1000 ){
+        document.getElementById('cnistid').value = "180625002"
+        document.getElementById('cstdcert').value = "11885"
+        document.getElementById('cstdcertdate').value = "2018-06"
+        document.getElementById('cstdcertdue').value = "2020-06"
+        
+        document.getElementById('cnistid2').value = "-"
+        document.getElementById('cstdcert2').value = "-"
+        document.getElementById('cstdcertdate2').value = "0000-00"
+        document.getElementById('cstdcertdue2').value = "0000-00"
+    }
+
+
+    ajustar(cerror1)
+    sinais(ajustado, difselec, measureselec)
+    verror1 = imprime
+
+    calcula(cerror2, valbase)
+    ajustar(res)
+    sinais(ajustado, difselec, measureselec)
+    verror2 = imprime
+    
+    calcula(cerror3, valbase)
+    ajustar(res)
+    sinais(ajustado, difselec, measureselec)
+    verror3 = imprime
+    
+    calcula(cerror4, valbase)
+    ajustar(res)
+    sinais(ajustado, difselec, measureselec)
+    verror4 = imprime
+
+    function calcula(numero, base){
+        num = numero*1000
+        piso = base*1000
+        divisao = num / piso
+        resto = num % piso
+        controle_divisao = num / piso
+        controle_resto = num % piso
+        if (resto >= (piso/2)){
+            resto = piso
+        }else{
+            resto = 0
+        }
+        res = ((Math.trunc(divisao)*piso) + resto)/1000
+
+    }
+
+    function ajustar(receber){
+        bruto = receber
+        convertstring = bruto.toString()
+        divide = convertstring.split('.')
+        compara = divide[0]
+        compara_1 = divide[1]
+
+            if (compara == 0 && typeof(compara_1) == "string" ){
+                ajustado = "." + divide[1]
+
+            }else if (compara == 0 && typeof(compara_1) == "undefined" ){
+                ajustado = 0
+
+            }else if (compara > 0 && typeof(compara_1) == "undefined" ){
+                ajustado = compara
+
+            }else if (compara > 0 && compara_1 > 0 ){
+                ajustado = compara + "." + compara_1
+
+            }
+    }
+
+    function sinais(valorFinal, operador, medida){
+        if (valorFinal > 0){
+            imprime = operador + valorFinal + medida
+        } else {
+            imprime = valorFinal
+        }
+    }
+
+
+    // valores atribuidos aos campos da pre inspeção referentes ao peso
+    document.getElementById('cpw1').value = cweight1 + measureselec
+    document.getElementById('cpw2').value = cweight2 + measureselec
+    document.getElementById('cpw3').value = cweight3 + measureselec
+    document.getElementById('cpw4').value = cweight4 + measureselec
+    document.getElementById('cpw5').value = 0
+
+    // valores atribuidos aos campos após os ajustes referentes ao peso
+    document.getElementById('caw1').value = `${cweight1}` + `${measureselec}`
+    document.getElementById('caw2').value = `${cweight2}` + `${measureselec}`
+    document.getElementById('caw3').value = `${cweight3}` + `${measureselec}`
+    document.getElementById('caw4').value = `${cweight4}` + `${measureselec}`
+    document.getElementById('caw5').value = 0
+
+    // valores atribuidos aos campos referentes as difereças aferidas
+    document.getElementById('cpe1').value = verror1
+    document.getElementById('cpe2').value = verror2
+    document.getElementById('cpe3').value = verror3
+    document.getElementById('cpe4').value = verror4
+    document.getElementById('cpe5').value = 0
+
+    // valores atribuidos aos campos após os ajustes referentes as difereças
+    document.getElementById('cae1').value = 0
+    document.getElementById('cae2').value = 0
+    document.getElementById('cae3').value = 0
+    document.getElementById('cae4').value = 0
+    document.getElementById('cae5').value = 0
+}
+
+
+function datas(){
+    vdata =  window.document.getElementById("data");
+    document.getElementById('data1').value = vdata.value;
+            }
