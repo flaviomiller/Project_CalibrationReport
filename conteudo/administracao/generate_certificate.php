@@ -419,11 +419,14 @@ $dompdf->load_html('
             ');
      $dompdf->render();
      
-     $dompdf->stream(
-             "REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf",
-             array(
-                 "Attachment"=> true
-             )
-        );           
-  
+     $output = $dompdf->output();
+    file_put_contents("../impressoes/REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf", $output);
+        
+     //$dompdf->stream(
+     //        "REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf",
+     //        array(
+     //            "Attachment"=> false
+     //        )
+     //   );           
+    header("Location: ../consultas/consult_calibration_report.php");
 ?>

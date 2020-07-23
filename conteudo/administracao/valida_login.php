@@ -2,15 +2,12 @@
 session_start();
 include_once ("../classes/conexoes/conexao.php");
 $btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_STRING);
-
+//echo $btnLogin;
 if($btnLogin){
     $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     //echo "$user - $password";
-    if((!empty($user)) AND (!empty($password))){
-        //gerar a senha criptografada
-        //echo password_hash($password, PASSWORD_DEFAULT);
-        //Pesquisar o usuario no db        
+    if((!empty($user)) AND (!empty($password))){    
         $result_usuario = "SELECT user_id, name, email, user, password, techid FROM user WHERE user='$user' LIMIT 1";
 		$resultado_usuario = mysqli_query($conn, $result_usuario);
 		if($resultado_usuario){
