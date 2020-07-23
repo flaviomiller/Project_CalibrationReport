@@ -237,7 +237,9 @@ include_once ("../classes/conexoes/conexao.php");
                                                 . "<a href='../edicao/edit_calibration_report.php?id=" .$rows_report['id']. "'>"
                                                 . "<i class='fa fa-edit'> | </i></a>"
                                                 . "<a href='../edicao/process_delete_calibrationreport.php?id=" .$rows_report['id']. "'>"
-                                                . " <i class='fa fa-eraser'></i></a></td>";
+                                                . " <i class='fa fa-eraser'> | </i></a>"
+                                                . "<a href='../administracao/generate_certificate.php?id=" .$rows_report['id']. "'>"
+                                                . " <i class='fa fa-print'></i></a></td>";
                                         }
                                         echo "</tr>";
                                         echo "</tbody>";

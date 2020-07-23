@@ -202,9 +202,7 @@ ob_start();
                     <div class="ln_solid"></div>
                     <div class="form-group">
                             <div class="col-md-9 col-sm-9  offset-md-3">
-                                    <button type="button" class="btn btn-primary">Cancel</button>
-                                    <button type="reset" class="btn btn-primary">Reset</button>
-                                    <button type="submit" class="btn btn-success" name="btnCadUsuario">Next</button>
+                                    <button type="submit" class="btn btn-success" name="btnCadUsuario">Save</button>
                             </div>
                     </div>
                   </form>

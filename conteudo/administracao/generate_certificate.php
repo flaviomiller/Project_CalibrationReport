@@ -14,6 +14,11 @@ $result_user = "SELECT * FROM `user` WHERE user_id = '$techi_id'";
 $resultado_user = mysqli_query($conn, $result_user);
 $row_user = mysqli_fetch_assoc($resultado_user);
 
+$customer_id = $row_report['customer_id'];
+$result_customer = "SELECT * FROM `customer` WHERE customer_id = '$customer_id'";
+$resultado_customer = mysqli_query($conn, $result_customer);
+$row_customer = mysqli_fetch_assoc($resultado_customer);
+
 
 
 $leiaute = $row_report['stdcertdate2'];
@@ -42,14 +47,14 @@ $html .= '<br>';
 $html .= '<table class="tg">';
 $html .= '<thead>';
 $html .= '<tr>';
-$html .= '<th class="tg-6hwh" colspan="3"><b>ANGEL VIEW</b></th>';
+$html .= '<th class="tg-6hwh" colspan="3"><b>'  . $row_customer['customer_name'] . "</b></th>";
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
-$html .= '<th class="tg-6hwh" colspan="2"><b>DATE:&nbsp;&nbsp;&nbsp; 03/17/2020</b></th>';
+$html .= '<th class="tg-6hwh" colspan="2"><b>DATE:&nbsp;&nbsp;&nbsp;'  . $row_report['dtcalibration'] . "</b></th>";
 $html .= '</tr>';
 $html .= '</thead>';
 $html .= '</table>';
@@ -240,14 +245,14 @@ $html .= '<br>';
 $html .= '<table class="tg">';
 $html .= '<thead>';
 $html .= '<tr>';
-$html .= '<th class="tg-6hwh" colspan="3"><b>ANGEL VIEW</b></th>';
+$html .= '<th class="tg-6hwh" colspan="3"><b>'  . $row_customer['customer_name'] . "</b></th>";
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
-$html .= '<th class="tg-6hwh" colspan="2"><b>DATE:&nbsp;&nbsp;&nbsp; 03/17/2020</b></th>';
+$html .= '<th class="tg-6hwh" colspan="2"><b>DATE:&nbsp;&nbsp;&nbsp; '  . $row_report['dtcalibration'] . "</b></th>";
 $html .= '</tr>';
 $html .= '</thead>';
 $html .= '</table>';
@@ -419,14 +424,14 @@ $dompdf->load_html('
             ');
      $dompdf->render();
      
-     $output = $dompdf->output();
-    file_put_contents("../impressoes/REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf", $output);
+     //$output = $dompdf->output();
+    //file_put_contents("../impressoes/REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf", $output);
         
-     //$dompdf->stream(
-     //        "REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf",
-     //        array(
-     //            "Attachment"=> false
-     //        )
-     //   );           
+     $dompdf->stream(
+             "REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf",
+             array(
+                 "Attachment"=> false
+             )
+        );           
     header("Location: ../consultas/consult_calibration_report.php");
 ?>

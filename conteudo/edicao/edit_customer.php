@@ -209,9 +209,7 @@ $row_customer = mysqli_fetch_assoc($resultado_customer);
                     <div class="ln_solid"></div>
                     <div class="form-group">
                             <div class="col-md-9 col-sm-9  offset-md-3">
-                                    <button type="button" class="btn btn-primary">Cancel</button>
-                                    <button type="reset" class="btn btn-primary">Reset</button>
-                                    <button type="submit" class="btn btn-success" name="submitcr">Next</button>
+                                    <button type="submit" class="btn btn-success" name="submitcr">Save</button>
                             </div>
                     </div>
                   </form>
