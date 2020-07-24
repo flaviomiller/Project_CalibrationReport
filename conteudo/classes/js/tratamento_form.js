@@ -57,7 +57,7 @@ function autocompletar(){
         difselec = "-"
     }
 
-    //tratamento da medida da balança selecionada
+    //tratamento da medida da balança selecionada para determinar as casas decimais a serem calculadas
     if (cmincap == 1 || cmincap == 2 || cmincap == 3 ) {
         
         casasdec = 2
@@ -71,9 +71,18 @@ function autocompletar(){
 
         casasdec = 0
 
+    }else if (cmincap == 12 || cmincap == 13 || cmincap == 14 ) {
+
+        casasdec = 3
+
+    }else if (cmincap == 15 || cmincap == 16 || cmincap == 17 ) {
+
+        casasdec = 4
+
     }
     
-    //Tratamento da medida inserida e setagem das variáveis para cálculo das medidas
+    
+    //Tratamento da medida inserida no campo TEST LOAD e setagem das variáveis para cálculo das medidas
     if (convpw1 == 10) {
         cweight1 = 10
         cweight2 = 5
@@ -184,7 +193,18 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.125*convpe1)
 
-    } else if (convpw1 == 4000) {
+    } else if (convpw1 == 5000) {
+        cweight1 = 5000
+        cweight2 = 3000
+        cweight3 = 2000
+        cweight4 = 1000
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.6*convpe1)
+        cerror3 = (0.4*convpe1)
+        cerror4 = (0.2*convpe1)
+
+    }else if (convpw1 == 4000) {
         cweight1 = 4000
         cweight2 = 2000
         cweight3 = 1000
@@ -281,14 +301,15 @@ function autocompletar(){
         cerror1 = (1*convpe1)
         cerror2 = (15/23*convpe1)
         cerror3 = (10/23*convpe1)
-        cerror4 = (5/21*convpe1)
+        cerror4 = (5/23*convpe1)
 
     }else if (convpw1 = "") {
         alert("The 'Test Load' field needs to be filled.");
     }else {
         alert("The 'Test Load' field has a measurement not handled by the system, please enter the data manually.");
     }
-
+    
+    //De acordo com a definição desse if será realizado o calculo do valor de base na função CALCULA.
     if (cmincap == 1 ) {
         
         valbase = 0.01
@@ -333,10 +354,36 @@ function autocompletar(){
 
         valbase = 20
 
+    }  else if (cmincap == 12 ) {
+
+        valbase = 0.001
+
+    }  else if (cmincap == 13 ) {
+
+        valbase = 0.002
+
+    }  else if (cmincap == 14 ) {
+
+        valbase = 0.005
+
+    }  else if (cmincap == 15 ) {
+
+        valbase = 0.0001
+
+    }  else if (cmincap == 16 ) {
+
+        valbase = 0.0002
+
+    }  else if (cmincap == 17 ) {
+
+        valbase = 0.0005
+
     } 
+    // 
 // 1 = LB
 // 2 = g
 // 3 = oz
+    //If que controla os tipos de certificados que serão atribuidos conforme o tipo de peso utilizado.
     if (cmeasuretype == 2){
         document.getElementById('cnistid').value = "180625002"
         document.getElementById('cstdcert').value = "11886"
@@ -403,12 +450,12 @@ function autocompletar(){
 
     ajustar(cerror1)
     sinais(ajustado, difselec, measureselec)
-    verror1 = imprime
+    verror1 = imprime 
 
-    calcula(cerror2, valbase)
-    ajustar(res)
-    sinais(ajustado, difselec, measureselec)
-    verror2 = imprime
+    calcula(cerror2, valbase)//chama a função que faz o calculo do valor
+    ajustar(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+    sinais(ajustado, difselec, measureselec)//chama a função que converte e concatena sinais de + ou - no resultado
+    verror2 = imprime //atribui o resultado a variável que será impressa em tela.
     
     calcula(cerror3, valbase)
     ajustar(res)
@@ -420,9 +467,11 @@ function autocompletar(){
     sinais(ajustado, difselec, measureselec)
     verror4 = imprime
 
+
+    //CORAÇÃO DO CÁLCULO - função que calcula o resultado de cada campo e retorna a variavel res para demais tratamento
     function calcula(numero, base){
-        num = numero*1000
-        piso = base*1000
+        num = numero*1000000
+        piso = base*1000000
         divisao = num / piso
         resto = num % piso
         controle_divisao = num / piso
@@ -432,10 +481,11 @@ function autocompletar(){
         }else{
             resto = 0
         }
-        res = ((Math.trunc(divisao)*piso) + resto)/1000
+        res = ((Math.trunc(divisao)*piso) + resto)/1000000
 
     }
-
+    
+    //função que converte o resultado em string e elimina os ZEROS antes do ponto
     function ajustar(receber){
         bruto = receber
         convertstring = bruto.toString()
@@ -458,6 +508,7 @@ function autocompletar(){
             }
     }
 
+    //função que concatena o sinal de + ou - resultado que será impresso
     function sinais(valorFinal, operador, medida){
         if (valorFinal > 0){
             imprime = operador + valorFinal + medida
