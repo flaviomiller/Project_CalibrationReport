@@ -313,18 +313,24 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                             <div class="col-md-4 col-sm-9 ">
                                     <select class="form-control" id="mincapacity" name="nmincapacity">
                                             <option value="<?php echo $row_report['nmincapacity']; ?>"><?php echo $show_capacity; ?></option>
-                                            <option value="1">.01</option>
-                                            <option value="2">.02</option>
-                                            <option value="3">.05</option>
-                                            <option value="4">&nbsp;.1</option>
-                                            <option value="5">&nbsp;.2</option>
-                                            <option value="6">&nbsp;.5</option>
-                                            <option value="7">&nbsp;&nbsp;1</option>
-                                            <option value="8">&nbsp;&nbsp;2</option>
-                                            <option value="9">&nbsp;&nbsp;5</option>
-                                            <option value="10">&nbsp;10</option>
-                                            <option value="11">&nbsp;20</option>
-                                            <option value="12">&nbsp;&nbsp;¼</option>
+                                            <option value="7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</option>
+                                            <option value="8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</option>
+                                            <option value="9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</option>
+                                            <option value="10">&nbsp;&nbsp;&nbsp;&nbsp;10</option>
+                                            <option value="11">&nbsp;&nbsp;&nbsp;&nbsp;20</option>
+                                            <option value="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.1</option>
+                                            <option value="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.2</option>
+                                            <option value="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.5</option>
+                                            <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;.01</option>
+                                            <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;.02</option>
+                                            <option value="3">&nbsp;&nbsp;&nbsp;&nbsp;.05</option>
+                                            <option value="12">&nbsp;&nbsp;.001</option>
+                                            <option value="13">&nbsp;&nbsp;.002</option>
+                                            <option value="14">&nbsp;&nbsp;.005</option>
+                                            <option value="15">.0001</option>
+                                            <option value="16">.0002</option>
+                                            <option value="17">.0005</option>
+                                            <!--<option value="12">&nbsp;&nbsp;¼</option>-->
                                     </select>
                             </div>
                     </div>
@@ -355,6 +361,12 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                             <option value="1">+</option>
                                             <option value="2">-</option>
                                     </select>
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                            <label class="control-label col-md-3 col-sm-3 ">Comments </label>
+                            <div class="col-md-9 col-sm-9 ">
+                                    <textarea class="form-control" id="comment" name="comment" rows="3" ><?php echo $row_report['comment']; ?></textarea>
                             </div>
                     </div>
                     <div class="ln_solid"></div>

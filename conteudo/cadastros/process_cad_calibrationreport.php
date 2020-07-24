@@ -18,6 +18,7 @@ $nmeasure = filter_input(INPUT_POST, 'nmeasure', FILTER_SANITIZE_STRING);
 $preweight = filter_input(INPUT_POST, 'preweight', FILTER_SANITIZE_STRING);
 $preerror = filter_input(INPUT_POST, 'preerror', FILTER_SANITIZE_STRING);
 $ndif = filter_input(INPUT_POST, 'ndif', FILTER_SANITIZE_STRING);
+$comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING);
 $preweight1 = filter_input(INPUT_POST, 'preweight1', FILTER_SANITIZE_STRING);
 $preweight2 = filter_input(INPUT_POST, 'preweight2', FILTER_SANITIZE_STRING);
 $preweight3 = filter_input(INPUT_POST, 'preweight3', FILTER_SANITIZE_STRING);
@@ -52,14 +53,14 @@ $stdcertdue2 = filter_input(INPUT_POST, 'stdcertdue2', FILTER_SANITIZE_STRING);
 
 $result_calibration_report = "INSERT INTO reports (dtmeasurement,
 customer_id, techid, location, control, manufacturer, model, sn, type, 
-capacity, nmincapacity, nmeasure, preweight, preerror, ndif, preweight1, 
+capacity, nmincapacity, nmeasure, preweight, preerror, ndif, comment, preweight1, 
 preweight2, preweight3, preweight4, preerror5, preerror1, preerror2, preerror3, 
 preerror4, preweight5, afterweight1, afterweight2, afterweight3, afterweight4, 
 afterweight5, aftererror1, aftererror2, aftererror3, aftererror4, aftererror5, 
 dtcalibration, dtdue, nistid, stdcert, stdcertdate, stdcertdue, nistid2, stdcert2, 
 stdcertdate2, stdcertdue2, created) VALUES ('$dtmeasurement', '$customer_id', '$techid', 
 '$location', '$control', '$manufacturer', '$model', '$sn', '$type', '$capacity', 
-'$nmincapacity', '$nmeasure', '$preweight', '$preerror', '$ndif', '$preweight1', 
+'$nmincapacity', '$nmeasure', '$preweight', '$preerror', '$ndif', '$comment', '$preweight1', 
 '$preweight2', '$preweight3', '$preweight4', '$preerror5', '$preerror1', 
 '$preerror2', '$preerror3', '$preerror4', '$preweight5', '$afterweight1', 
 '$afterweight2', '$afterweight3', '$afterweight4', '$afterweight5', 
@@ -67,6 +68,7 @@ stdcertdate2, stdcertdue2, created) VALUES ('$dtmeasurement', '$customer_id', '$
 '$aftererror5', '$dtcalibration', '$dtdue', '$nistid', '$stdcert',
 '$stdcertdate', '$stdcertdue', '$nistid2', '$stdcert2', '$stdcertdate2', '$stdcertdue2', NOW())";
 $resultado_calibration_report = mysqli_query($conn, $result_calibration_report);
+
 
 if(mysqli_insert_id($conn)){
     $_SESSION['msg'] = "Report inserted successfully";
@@ -82,7 +84,7 @@ if(mysqli_insert_id($conn)){
 }
 
 
-
+//echo "comment: $comment <br>";
 //echo  "dtmeasurement: $dtmeasurement <br>";
 //echo  "customer_id: $customer_id <br>";
 //echo  "techid: $techid <br>";
