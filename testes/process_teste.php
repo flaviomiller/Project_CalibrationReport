@@ -11,8 +11,8 @@
 //$result_usuario = "INSERT INTO usuarios (nome, email, created) VALUES ('$nome', '$email', NOW())";
 //$resultado_usuario = mysqli_query($conn, $result_usuario);
 $meses = 16;
-$dataRetorno = new DateTime('2020-01-01');
-  echo $dataRetorno -> format('Y-m-d') ."<br>";
+$dataRetorno = new DateTime('2020-05-30');
+  echo $dataRetorno -> format('m/d/Y') ."<br>";
   $dataRetorno      -> modify("+$meses Month");
-  echo $dataRetorno -> format('Y-m') . ' <br />';
+  echo $dataRetorno -> format('Y/m') . ' <br />';
 //}

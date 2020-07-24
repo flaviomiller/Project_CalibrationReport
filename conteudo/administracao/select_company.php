@@ -239,7 +239,7 @@ include_once ("../classes/conexoes/conexao.php");
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            ©2020 All Rights Reserved. Ramos & Barreto Tecnologia.
+            ©2020 All Rights Reserved. Red Thread Tech.
           </div>
           <div class="clearfix"></div>
         </footer>

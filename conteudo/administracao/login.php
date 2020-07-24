@@ -65,7 +65,7 @@ session_start();
 
                 <div>
                   <h1><i class="fa fa-user"></i> Report Control</h1>
-                  <p>©2020 All Rights Reserved. Ramos & Barreto Tecnologia. Privacy and Terms</p>
+                  <p>©2020 All Rights Reserved. Red Thread Tech. Privacy and Terms</p>
                 </div>
               </div>
             </form>

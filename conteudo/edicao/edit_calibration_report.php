@@ -536,7 +536,7 @@ $row_report = mysqli_fetch_assoc($resultado_report);
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            ©2020 All Rights Reserved. Ramos & Barreto Tecnologia.
+            ©2020 All Rights Reserved. Red Thread Tech.
           </div>
           <div class="clearfix"></div>
         </footer>

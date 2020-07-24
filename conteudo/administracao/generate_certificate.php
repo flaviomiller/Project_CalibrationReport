@@ -19,7 +19,14 @@ $result_customer = "SELECT * FROM `customer` WHERE customer_id = '$customer_id'"
 $resultado_customer = mysqli_query($conn, $result_customer);
 $row_customer = mysqli_fetch_assoc($resultado_customer);
 
+$dataMesurement = new DateTime($row_report['dtcalibration']);
+$dataDue = new DateTime($row_report['dtdue']);
 
+$stdCertDate = new DateTime($row_report['stdcertdate']);
+$stdCertDue = new DateTime($row_report['stdcertdue']);
+
+$stdCertDate2 = new DateTime($row_report['stdcertdate2']);
+$stdCertDue2 = new DateTime($row_report['stdcertdue2']);
 
 $leiaute = $row_report['stdcertdate2'];
 $nome1 = $row_report['id'];
@@ -54,7 +61,7 @@ $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
-$html .= '<th class="tg-6hwh" colspan="2"><b>DATE:&nbsp;&nbsp;&nbsp;'  . $row_report['dtcalibration'] . "</b></th>";
+$html .= '<th class="tg-6hwh" colspan="2"><b>DATE:&nbsp;&nbsp;&nbsp;'  . $dataMesurement -> format('m/d/Y') . "</b></th>";
 $html .= '</tr>';
 $html .= '</thead>';
 $html .= '</table>';
@@ -178,24 +185,28 @@ $html .= '</tr>';
 $html .= '</thead>';
 $html .= '<tbody>';
 $html .= '<tr>';
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['dtcalibration'] . "</td>";
-$html .= '<td class="tg-6hxq">' . $row_report['dtdue'] . "</td>";
+
+
+
+$html .= '<td class="tg-6hxq" colspan="2">' . $dataMesurement -> format('m/d/Y') . "</td>";
+$html .= '<td class="tg-6hxq">' . $dataDue -> format('m/Y') . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_user['techid'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['nistid'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['stdcert'] . "</td>";
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['stdcertdate'] . "</td>";
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['stdcertdue'] . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $stdCertDate -> format('m/Y') . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $stdCertDue -> format('m/Y') . "</td>";
 $html .= '</tr>';
 $html .= '</tbody>';
 
 $html .= '<tr>';
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['dtcalibration'] . "</td>";
-$html .= '<td class="tg-6hxq">' . $row_report['dtdue'] . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $dataMesurement -> format('m/d/Y') . "</td>";
+$html .= '<td class="tg-6hxq">' . $dataDue -> format('m/Y') . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_user['techid'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['nistid2'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['stdcert2'] . "</td>";
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['stdcertdate2'] . "</td>";
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['stdcertdue2'] . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $stdCertDate2 -> format('m/Y') . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $stdCertDue2 -> format('m/Y') . "</td>";
+
 $html .= '</tr>';
 $html .= '</tbody>';
 
@@ -252,7 +263,7 @@ $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
 $html .= '<th class="tg-6hwh"></th>';
-$html .= '<th class="tg-6hwh" colspan="2"><b>DATE:&nbsp;&nbsp;&nbsp; '  . $row_report['dtcalibration'] . "</b></th>";
+$html .= '<th class="tg-6hwh" colspan="2"><b>DATE:&nbsp;&nbsp;&nbsp; '  . $dataMesurement -> format('m/d/Y') . "</b></th>";
 $html .= '</tr>';
 $html .= '</thead>';
 $html .= '</table>';
@@ -376,13 +387,14 @@ $html .= '</tr>';
 $html .= '</thead>';
 $html .= '<tbody>';
 $html .= '<tr>';
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['dtcalibration'] . "</td>";
-$html .= '<td class="tg-6hxq">' . $row_report['dtdue'] . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $dataMesurement -> format('m/d/Y') . "</td>";
+$html .= '<td class="tg-6hxq">' . $dataDue -> format('m/Y') . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_user['techid'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['nistid'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['stdcert'] . "</td>";
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['stdcertdate'] . "</td>";
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['stdcertdue'] . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $stdCertDate -> format('m/Y') . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $stdCertDue -> format('m/Y') . "</td>";
+
 $html .= '</tr>';
 $html .= '</tbody>';
 
