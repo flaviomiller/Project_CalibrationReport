@@ -233,27 +233,26 @@ include_once ("../classes/conexoes/conexao.php");
                     </div>                      
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Capacity </label>
-                            <div class="col-md-4 col-sm-9">
+                            <div class="col-md-2 col-sm-9">
                                 <input type="text" name="capacity" class="form-control">
                             </div>
-                            <label class="control-label col-md-1 col-sm-3 ">X</label>
-                            <div class="col-md-4 col-sm-9 ">
+                            <div class="col-md-2 col-sm-9 ">
                                     <select class="form-control" id="mincapacity" name="nmincapacity">
                                             <option value="0">Select</option>
-                                            <option value="7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</option>
-                                            <option value="8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</option>
-                                            <option value="9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</option>
-                                            <option value="10">&nbsp;&nbsp;&nbsp;&nbsp;10</option>
-                                            <option value="11">&nbsp;&nbsp;&nbsp;&nbsp;20</option>
-                                            <option value="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.1</option>
-                                            <option value="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.2</option>
-                                            <option value="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.5</option>
-                                            <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;.01</option>
-                                            <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;.02</option>
-                                            <option value="3">&nbsp;&nbsp;&nbsp;&nbsp;.05</option>
-                                            <option value="12">&nbsp;&nbsp;.001</option>
-                                            <option value="13">&nbsp;&nbsp;.002</option>
-                                            <option value="14">&nbsp;&nbsp;.005</option>
+                                            <option value="7">1</option>
+                                            <option value="8">2</option>
+                                            <option value="9">5</option>
+                                            <option value="10">10</option>
+                                            <option value="11">20</option>
+                                            <option value="4">.1</option>
+                                            <option value="5">.2</option>
+                                            <option value="6">.5</option>
+                                            <option value="1">.01</option>
+                                            <option value="2">.02</option>
+                                            <option value="3">.05</option>
+                                            <option value="12">.001</option>
+                                            <option value="13">.002</option>
+                                            <option value="14">.005</option>
                                             <option value="15">.0001</option>
                                             <option value="16">.0002</option>
                                             <option value="17">.0005</option>
@@ -261,16 +260,13 @@ include_once ("../classes/conexoes/conexao.php");
                                             <!--<option value="12">&nbsp;&nbsp;¼</option>-->
                                     </select>
                             </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Test load </label>
-                            <div class="col-md-4 col-sm-9">
+                            <label class="col-form-label col-md-1 col-sm-3 ">Test load </label>
+                            <div class="col-md-2 col-sm-9">
                                 <input type="text" id="cpw" name="preweight" class="form-control">
                             </div>
-                            <label class="control-label col-md-1 col-sm-3 ">Measure </label>
-                            <div class="col-md-4 col-sm-9 ">
+                            <div class="col-md-2 col-sm-9 ">
                                     <select class="form-control" id="measure" name="nmeasure">
-                                            <option value="0">Select</option>
+                                            <option value="0">Measure</option>
                                             <option value="1">LB</option>
                                             <option value="2">g</option>
                                             <option value="3">oz</option>
@@ -278,17 +274,26 @@ include_once ("../classes/conexoes/conexao.php");
                             </div>
                     </div>
                     <div class="form-group row">
+                            
                             <label class="col-form-label col-md-3 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
+                            <div class="col-md-2 col-sm-2">
                                 <input type="text" id="cpe" name="preerror" class="form-control" onblur="autocompletar()">
                             </div>
-                            <label class="control-label col-md-1 col-sm-3 "> </label>
-                            <div class="col-md-4 col-sm-9 ">
+                            <div class="col-md-1 col-sm-3 ">
                                     <select class="form-control" id="dif" name="ndif" onchange="autocompletar()">
-                                            <option value="0" >Select</option>
+                                            <option value="0" >+/-</option>
                                             <option value="1">+</option>
                                             <option value="2">-</option>
                                     </select>
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                            <label class="col-md-3 col-sm-3  control-label"></label>
+
+                            <div class="col-md-9 col-sm-9 ">
+                                    <div class="checkbox">
+                                            <label><input type="checkbox" class="flat"> Unable to calibrate</label>
+                                    </div>
                             </div>
                     </div>
                     <div class="form-group row">
@@ -415,42 +420,42 @@ include_once ("../classes/conexoes/conexao.php");
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">NIST ID# </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cnistid" name="nistid" class="form-control">
+                                <input type="text" readonly="readonly" id="cnistid" name="nistid" class="form-control">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Std Cert# </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cstdcert" name="stdcert" class="form-control">
+                                <input type="text" readonly="readonly" id="cstdcert" name="stdcert" class="form-control">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Std Cert. Date </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cstdcertdate" name="stdcertdate" class="form-control">
+                                <input type="text" readonly="readonly" id="cstdcertdate" name="stdcertdate" class="form-control">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Std Cert Due </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cstdcertdue" name="stdcertdue" class="form-control">
+                                <input type="text" readonly="readonly" id="cstdcertdue" name="stdcertdue" class="form-control">
                             </div>
                     </div>
                     
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">NIST ID# </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cnistid2" name="nistid2" class="form-control">
+                                <input type="text" readonly="readonly" id="cnistid2" name="nistid2" class="form-control">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Std Cert# </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cstdcert2" name="stdcert2" class="form-control">
+                                <input type="text" readonly="readonly" id="cstdcert2" name="stdcert2" class="form-control">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Std Cert. Date </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cstdcertdate2" name="stdcertdate2" class="form-control">
+                                <input type="text" readonly="readonly" id="cstdcertdate2" name="stdcertdate2" class="form-control">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Std Cert Due </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cstdcertdue2" name="stdcertdue2" class="form-control">
+                                <input type="text" readonly="readonly" id="cstdcertdue2" name="stdcertdue2" class="form-control">
                             </div>
                     </div>
                     
