@@ -12,19 +12,31 @@
         <script type="text/javascript">
             
         </script>
-
     </head>
     <body>
-        <h1>Cadastro de Usuário</h1>
-        <form method="POST" action="process_teste.php">
-            <label>Nome: </label>
-            <input type="text" name="nome" placeholder="Digite seu nome"><br><br>
-            <label>E-Mail: </label>
-            <input type="email" name="email" placeholder="Digite seu E-Mail"><br><br>
-            <input type="submit" value="Cadatrar">
-        </form>
+        <h1>Teste de Fleg</h1>
+        
+
+        <br><input type="checkbox" name="item" value="UM"> 1
+        <br><input type="checkbox" name="item" value="DOIS"> 2
+        <br><input type="checkbox" name="item" value="TRES"> 3
+        <br><input type="checkbox" name="item" value="QUATRO"> 4
+        <br><input type="checkbox" name="item" value="CINCO"> 5
+        <br><input type="button" value="Valida Checks" onclick="verificaChecks()">
+
+
+
+
+
+        <input type="checkbox" id="unablecalibrate" name="unablecalibrate" >
+        <label>Teste</label><br><br>
+        <textarea class="form-control" id="comment" name="comment" rows="3" ></textarea><br><br>
+        <input type="text" id="teste" name="teste" value="Dentro" onchange="verificafleg()">
+        
+        <!--onchange="verificafleg()"-->
         <?php
         // put your code here
         ?>
+    <script type="text/javascript" src="js/tratamento.js"></script>
     </body>
 </html>

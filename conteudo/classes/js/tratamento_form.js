@@ -551,4 +551,19 @@ function autocompletar(){
 function datas(){
     vdata =  window.document.getElementById("data");
     document.getElementById('data1').value = vdata.value;
-            }
+}
+
+
+
+function verificafleg(){
+    controle = window.document.getElementById("comment").value;
+    if (controle == ""){
+        document.getElementById('comment').value = "Unable to calibrate.";
+        document.getElementById('comment').setAttribute("readonly", "readonly");
+    } else if (controle = "Unable to calibrate.") {
+        document.getElementById('comment').value = "";
+        document.getElementById('comment').removeAttribute("readonly", "readonly");
+    }
+    
+    
+}

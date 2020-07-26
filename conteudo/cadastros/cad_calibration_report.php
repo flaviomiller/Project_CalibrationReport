@@ -291,9 +291,10 @@ include_once ("../classes/conexoes/conexao.php");
                             <label class="col-md-3 col-sm-3  control-label"></label>
 
                             <div class="col-md-9 col-sm-9 ">
-                                    <div class="checkbox">
-                                            <label><input type="checkbox" class="flat"> Unable to calibrate</label>
+                                    <div ><!--class="checkbox">-->
+                                            <label><input type="checkbox" id="itemCheck" name="itemCheck" class="flat" onchange="verificafleg()"> Unable to calibrate</label>
                                     </div>
+                                    
                             </div>
                     </div>
                     <div class="form-group row">
@@ -501,5 +502,9 @@ include_once ("../classes/conexoes/conexao.php");
     
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    <script>
+
+
+    </script>
   </body>
 </html>
