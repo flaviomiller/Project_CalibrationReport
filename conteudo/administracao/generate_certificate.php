@@ -33,6 +33,96 @@ $nome1 = $row_report['id'];
 $nome2 = $row_report['customer_id'];
 $nome3 = date("Ymd");
 
+$lertpmedida = $row_report['nmeasure'];
+
+if ($lertpmedida = 1){
+
+    $tipodemedida = "LB";
+
+} elseif ($lertpmedida = 2){
+
+    $tipodemedida = "g";
+
+} elseif ($lertpmedida = 3){
+
+    $tipodemedida = "oz";
+
+}
+
+
+$lertpcapminima = ".01"; //$row_report['nmincapacity'];
+
+if ($lertpcapminima = 1){
+
+    $capacidademinima = ".01";
+
+} elseif ($lertpcapminima = 2){
+
+    $capacidademinima = ".02";
+
+}elseif ($lertpcapminima = 3){
+
+    $capacidademinima = ".05";
+
+}elseif ($lertpcapminima = 4){
+
+    $capacidademinima = ".1";
+
+}elseif ($lertpcapminima = 5){
+
+    $capacidademinima = ".2";
+
+}elseif ($lertpcapminima = 6){
+
+    $capacidademinima = ".5";
+
+}elseif ($lertpcapminima = 7){
+
+    $capacidademinima = "1";
+
+}elseif ($lertpcapminima = 8){
+
+    $capacidademinima = "2";
+
+}elseif ($lertpcapminima = 9){
+
+    $capacidademinima = "5";
+
+}elseif ($lertpcapminima = 10){
+
+    $capacidademinima = "10";
+
+}elseif ($lertpcapminima = 11){
+
+    $capacidademinima = "20";
+
+}elseif ($lertpcapminima = 12){
+
+    $capacidademinima = ".001";
+
+}elseif ($lertpcapminima = 13){
+
+    $capacidademinima = ".002";
+
+}elseif ($lertpcapminima = 14){
+
+    $capacidademinima = ".005";
+
+}elseif ($lertpcapminima = 15){
+
+    $capacidademinima = ".0001";
+
+}elseif ($lertpcapminima = 16){
+
+    $capacidademinima = ".0002";
+
+}elseif ($lertpcapminima = 17){
+
+    $capacidademinima = ".0005";
+
+}
+
+
 if (!empty($leiaute)) {
 $html = '';
 $html .= '<DOCTYPE html>';
@@ -86,7 +176,7 @@ $html .= '<td class="tg-6hxq">' . $row_report['manufacturer'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['model'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['sn'] . "</td>";
 $html .= '<td class="tg-6hxq" colspan="2">' . $row_report['type'] . "</td>";
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['capacity'] . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['capacity'] . " X " .  $capacidademinima . ""  . $tipodemedida . "</td>";
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="tg-6hwh"></td>';
@@ -288,7 +378,7 @@ $html .= '<td class="tg-6hxq">' . $row_report['manufacturer'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['model'] . "</td>";
 $html .= '<td class="tg-6hxq">' . $row_report['sn'] . "</td>";
 $html .= '<td class="tg-6hxq" colspan="2">' . $row_report['type'] . "</td>";
-$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['capacity'] . "</td>";
+$html .= '<td class="tg-6hxq" colspan="2">' . $row_report['capacity'] . " X " .  $capacidademinima . ""  . $tipodemedida . "</td>";
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td class="tg-6hwh"></td>';
