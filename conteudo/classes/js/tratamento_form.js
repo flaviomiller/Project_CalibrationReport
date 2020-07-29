@@ -547,22 +547,63 @@ function autocompletar(){
     document.getElementById('cae5').value = 0
 }
 
-
+//funcao que atribui a data digitada no campo measurement date para o campo data calibration 
 function datas(){
     vdata =  window.document.getElementById("data");
     document.getElementById('data1').value = vdata.value;
 }
 
 
-
+//funcao que oculta os campos relacionados as medidas e certificados quando flegado o campo Unable to calibrate
 function verificafleg(){
     controle = window.document.getElementById("comment").value;
     if (controle == ""){
         document.getElementById('comment').value = "Unable to calibrate.";
-        document.getElementById('comment').setAttribute("readonly", "readonly");
+  
+        document.getElementById('ocultar').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar1').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar2').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar3').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar4').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar5').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar6').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar7').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar8').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar9').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar10').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar11').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar12').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar13').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar14').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar15').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar16').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar17').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar18').setAttribute("hidden", "hidden");
+        document.getElementById('ocultar19').setAttribute("hidden", "hidden");
+
     } else if (controle = "Unable to calibrate.") {
         document.getElementById('comment').value = "";
-        document.getElementById('comment').removeAttribute("readonly", "readonly");
+        
+        document.getElementById('ocultar').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar1').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar2').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar3').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar4').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar5').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar6').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar7').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar8').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar9').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar10').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar11').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar12').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar13').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar14').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar15').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar16').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar17').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar18').removeAttribute("hidden", "hidden");
+        document.getElementById('ocultar19').removeAttribute("hidden", "hidden");
     }
     
     

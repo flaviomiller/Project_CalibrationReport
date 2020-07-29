@@ -260,7 +260,29 @@ include_once ("../classes/conexoes/conexao.php");
                                             <!--<option value="12">&nbsp;&nbsp;¼</option>-->
                                     </select>
                             </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Test load </label>
+                            <label class="col-md-1 col-sm-3  control-label"></label>
+
+                            <div class="col-md-3 col-sm-9 ">
+                                    <div class="checkbox">
+                                            <label><input type="checkbox" id="itemCheck" name="itemCheck" class="flat" onchange="verificafleg()"> Unable to calibrate</label>
+                                    </div>
+                                    
+                            </div>
+                    </div>
+                    <div id="ocultar" class="form-group row">
+                            
+                            <label  class="col-form-label col-md-3 col-sm-3 ">Error </label>
+                            <div class="col-md-2 col-sm-2">
+                                <input type="text" id="cpe" name="preerror" class="form-control" onblur="autocompletar()">
+                            </div>
+                            <div class="col-md-2 col-sm-3 ">
+                                    <select class="form-control" id="dif" name="ndif" onchange="autocompletar()">
+                                            <option value="0" >+/-</option>
+                                            <option value="1">+</option>
+                                            <option value="2">-</option>
+                                    </select>
+                            </div>
+                             <label id="testload" class="col-form-label col-md-1 col-sm-3 ">Test load </label>
                             <div class="col-md-2 col-sm-9">
                                 <input type="text" id="cpw" name="preweight" class="form-control">
                             </div>
@@ -274,37 +296,13 @@ include_once ("../classes/conexoes/conexao.php");
                             </div>
                     </div>
                     <div class="form-group row">
-                            
-                            <label class="col-form-label col-md-3 col-sm-3 ">Error </label>
-                            <div class="col-md-2 col-sm-2">
-                                <input type="text" id="cpe" name="preerror" class="form-control" onblur="autocompletar()">
-                            </div>
-                            <div class="col-md-1 col-sm-3 ">
-                                    <select class="form-control" id="dif" name="ndif" onchange="autocompletar()">
-                                            <option value="0" >+/-</option>
-                                            <option value="1">+</option>
-                                            <option value="2">-</option>
-                                    </select>
-                            </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-md-3 col-sm-3  control-label"></label>
-
-                            <div class="col-md-9 col-sm-9 ">
-                                    <div ><!--class="checkbox">-->
-                                            <label><input type="checkbox" id="itemCheck" name="itemCheck" class="flat" onchange="verificafleg()"> Unable to calibrate</label>
-                                    </div>
-                                    
-                            </div>
-                    </div>
-                    <div class="form-group row">
                             <label class="control-label col-md-3 col-sm-3 ">Comments </label>
                             <div class="col-md-9 col-sm-9 ">
                                     <textarea class="form-control" id="comment" name="comment" rows="3" ></textarea>
                             </div>
                     </div>
-                    <div class="ln_solid"></div>
-                    <div class="form-group row">
+                    <div id="ocultar16" class="ln_solid"></div>
+                    <div id="ocultar1" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="cpw1" name="preweight1" class="form-control">
@@ -314,7 +312,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cpe1" name="preerror1" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar2" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="cpw2" name="preweight2" class="form-control">
@@ -324,7 +322,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cpe2" name="preerror2" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar3" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="cpw3" name="preweight3" class="form-control">
@@ -334,7 +332,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cpe3" name="preerror3" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar4" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="cpw4" name="preweight4" class="form-control">
@@ -344,7 +342,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cpe4" name="preerror4" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar5" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="cpw5" name="preweight5" class="form-control">
@@ -355,8 +353,8 @@ include_once ("../classes/conexoes/conexao.php");
                             </div>
                     </div>
                     
-                    <div class="ln_solid"></div>
-                    <div class="form-group row">
+                    <div id="ocultar17" class="ln_solid"></div>
+                    <div id="ocultar6" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="caw1" name="afterweight1" class="form-control">
@@ -366,7 +364,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cae1" name="aftererror1" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar7" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="caw2" name="afterweight2" class="form-control">
@@ -376,7 +374,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cae2" name="aftererror2" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar8"class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="caw3" name="afterweight3" class="form-control">
@@ -386,7 +384,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cae3" name="aftererror3" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar9" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="caw4" name="afterweight4" class="form-control">
@@ -396,7 +394,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cae4" name="aftererror4" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar10" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" id="caw5" name="afterweight5" class="form-control">
@@ -406,8 +404,8 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" id="cae5" name="aftererror5" class="form-control">
                             </div>
                     </div>
-                    <div class="ln_solid"></div>
-                    <div class="form-group row">
+                    <div id="ocultar18" class="ln_solid"></div>
+                    <div id="ocultar11" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Date Calibration </label>
                             <div class="col-md-4 col-sm-9 ">
                                     <input id="data1" readonly="readonly" name="dtcalibration" value="<?php echo $_SESSION['dtmeasurement']; ?>" class="date-picker form-control" type="text" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'">
@@ -418,7 +416,7 @@ include_once ("../classes/conexoes/conexao.php");
                             </div>
                     </div>
                     
-                    <div class="form-group row">
+                    <div id="ocultar12" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">NIST ID# </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" readonly="readonly" id="cnistid" name="nistid" class="form-control">
@@ -428,7 +426,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" readonly="readonly" id="cstdcert" name="stdcert" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar13" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Std Cert. Date </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" readonly="readonly" id="cstdcertdate" name="stdcertdate" class="form-control">
@@ -439,7 +437,7 @@ include_once ("../classes/conexoes/conexao.php");
                             </div>
                     </div>
                     
-                    <div class="form-group row">
+                    <div id="ocultar14" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">NIST ID# </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" readonly="readonly" id="cnistid2" name="nistid2" class="form-control">
@@ -449,7 +447,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" readonly="readonly" id="cstdcert2" name="stdcert2" class="form-control">
                             </div>
                     </div>
-                    <div class="form-group row">
+                    <div id="ocultar15" class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Std Cert. Date </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" readonly="readonly" id="cstdcertdate2" name="stdcertdate2" class="form-control">
@@ -459,8 +457,7 @@ include_once ("../classes/conexoes/conexao.php");
                                 <input type="text" readonly="readonly" id="cstdcertdue2" name="stdcertdue2" class="form-control">
                             </div>
                     </div>
-                    
-                    <div class="ln_solid"></div>
+                    <div id="ocultar19" class="ln_solid"></div>
                     <div class="form-group">
                             <div class="col-md-9 col-sm-9  offset-md-3">
                                     <button type="submit" class="btn btn-success" name="btnSelectCompany">Save</button>
