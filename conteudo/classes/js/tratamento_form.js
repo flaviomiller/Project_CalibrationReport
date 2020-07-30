@@ -48,6 +48,8 @@ function autocompletar(){
         measureselec = "g"
     } else if (cmeasure == 3) {
         measureselec = "oz"
+    }else if (cmeasure == 4) {
+        measureselec = "kg"
     }
 
     //tratamento da variável do fleg do tipo de medida
@@ -383,6 +385,7 @@ function autocompletar(){
 // 1 = LB
 // 2 = g
 // 3 = oz
+// 4 = kg
     //If que controla os tipos de certificados que serão atribuidos conforme o tipo de peso utilizado.
     if (cmeasuretype == 2){
         document.getElementById('cnistid').value = "180625002"

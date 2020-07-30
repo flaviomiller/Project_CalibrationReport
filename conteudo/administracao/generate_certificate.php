@@ -35,88 +35,92 @@ $nome3 = date("Ymd");
 
 $lertpmedida = $row_report['nmeasure'];
 
-if ($lertpmedida = 1){
+if ($lertpmedida == 1){
 
     $tipodemedida = "LB";
 
-} elseif ($lertpmedida = 2){
+} elseif ($lertpmedida == 2){
 
     $tipodemedida = "g";
 
-} elseif ($lertpmedida = 3){
+} elseif ($lertpmedida == 3){
 
     $tipodemedida = "oz";
+
+}elseif ($lertpmedida == 4){
+
+    $tipodemedida = "kg";
 
 }
 
 
-$lertpcapminima = ".01"; //$row_report['nmincapacity'];
+$lertpcapminima = $row_report['nmincapacity'];
 
-if ($lertpcapminima = 1){
+if ($lertpcapminima == 1){
 
     $capacidademinima = ".01";
 
-} elseif ($lertpcapminima = 2){
+} elseif ($lertpcapminima == 2){
 
     $capacidademinima = ".02";
 
-}elseif ($lertpcapminima = 3){
+}elseif ($lertpcapminima == 3){
 
     $capacidademinima = ".05";
 
-}elseif ($lertpcapminima = 4){
+}elseif ($lertpcapminima == 4){
 
     $capacidademinima = ".1";
 
-}elseif ($lertpcapminima = 5){
+}elseif ($lertpcapminima == 5){
 
     $capacidademinima = ".2";
 
-}elseif ($lertpcapminima = 6){
+}elseif ($lertpcapminima == 6){
 
     $capacidademinima = ".5";
 
-}elseif ($lertpcapminima = 7){
+}elseif ($lertpcapminima == 7){
 
     $capacidademinima = "1";
 
-}elseif ($lertpcapminima = 8){
+}elseif ($lertpcapminima == 8){
 
     $capacidademinima = "2";
 
-}elseif ($lertpcapminima = 9){
+}elseif ($lertpcapminima == 9){
 
     $capacidademinima = "5";
 
-}elseif ($lertpcapminima = 10){
+}elseif ($lertpcapminima == 10){
 
     $capacidademinima = "10";
 
-}elseif ($lertpcapminima = 11){
+}elseif ($lertpcapminima == 11){
 
     $capacidademinima = "20";
 
-}elseif ($lertpcapminima = 12){
+}elseif ($lertpcapminima == 12){
 
     $capacidademinima = ".001";
 
-}elseif ($lertpcapminima = 13){
+}elseif ($lertpcapminima == 13){
 
     $capacidademinima = ".002";
 
-}elseif ($lertpcapminima = 14){
+}elseif ($lertpcapminima == 14){
 
     $capacidademinima = ".005";
 
-}elseif ($lertpcapminima = 15){
+}elseif ($lertpcapminima == 15){
 
     $capacidademinima = ".0001";
 
-}elseif ($lertpcapminima = 16){
+}elseif ($lertpcapminima == 16){
 
     $capacidademinima = ".0002";
 
-}elseif ($lertpcapminima = 17){
+}elseif ($lertpcapminima == 17){
 
     $capacidademinima = ".0005";
 

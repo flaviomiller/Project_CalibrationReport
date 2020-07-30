@@ -265,9 +265,24 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                         $show_capacity = "20";
                                         break;
                                     case 12:
-                                        $show_capacity = "¼";
+                                        $show_capacity = ".001";
                                         break;
-                                    }
+                                    case 13:
+                                        $show_capacity = ".002";
+                                        break;
+                                    case 14:
+                                        $show_capacity = ".005";
+                                        break;
+                                    case 15:
+                                        $show_capacity = ".0001";
+                                        break;
+                                    case 16:
+                                        $show_capacity = ".0002";
+                                        break;
+                                    case 17:
+                                        $show_capacity = ".0005";
+                                        break;
+                                }
 
                                 $show_nmeasure = "";
 
@@ -281,6 +296,9 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                     case 3:
                                         $show_nmeasure = "oz";
                                         break;
+                                    case 4:
+                                          $show_nmeasure = "kg";
+                                          break;
                                     }
 
                                 $show_ndif = "";
@@ -353,6 +371,7 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                             <option value="1">LB</option>
                                             <option value="2">g</option>
                                             <option value="3">oz</option>
+                                            <option value="4">kg</option>
                                     </select>
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
