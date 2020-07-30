@@ -208,38 +208,23 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                     </div>
                     <div class="ln_solid"></div>
                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Location </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="location" value="<?php echo $row_report['location']; ?>" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Control# </label>
+                            <label class="col-form-label col-md-3 col-sm-3 ">Control# </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" name="control" value="<?php echo $row_report['control']; ?>" class="form-control">
                             </div>
-                    </div>
-                   <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Manufacturer </label>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Manufacturer </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" name="manufacturer" value="<?php echo $row_report['manufacturer']; ?>" class="form-control">
                             </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Model </label>
+                    </div>
+                   <div class="form-group row">
+                            
+                            <label class="col-form-label col-md-3 col-sm-3 ">Model </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" name="model" value="<?php echo $row_report['model']; ?>" class="form-control">
                             </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">S/N </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="sn" value="<?php echo $row_report['sn']; ?>" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Type </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="type" value="<?php echo $row_report['type']; ?>" class="form-control">
-                            </div>
-                    </div>                      
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Capacity </label>
-                            <div class="col-md-4 col-sm-9">
+                            <label class="col-form-label col-md-1 col-sm-3 ">Capacity </label>
+                            <div class="col-md-2 col-sm-9">
                                 <input type="text" name="capacity" value="<?php echo $row_report['capacity']; ?>" class="form-control">
                             </div>
                             <?php
@@ -309,24 +294,23 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                         break;
                                     }
                                 ?>
-                            <label class="control-label col-md-1 col-sm-3 ">X</label>
-                            <div class="col-md-4 col-sm-9 ">
+                            <div class="col-md-2 col-sm-9 ">
                                     <select class="form-control" id="mincapacity" name="nmincapacity">
                                             <option value="<?php echo $row_report['nmincapacity']; ?>"><?php echo $show_capacity; ?></option>
-                                            <option value="7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</option>
-                                            <option value="8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</option>
-                                            <option value="9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</option>
-                                            <option value="10">&nbsp;&nbsp;&nbsp;&nbsp;10</option>
-                                            <option value="11">&nbsp;&nbsp;&nbsp;&nbsp;20</option>
-                                            <option value="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.1</option>
-                                            <option value="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.2</option>
-                                            <option value="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.5</option>
-                                            <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;.01</option>
-                                            <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;.02</option>
-                                            <option value="3">&nbsp;&nbsp;&nbsp;&nbsp;.05</option>
-                                            <option value="12">&nbsp;&nbsp;.001</option>
-                                            <option value="13">&nbsp;&nbsp;.002</option>
-                                            <option value="14">&nbsp;&nbsp;.005</option>
+                                            <option value="7">1</option>
+                                            <option value="8">2</option>
+                                            <option value="9">5</option>
+                                            <option value="10">10</option>
+                                            <option value="11">20</option>
+                                            <option value="4">.1</option>
+                                            <option value="5">.2</option>
+                                            <option value="6">.5</option>
+                                            <option value="1">.01</option>
+                                            <option value="2">.02</option>
+                                            <option value="3">.05</option>
+                                            <option value="12">.001</option>
+                                            <option value="13">.002</option>
+                                            <option value="14">.005</option>
                                             <option value="15">.0001</option>
                                             <option value="16">.0002</option>
                                             <option value="17">.0005</option>
@@ -335,12 +319,35 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                             </div>
                     </div>
                     <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Test load </label>
+                            <label class="col-form-label col-md-3 col-sm-3 ">S/N </label>
                             <div class="col-md-4 col-sm-9">
+                                <input type="text" name="sn" value="<?php echo $row_report['sn']; ?>" class="form-control">
+                            </div>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Location </label>
+                            <div class="col-md-4 col-sm-9">
+                                <input type="text" name="location" value="<?php echo $row_report['location']; ?>" class="form-control">
+                            </div>
+                    </div>                      
+                    <div class="form-group row">
+                            <label class="col-form-label col-md-3 col-sm-3 ">Type </label>
+                            <div class="col-md-4 col-sm-9">
+                                <input type="text" name="type" value="<?php echo $row_report['type']; ?>" class="form-control">
+                            </div>
+                            <label class="col-md-1 col-sm-3  control-label"></label>
+
+                            <div class="col-md-3 col-sm-9 ">
+                                    <div class="checkbox">
+                                            <label><input type="checkbox" id="itemCheck" name="itemCheck"  class="flat" onchange="verificafleg()" disabled> Unable to calibrate</label>
+                                    </div>
+                                    
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                            <label class="col-form-label col-md-3 col-sm-3 ">Test load </label>
+                            <div class="col-md-2 col-sm-9">
                                 <input type="text" id="cpw" name="preweight" value="<?php echo $row_report['preweight']; ?>" class="form-control">
                             </div>
-                            <label class="control-label col-md-1 col-sm-3 ">Measure </label>
-                            <div class="col-md-4 col-sm-9 ">
+                            <div class="col-md-2 col-sm-9 ">
                                     <select class="form-control" id="measure" name="nmeasure">
                                             <option value="<?php echo $row_report['nmeasure']; ?>"><?php echo $show_nmeasure; ?></option>
                                             <option value="1">LB</option>
@@ -348,14 +355,11 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                             <option value="3">oz</option>
                                     </select>
                             </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
+                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                            <div class="col-md-2 col-sm-9">
                                 <input type="text" id="cpe" name="preerror" value="<?php echo $row_report['preerror']; ?>" class="form-control" onblur="autocompletar()">
                             </div>
-                            <label class="control-label col-md-1 col-sm-3 "> </label>
-                            <div class="col-md-4 col-sm-9 ">
+                            <div class="col-md-2 col-sm-9 ">
                                     <select class="form-control" id="dif" name="ndif" onchange="autocompletar()">
                                             <option value="<?php echo $row_report['ndif']; ?>"><?php echo $show_ndif; ?></option>
                                             <option value="1">+</option>

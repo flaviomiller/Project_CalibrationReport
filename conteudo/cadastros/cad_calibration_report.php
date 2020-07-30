@@ -202,37 +202,23 @@ include_once ("../classes/conexoes/conexao.php");
                     </div>
                     <div class="ln_solid"></div>
                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Location </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="location" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Control# </label>
+                            
+                            <label class="col-form-label col-md-3 col-sm-3 ">Control# </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" name="control" class="form-control">
                             </div>
-                    </div>
-                   <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Manufacturer </label>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Manufacturer </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" name="manufacturer" class="form-control">
                             </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Model </label>
+                    </div>
+                   <div class="form-group row">
+                            
+                            <label class="col-form-label col-md-3 col-sm-3 ">Model </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" name="model" class="form-control">
                             </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">S/N </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="sn" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Type </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="type" class="form-control">
-                            </div>
-                    </div>                      
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Capacity </label>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Capacity </label>
                             <div class="col-md-2 col-sm-9">
                                 <input type="text" name="capacity" class="form-control">
                             </div>
@@ -260,6 +246,25 @@ include_once ("../classes/conexoes/conexao.php");
                                             <!--<option value="12">&nbsp;&nbsp;¼</option>-->
                                     </select>
                             </div>
+                    </div>
+                    <div class="form-group row">
+                            
+                            <label class="col-form-label col-md-3 col-sm-3 ">S/N </label>
+                            <div class="col-md-4 col-sm-9">
+                                <input type="text" name="sn" class="form-control">
+                            </div>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Location </label>
+                            <div class="col-md-4 col-sm-9">
+                                <input type="text" name="location" class="form-control">
+                            </div>
+                    </div>                      
+                    <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 ">Type </label>
+                            <div class="col-md-4 col-sm-9">
+                                <input type="text" name="type" class="form-control">
+                            </div>
+                    
+                            
                             <label class="col-md-1 col-sm-3  control-label"></label>
 
                             <div class="col-md-3 col-sm-9 ">
@@ -270,19 +275,7 @@ include_once ("../classes/conexoes/conexao.php");
                             </div>
                     </div>
                     <div id="ocultar" class="form-group row">
-                            
-                            <label  class="col-form-label col-md-3 col-sm-3 ">Error </label>
-                            <div class="col-md-2 col-sm-2">
-                                <input type="text" id="cpe" name="preerror" class="form-control" onblur="autocompletar()">
-                            </div>
-                            <div class="col-md-2 col-sm-3 ">
-                                    <select class="form-control" id="dif" name="ndif" onchange="autocompletar()">
-                                            <option value="0" >+/-</option>
-                                            <option value="1">+</option>
-                                            <option value="2">-</option>
-                                    </select>
-                            </div>
-                             <label id="testload" class="col-form-label col-md-1 col-sm-3 ">Test load </label>
+                            <label id="testload" class="col-form-label col-md-3 col-sm-3 ">Test load </label>
                             <div class="col-md-2 col-sm-9">
                                 <input type="text" id="cpw" name="preweight" class="form-control">
                             </div>
@@ -292,6 +285,17 @@ include_once ("../classes/conexoes/conexao.php");
                                             <option value="1">LB</option>
                                             <option value="2">g</option>
                                             <option value="3">oz</option>
+                                    </select>
+                            </div>
+                            <label  class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                            <div class="col-md-2 col-sm-2">
+                                <input type="text" id="cpe" name="preerror" class="form-control" onblur="autocompletar()">
+                            </div>
+                            <div class="col-md-2 col-sm-3 ">
+                                    <select class="form-control" id="dif" name="ndif" onchange="autocompletar()">
+                                            <option value="0" >+/-</option>
+                                            <option value="1">+</option>
+                                            <option value="2">-</option>
                                     </select>
                             </div>
                     </div>
