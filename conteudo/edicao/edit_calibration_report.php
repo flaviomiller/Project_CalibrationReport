@@ -363,7 +363,7 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Test load </label>
                             <div class="col-md-2 col-sm-9">
-                                <input type="text" id="cpw" name="preweight" value="<?php echo $row_report['preweight']; ?>" class="form-control">
+                                <input type="text" id="cpw" name="preweight" value="<?php echo $row_report['preweight']; ?>" class="form-control" onchange="autocompletar()">
                             </div>
                             <div class="col-md-2 col-sm-9 ">
                                     <select class="form-control" id="measure" name="nmeasure">
