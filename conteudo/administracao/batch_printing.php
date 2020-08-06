@@ -1,7 +1,7 @@
  <?php
 session_start();
 include_once ("../classes/conexoes/conexao.php");
- 
+$_SESSION['controle'] = "";
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -69,7 +69,7 @@ include_once ("../classes/conexoes/conexao.php");
                     <ul class="nav child_menu">
                         <li><a href="../administracao/select_company.php">Register Calibration Report</a></li>
                         <li><a href="../consultas/consult_calibration_report.php">Consult Reports</a></li>
-                        <li><a href="../administracao/batch_printing.php">Batch Printing</a></li>
+                        <li><a href="../administracao/batch_printing.php">Batch Print</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-building-o"></i> Customers <span class="fa fa-chevron-down"></span></a>
@@ -80,7 +80,7 @@ include_once ("../classes/conexoes/conexao.php");
                   </li>
                   <li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../cadastros/cad_user.php">Register user</a></a></li>
+                      <li><a href="../cadastros/cad_user.php">Register user</a></li>
                       <li><a href="../consultas/consult_user.php">Consult Users</a></li>
                     </ul>
                   </li>                 
@@ -136,7 +136,7 @@ include_once ("../classes/conexoes/conexao.php");
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Consult Reports</h3>
+                <h3>Batch Print</h3>
               </div>
               <div class="title_right">
                 <div class="col-md-5 col-sm-5   form-group pull-right top_search">
@@ -156,7 +156,43 @@ include_once ("../classes/conexoes/conexao.php");
                 <!-- page content body Inserir o Forumlário a partir daqui-->
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Report List <small>
+                        <h2>Report List<small> 
+                        <form method="POST" action="">
+                        <div class="form-group row">
+                            <div class="col-md-4 col-sm-9 ">
+                                    <select name="customer_cont" class="form-control">
+                                            <option value="">Choose Company</option>
+                                            <?php
+                                                $results_empresas = "SELECT * FROM customer";
+                                                $resultado_empresa = mysqli_query($conn, $results_empresas);
+                                                while ($row_empresas = mysqli_fetch_assoc($resultado_empresa)){ ?>
+                                                <option value="<?php echo $row_empresas['customer_id']; ?>"><?php echo $row_empresas['customer_name']; ?>
+                                                </option><?php
+                                                }
+                                            ?>
+                                    </select>
+                            </div>
+
+                            <div class="col-md-4 col-sm-9 ">
+                                    <select name="dtmeasurement_cont" class="form-control">
+                                            <option value="">Choose Date</option>
+                                            <?php
+                                                $results_report = "SELECT * FROM reports GROUP BY dtmeasurement";
+                                                $resultado_report = mysqli_query($conn, $results_report);
+                                                while ($row_report = mysqli_fetch_assoc($resultado_report)){ ?>
+                                                <option value="<?php echo $row_report['dtmeasurement']; ?>"><?php echo $row_report['dtmeasurement']; ?>
+                                                </option><?php
+                                                }
+                                            ?>
+                                    </select>
+                            </div>
+                            <div class="col-md-2 col-sm-9">
+                                    <button type="submit" class="btn btn-success" name="search">Search</button>
+                            </div>
+                            <div class="col-md-2 col-sm-9">
+                                    <a class="btn btn-primary" href="generate_certificate_batch.php" role="button">Print</a>
+                            </div>
+                          </div>
                             <?php
                                 if(isset($_SESSION['msg'])){
                                 echo $_SESSION['msg'];
@@ -175,9 +211,6 @@ include_once ("../classes/conexoes/conexao.php");
                       <table class="table table-striped jambo_table bulk_action">                        
                           <thead>
                           <tr class="headings">
-                            <th>
-                              <input type="checkbox" id="check-all" class="flat">
-                            </th>
                             <th class="column-title"># </th>
                             <th class="column-title">Measurement Date </th>
                             <th class="column-title">Customer </th>
@@ -195,6 +228,7 @@ include_once ("../classes/conexoes/conexao.php");
                           </tr>
                         </thead>
                                 <?php
+                                    
                                     //receber o numero da página
                                     $pagina_atual = filter_input(INPUT_GET,'pagina',
                                      FILTER_SANITIZE_NUMBER_INT);
@@ -202,17 +236,95 @@ include_once ("../classes/conexoes/conexao.php");
                                     $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
 
                                     //Seta a quantidade de resultados por página
-                                    $qtd_result_pg = 6;
+                                    $qtd_result_pg = 500;
 
                                     //Calculo do inicio da visualização
                                     $inicio = ($qtd_result_pg * $pagina) - $qtd_result_pg;
 
-                                    $result_reports = "SELECT * FROM reports LIMIT $inicio, $qtd_result_pg";
+                                    $customer_control = "";
+                                    $dtmeasurement_control = "";
+                                    $selects = "SELECT * FROM reports LIMIT $inicio, $qtd_result_pg";
+
+                                    if (isset($_POST['search'])){
+
+                                      $customer_control = $_POST['customer_cont'];
+                                      $dtmeasurement_control = $_POST['dtmeasurement_cont'];
+                                      $_SESSION['controle'] = "";
+                                      
+                                      if(!empty($customer_control) && !empty($dtmeasurement_control)){ 
+                                      $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND dtmeasurement = '$dtmeasurement_control' LIMIT $inicio, $qtd_result_pg";
+                                      } elseif(!empty($customer_control) && empty($dtmeasurement_control)){ 
+                                        $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' LIMIT $inicio, $qtd_result_pg";
+                                      }elseif(empty($customer_control) && !empty($dtmeasurement_control)){ 
+                                        $selects = "SELECT * FROM reports  WHERE dtmeasurement = '$dtmeasurement_control' LIMIT $inicio, $qtd_result_pg";
+                                      }elseif(empty($customer_control) && empty($dtmeasurement_control)){ 
+                                        $selects = "SELECT * FROM reports LIMIT $inicio, $qtd_result_pg";
+                                      }
+                                    }                                    
+
+                                    $result_reports = $selects;
                                     $resultado_report = mysqli_query($conn, $result_reports);
                                     
                                     while ($rows_report = mysqli_fetch_assoc($resultado_report)){
                                         
                                         $customer_id = $rows_report['customer_id'];
+                                        
+                                        
+                                        if(!empty($customer_id)){
+                                          //echo "primeiro if";
+                                          $_SESSION['valor']  = $rows_report['id'];
+                                          
+                                          if ($_SESSION['controle'] == ""){
+                                          
+                                            $_SESSION['controle'] = $_SESSION['valor'];
+                                              
+                                          
+                                            }else{ 
+                                              
+
+                                              //$_SESSION['controle'] = "teste";
+                                              $_SESSION['controle'] = $_SESSION['controle'] . ","  . $_SESSION['valor'];
+                                              
+                                          
+                                            }
+                                        
+                                        }else{
+                                            
+                                            //echo "segundo if";
+                                            //unset($_SESSION['controle']);
+                                            //$_SESSION['controle'] = "";
+                                            //header("Location: testesdefuncoes.php");
+                                        
+                                        }
+                                        
+                                        /*
+                                        $array = explode(",", $_SESSION['controle']);
+                                        
+                                        print_r ($array);
+                                  
+                                        echo "<br><br>";
+                                  
+                                        $_SESSION['quantidade'] = count($array);
+                                  
+                                        echo $_SESSION['quantidade'];
+                                  
+                                        echo "<br><br>";
+                                         
+                                        $controle = 0;
+                                        while ($controle < $_SESSION['quantidade'] ){
+                                          print_r($array[$controle]);
+                                          echo "<br><br>";
+                                          $controle = $controle + 1;
+                                          //sleep(1);    */
+                                        //} 
+                                  
+                                      
+                                      
+                                      //header("Location: ../cadastros/cad_calibration_report.php");
+
+
+
+                                        
                                         $result_customer = "SELECT * FROM `customer` WHERE customer_id = '$customer_id'";
                                         $resultado_customer = mysqli_query($conn, $result_customer);
                                         $row_customer = mysqli_fetch_assoc($resultado_customer);
@@ -223,8 +335,7 @@ include_once ("../classes/conexoes/conexao.php");
                                         $row_user = mysqli_fetch_assoc($resultado_user);
                                         
                                         echo "<tbody>";
-                                        echo "<tr class='even pointer'><td class='a-center '>"
-                                        . "<input type='checkbox' class='flat' name='table_records'></td>";
+                                        echo "<tr class='even pointer'>";
                                         echo "<td>" .$rows_report['id']. "</td>"
                                                 . "<td>" .$rows_report['dtmeasurement']. "</td>"
                                                 . "<td>" .$row_customer['customer_name']. "</td>"
@@ -245,9 +356,11 @@ include_once ("../classes/conexoes/conexao.php");
                                         echo "</tr>";
                                         echo "</tbody>";
                                         echo "</table>";
+                                        //echo $_SESSION['controle'] . "<br><br>";                                        
+
 
                                         //Paginação - Somar a quatidade de relatórios cadastrados
-                                        $result_pg = "SELECT COUNT(customer_id) AS num_result FROM reports";            
+                                        $result_pg = "SELECT COUNT(customer_id) AS num_result FROM reports WHERE customer_id = '$customer_control' AND dtmeasurement = '$dtmeasurement_control'";            
                                         $resultado_pg = mysqli_query($conn, $result_pg);            
                                         $row_pg = mysqli_fetch_assoc($resultado_pg);
 
@@ -259,11 +372,11 @@ include_once ("../classes/conexoes/conexao.php");
                                         //Limite de links antes e depois           
                                         $max_links = 2;
 
-                                        echo "<a href='consult_calibration_report.php?pagina=1'>First page</a> ";
+                                        echo "<a href='batch_printing.php?pagina=1'>First page</a> ";
 
                                         for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
                                             if($pag_ant >= 1){
-                                            echo "<a href='consult_calibration_report.php?pagina=$pag_ant'>$pag_ant</a> ";
+                                            echo "<a href='batch_printing.php?pagina=$pag_ant'>$pag_ant</a> ";
                                             }    
                                         }
 
@@ -273,11 +386,11 @@ include_once ("../classes/conexoes/conexao.php");
 
                                         for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
                                             if($pag_dep <= $quantidade_pg){
-                                            echo "<a href='consult_calibration_report.php?pagina=$pag_dep'>$pag_dep</a> ";
+                                            echo "<a href='batch_printing.php?pagina=$pag_dep'>$pag_dep</a> ";
                                             }
                                         }
 
-                                        echo "<a href='consult_calibration_report.php?pagina=$quantidade_pg'>Last page</a> ";
+                                        echo "<a href='batch_printing.php?pagina=$quantidade_pg'>Last page</a> ";
                                 ?>
                     </div>								
                   </div>

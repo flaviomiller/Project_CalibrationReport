@@ -72,12 +72,8 @@ $resultado_calibration_report = mysqli_query($conn, $result_calibration_report);
 
 if(mysqli_insert_id($conn)){
     $_SESSION['msg'] = "Report inserted successfully";
-    //$_SESSION['empresa'] = $customer_id;
-    //$_RETORNA_ID['rtid'] = mysqli_insert_id($conn);
-    //echo "$retorna_id";
     header("Location: ../cadastros/cad_calibration_report.php");
-    
-    
+
 } else {
     $_SESSION['msg'] = "Error inserting the report";
     header("Location: cad_calibration_report.php");

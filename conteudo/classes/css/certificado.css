@@ -18,8 +18,13 @@ table{
   text-align: center;
 }
 
+.pai_um_cert {
+    border: 1px solid white;
+}
+
 .pai {
-    border: 0px solid white;
+    border: 1px solid white;
+    page-break-after: always;
 }
 
 .rodapeleft {

@@ -70,7 +70,8 @@ ob_start();
                   <li><a><i class="fa fa-print"></i> Reports <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="../administracao/select_company.php">Register Calibration Report</a></li>
-                      <li><a href="../consultas/consult_calibration_report.php">Consult Reports</a></li>
+                        <li><a href="../consultas/consult_calibration_report.php">Consult Reports</a></li>
+                        <li><a href="../administracao/batch_printing.php">Batch Print</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-building-o"></i> Customers <span class="fa fa-chevron-down"></span></a>

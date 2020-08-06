@@ -137,7 +137,7 @@ $html .= '<link rel="stylesheet" href="../classes/css/certificado.css"/>';
 $html .= '<title>Calibration Report</title>';
 $html .= '</head>';
 $html .= '<body>';
-$html .= '<div class="pai">';
+$html .= '<div class="pai_um_cert">';
 $html .= '<p> <b><u>Top Scale, Inc. Calibration Report</u></b> <br>';
 $html .= 'P.O. Box 7542 <br> ';
 $html .= 'Riverside, CA  92513 <br>';
@@ -339,7 +339,7 @@ $html .= '<link rel="stylesheet" href="../classes/css/certificado.css"/>';
 $html .= '<title>Calibration Report</title>';
 $html .= '</head>';
 $html .= '<body>';
-$html .= '<div class="pai">';
+$html .= '<div class="pai_um_cert">';
 $html .= '<p> <b><u>Top Scale, Inc. Calibration Report</u></b> <br>';
 $html .= 'P.O. Box 7542 <br> ';
 $html .= 'Riverside, CA  92513 <br>';
@@ -518,6 +518,7 @@ $html .= '</html>';
         
     } 
 
+    
 
 use Dompdf\Dompdf;
 
@@ -539,5 +540,6 @@ $dompdf->load_html('
                  "Attachment"=> false
              )
         );           
-    header("Location: ../consultas/consult_calibration_report.php");
+    
+        header("Location: ../consultas/consult_calibration_report.php");
 ?>

@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -14,28 +21,38 @@
         </script>
     </head>
     <body>
-        <h1>Teste de Fleg</h1>
+        <h1>Teste de Array</h1>
+        
+        <form method="POST" action="process_teste.php">
+       
+        <br><input type="number" name="item" value="<?php $_SESSION['userid'] ?>"><br><br>
+
+        <textarea name="comment" ><?php echo $_SESSION['controle']; ?></textarea><br><br>
+        <textarea name="comment" ><?php $array = explode(",", $_SESSION['controle']); print_r($array); ?></textarea><br><br>
+
+   <?php  
+    $cores = array("azul", "vermelho", "amarelo", "verde"); 
+ 
+    foreach ($array as $value) {
+        echo $value . "<br>";
+        //print_r("$value <br>");
+    }
+?> 
+        
+        <br><input type="submit" name="btnrecebe" value="submit"><input type="submit" name="btnreset" value="reset">
+        
         
 
-        <br><input type="checkbox" name="item" value="UM"> 1
-        <br><input type="checkbox" name="item" value="DOIS"> 2
-        <br><input type="checkbox" name="item" value="TRES"> 3
-        <br><input type="checkbox" name="item" value="QUATRO"> 4
-        <br><input type="checkbox" name="item" value="CINCO"> 5
-        <br><input type="button" value="Valida Checks" onclick="verificaChecks()">
+        </form>
 
 
 
 
 
-        <input type="checkbox" id="unablecalibrate" name="unablecalibrate" >
-        <label>Teste</label><br><br>
-        <textarea class="form-control" id="comment" name="comment" rows="3" ></textarea><br><br>
-        <input type="text" id="teste" name="teste" value="Dentro" onchange="verificafleg()">
-        
-        <!--onchange="verificafleg()"-->
+                
+
         <?php
-        // put your code here
+
         ?>
     <script type="text/javascript" src="js/tratamento.js"></script>
     </body>

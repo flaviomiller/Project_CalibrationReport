@@ -2,10 +2,6 @@
 session_start();
 include_once ("../classes/conexoes/conexao.php");
 
-   // if(isset($_SESSION['msg'])){
-   //     echo $_SESSION['msg'];
-   //     unset($_SESSION['msg']);
-   // }
 
 ?>
 <!DOCTYPE html>
@@ -75,7 +71,8 @@ include_once ("../classes/conexoes/conexao.php");
                   <li><a><i class="fa fa-print"></i> Reports <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="../administracao/select_company.php">Register Calibration Report</a></li>
-                      <li><a href="../consultas/consult_calibration_report.php">Consult Reports</a></li>
+                        <li><a href="../consultas/consult_calibration_report.php">Consult Reports</a></li>
+                        <li><a href="../administracao/batch_printing.php">Batch Print</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-building-o"></i> Customers <span class="fa fa-chevron-down"></span></a>
@@ -465,7 +462,9 @@ include_once ("../classes/conexoes/conexao.php");
                     <div id="ocultar19" class="ln_solid"></div>
                     <div class="form-group">
                             <div class="col-md-9 col-sm-9  offset-md-3">
+                                    <button type="button" class="btn btn-success" <?php $_SESSION['controle'] = ""; ?>>Reset</button>
                                     <button type="submit" class="btn btn-success" name="btnSelectCompany">Save</button>
+                                    <button type="button" class="btn btn-success"><a href='../administracao/generate_certificate.php?lote=true'>Print</a></button>
                             </div>
                     </div>
                   </form>

@@ -1,18 +1,48 @@
 <?php
+session_start();
 
-//include_once("conexao.php");
 
-//$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-//$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$valor = filter_input(INPUT_POST, 'btnreset', FILTER_SANITIZE_STRING);
+if(!$valor){
+  //echo "primeiro if";
+  $_SESSION['valor']  = filter_input(INPUT_POST, 'item', FILTER_SANITIZE_STRING);
+  
+  if ($_SESSION['controle'] == ""){
+  
+    $_SESSION['controle'] = $_SESSION['valor'];
+      header("Location: testesdefuncoes.php");
+  
+    }else{ 
+  
+      $_SESSION['controle'] = $_SESSION['controle'] . ","  . $_SESSION['valor'];
+      header("Location: testesdefuncoes.php");
+  
+    }
 
-//echo "Nome: $nome <br>";
-//echo "E-Mail: $email <br>";
+}else{
+    
+    //echo "segundo if";
+    unset($_SESSION['controle']);
+    $_SESSION['controle'] = "";
+    header("Location: testesdefuncoes.php");
 
-//$result_usuario = "INSERT INTO usuarios (nome, email, created) VALUES ('$nome', '$email', NOW())";
-//$resultado_usuario = mysqli_query($conn, $result_usuario);
-$meses = 16;
-$dataRetorno = new DateTime('2020-05-30');
-  echo $dataRetorno -> format('m/d/Y') ."<br>";
-  $dataRetorno      -> modify("+$meses Month");
-  echo $dataRetorno -> format('Y/m') . ' <br />';
-//}
+}
+
+$array = array($_SESSION['controle']);
+
+$_SESSION['montagem'] = $array;
+
+
+//$_SESSION['valor']  = filter_input(INPUT_POST, 'item', FILTER_SANITIZE_STRING);
+//$_SESSION['controle'] = $_SESSION['controle'] .", " . $_SESSION['valor'];
+//header("Location: testesdefuncoes.php");
+
+
+//echo $_SESSION['valor'] . "<br>";
+//echo $_SESSION['controle'];
+//echo $valor;
+
+
+
+
+    
