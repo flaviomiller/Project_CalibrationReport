@@ -27,7 +27,8 @@ include_once ("../classes/conexoes/conexao.php");
 		$html .= '</head>';
         $html .= '<body>';
         
-        $controle = 0;
+		$controle = 0;
+		$paginas_rel = 1;
 
         for ($i = 0; $i < $_SESSION['quantidade']; $i++){
             
@@ -175,7 +176,7 @@ include_once ("../classes/conexoes/conexao.php");
 		$html .= 'Riverside, CA  92513 <br>';
 		$html .= '(951)785-1700 <br>';
 		$html .= '<b>ISO 9001/2015</b> <br>';
-		$html .= '<b>PAGE <u>1</u> OF <u>1</u></b></p>';
+		$html .= '<b>PAGE <u>' . $paginas_rel . "</u> OF <u>" . $_SESSION['quantidade'] . "</u></b></p>";
 		$html .= '<br>';
 		$html .= '<table class="tg">';
 		$html .= '<thead>';
@@ -358,7 +359,8 @@ include_once ("../classes/conexoes/conexao.php");
 		$html .= '</div>';
         $html .= '</div>';
         
-        $controle = $controle + 1;
+		$controle = $controle + 1;
+		$paginas_rel = $paginas_rel + 1;
 
         }
 		$html .= '</body>';
