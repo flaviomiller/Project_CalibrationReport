@@ -156,7 +156,6 @@ $_SESSION['controle'] = "";
                 <!-- page content body Inserir o Forumlário a partir daqui-->
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Report List<small> 
                         <form method="POST" action="">
                         <div class="form-group row">
                             <div class="col-md-4 col-sm-9 ">
@@ -173,7 +172,7 @@ $_SESSION['controle'] = "";
                                     </select>
                             </div>
 
-                            <div class="col-md-4 col-sm-9 ">
+                            <div class="col-md-3 col-sm-9 ">
                                     <select name="dtmeasurement_cont" class="form-control">
                                             <option value="">Choose Date</option>
                                             <?php
@@ -186,10 +185,9 @@ $_SESSION['controle'] = "";
                                             ?>
                                     </select>
                             </div>
-                            <div class="col-md-2 col-sm-9">
+                            <div class="col-md-4 col-sm-9">
                                     <button type="submit" class="btn btn-success" name="search">Search</button>
-                            </div>
-                            <div class="col-md-2 col-sm-9">
+
                                     <a class="btn btn-primary" href="generate_certificate_batch.php" role="button">Print</a>
                             </div>
                           </div>

@@ -298,6 +298,9 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                     case 4:
                                           $show_nmeasure = "kg";
                                           break;
+                                    case 5:
+                                          $show_nmeasure = "mg";
+                                          break;
                                     }
 
                                 $show_ndif = "";
@@ -371,6 +374,7 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                             <option value="2">g</option>
                                             <option value="3">oz</option>
                                             <option value="4">kg</option>
+                                            <option value="5">mg</option>
                                     </select>
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Error </label>

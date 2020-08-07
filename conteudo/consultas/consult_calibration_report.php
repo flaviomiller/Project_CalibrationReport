@@ -156,10 +156,9 @@ $_SESSION['controle'] = "";
                 <!-- page content body Inserir o Forumlário a partir daqui-->
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Report List<small> 
                         <form method="POST" action="">
                         <div class="form-group row">
-                            <div class="col-md-5 col-sm-9 ">
+                            <div class="col-md-5 col-sm-10 ">
                                     <select name="customer_cont" class="form-control">
                                             <option value="">Choose Company</option>
                                             <?php
@@ -173,7 +172,7 @@ $_SESSION['controle'] = "";
                                     </select>
                             </div>
 
-                            <div class="col-md-4 col-sm-9 ">
+                            <div class="col-md-4 col-sm-10 ">
                                     <select name="dtmeasurement_cont" class="form-control">
                                             <option value="">Choose Date</option>
                                             <?php

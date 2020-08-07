@@ -283,6 +283,7 @@ include_once ("../classes/conexoes/conexao.php");
                                             <option value="2">g</option>
                                             <option value="3">oz</option>
                                             <option value="4">kg</option>
+                                            <option value="5">mg</option>
                                     </select>
                             </div>
                             <label  class="col-form-label col-md-1 col-sm-3 ">Error </label>

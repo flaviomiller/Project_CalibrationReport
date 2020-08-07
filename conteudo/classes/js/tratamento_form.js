@@ -50,6 +50,8 @@ function autocompletar(){
         measureselec = "oz"
     }else if (cmeasure == 4) {
         measureselec = "kg"
+    }else if (cmeasure == 5) {
+        measureselec = "mg"
     }
 
     //tratamento da variável do fleg do tipo de medida
@@ -387,7 +389,7 @@ function autocompletar(){
 // 3 = oz
 // 4 = kg
     //If que controla os tipos de certificados que serão atribuidos conforme o tipo de peso utilizado.
-    if (cmeasuretype == 2){
+    if (cmeasuretype == 2 || cmeasuretype == 4 || cmeasuretype == 5 ){
         document.getElementById('cnistid').value = "180625002"
         document.getElementById('cstdcert').value = "11886"
         document.getElementById('cstdcertdate').value = "2018-06"
