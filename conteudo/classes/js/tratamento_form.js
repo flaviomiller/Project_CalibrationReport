@@ -306,9 +306,9 @@ function autocompletar(){
         cerror4 = (5/23*convpe1)
 
     }else if (convpw1 = "") {
-        alert("The 'Test Load' field needs to be filled.");
+        //alert("The 'Test Load' field needs to be filled.");
     }else {
-        alert("The 'Test Load' field has a measurement not handled by the system, please enter the data manually.");
+        //alert("The 'Test Load' field has a measurement not handled by the system, please enter the data manually.");
     }
     
     //De acordo com a definição desse if será realizado o calculo do valor de base na função CALCULA.
