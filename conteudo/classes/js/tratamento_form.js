@@ -3,10 +3,10 @@
 function autocompletar(){
     //tratamento dos campos de resultados da Pré Inspeção
     //variaveis que coletam as informações do formulario
-    var vpw1 = window.document.getElementById('cpw') // Variável do peso inserido (Test Load)
-    var vpe1 = window.document.getElementById('cpe') // Variável da margem de erro inserida
-    var vmincap =  window.document.getElementById("mincapacity") // Variável da medida da balança selecionada
-    var vmeasure =  window.document.getElementById("measure") // Variável da tipo de medida selecionada
+    var vpw1 = window.document.getElementById('cpw') // Peso inserido (Test Load)
+    var vpe1 = window.document.getElementById('cpe') // Erro inserida
+    var vmincap =  window.document.getElementById("mincapacity") //Capacidade da balança
+    var vmeasure =  window.document.getElementById("measure") // Tipo de medida
     var vdif =  window.document.getElementById("dif") // Variável da diferença selecionada
     
     //variaveis que convetem as informações coletadas do fomrulario para tratamento dentro da função
@@ -62,7 +62,7 @@ function autocompletar(){
     }
 
     //tratamento da medida da balança selecionada para determinar as casas decimais a serem calculadas
-    if (cmincap == 1 || cmincap == 2 || cmincap == 3 ) {
+    if (cmincap == 1 || cmincap == 2 || cmincap == 3 || cmincap == 18) {
         
         casasdec = 2
 
@@ -164,7 +164,18 @@ function autocompletar(){
         cerror3 = (0.5*convpe1)
         cerror4 = (0.25*convpe1)
 
-    } else if (convpw1 == 500) {
+    }else if (convpw1 == 400) {
+        cweight1 = 400
+        cweight2 = 200
+        cweight3 = 100
+        cweight4 = 50
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.5*convpe1)
+        cerror3 = (0.25*convpe1)
+        cerror4 = (0.125*convpe1)
+
+    }else if (convpw1 == 500) {
         cweight1 = 500
         cweight2 = 300
         cweight3 = 200
@@ -382,6 +393,10 @@ function autocompletar(){
 
         valbase = 0.0005
 
+    } else if (cmincap == 18 ) {
+
+        valbase = 0.25
+
     } 
     // 
 // 1 = LB
@@ -451,32 +466,57 @@ function autocompletar(){
         document.getElementById('cstdcertdate2').value = ""
         document.getElementById('cstdcertdue2').value = ""
     }
-
-
-    ajustar(cerror1)
-    sinais(ajustado, difselec, measureselec)
-    verror1 = imprime 
-
-    calcula(cerror2, valbase)//chama a função que faz o calculo do valor
-    ajustar(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
-    sinais(ajustado, difselec, measureselec)//chama a função que converte e concatena sinais de + ou - no resultado
-    verror2 = imprime //atribui o resultado a variável que será impressa em tela.
     
-    calcula(cerror3, valbase)
-    ajustar(res)
-    sinais(ajustado, difselec, measureselec)
-    verror3 = imprime
-    
-    calcula(cerror4, valbase)
-    ajustar(res)
-    sinais(ajustado, difselec, measureselec)
-    verror4 = imprime
+    if (valbase == 0.25 ){
+
+        //alert("Eu sou um alert!");
+
+        converte(cerror1)
+        fracsinais(ajustada, difselec, measureselec)
+        verror1 = imprime 
+        
+        calcula(cerror2, valbase)//chama a função que faz o calculo do valor
+        converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        fracsinais(ajustada, difselec, measureselec)//chama a função que converte e concatena sinais de + ou - no resultado
+        verror2 = imprime //atribui o resultado a variável que será impressa em tela.
+        
+        calcula(cerror3, valbase)
+        converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        fracsinais(ajustada, difselec, measureselec)
+        verror3 = imprime
+        
+        calcula(cerror4, valbase)
+        converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        fracsinais(ajustada, difselec, measureselec)
+        verror4 = imprime
+
+    }else{
+
+        ajustar(cerror1)
+        sinais(ajustado, difselec, measureselec)
+        verror1 = imprime 
+        
+        calcula(cerror2, valbase)//chama a função que faz o calculo do valor
+        ajustar(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        sinais(ajustado, difselec, measureselec)//chama a função que converte e concatena sinais de + ou - no resultado
+        verror2 = imprime //atribui o resultado a variável que será impressa em tela.
+        
+        calcula(cerror3, valbase)
+        ajustar(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        sinais(ajustado, difselec, measureselec)
+        verror3 = imprime
+        
+        calcula(cerror4, valbase)
+        ajustar(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        sinais(ajustado, difselec, measureselec)
+        verror4 = imprime
+    }
 
 
     //CORAÇÃO DO CÁLCULO - função que calcula o resultado de cada campo e retorna a variavel res para demais tratamento
     function calcula(numero, base){
-        num = numero*1000000
-        piso = base*1000000
+        num = numero*1000000000
+        piso = base*1000000000
         divisao = num / piso
         resto = num % piso
         controle_divisao = num / piso
@@ -486,9 +526,10 @@ function autocompletar(){
         }else{
             resto = 0
         }
-        res = ((Math.trunc(divisao)*piso) + resto)/1000000
+        res = ((Math.trunc(divisao)*piso) + resto)/1000000000
 
     }
+    
     
     //função que converte o resultado em string e elimina os ZEROS antes do ponto
     function ajustar(receber){
@@ -513,6 +554,48 @@ function autocompletar(){
             }
     }
 
+    function converte(recebe){
+        total = recebe
+        convertostring = total.toString()
+        dividido = convertostring.split('.')
+        comparar = dividido[0]
+        comparar_1 = dividido[1]
+        convertida = ""
+        convertida_1 = ""
+
+        if (comparar == 0 && typeof(comparar_1) == "string" ){
+            if (comparar_1 == 5){
+                convertida_1 = "½"
+            }else if (comparar_1 == 25){
+                convertida_1 = "¼"
+            }else if (comparar_1 == 75){
+                convertida_1 = "¾"
+            }
+            ajustada = convertida_1
+
+        }else if (comparar == 0 && typeof(comparar_1) == "undefined" ){
+            ajustada = 0
+
+        }else if (comparar > 0 && typeof(comparar_1) == "undefined" ){
+            ajustada = comparar
+
+        }else if (comparar > 0 && comparar_1 > 0 ){
+            convertida = comparar
+            if (comparar_1 == 5){
+                convertida_1 = "½"
+            }else if (comparar_1 == 25){
+                convertida_1 = "¼"
+            }else if (comparar_1 == 75){
+                convertida_1 = "¾"
+            }
+            ajustada = comparar + convertida_1
+
+        }
+
+
+    }
+
+
     //função que concatena o sinal de + ou - resultado que será impresso
     function sinais(valorFinal, operador, medida){
         if (valorFinal > 0){
@@ -522,6 +605,13 @@ function autocompletar(){
         }
     }
 
+    function fracsinais(valorFinal, operador, medida){
+        if (valorFinal != 0){
+            imprime = operador + valorFinal + medida
+        } else {
+            imprime = valorFinal
+        }
+    }
 
     // valores atribuidos aos campos da pre inspeção referentes ao peso
     document.getElementById('cpw1').value = cweight1 + measureselec
