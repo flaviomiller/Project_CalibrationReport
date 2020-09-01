@@ -219,7 +219,10 @@ include_once ("../classes/conexoes/conexao.php");
                             <div class="col-md-2 col-sm-9">
                                 <input type="text" name="capacity" class="form-control">
                             </div>
-                            <div class="col-md-2 col-sm-9 ">
+                            <div class="col-md-auto col-sm-9">
+                                <label class="col-form-label col-md-auto col-sm-3 ">X </label>
+                            </div>
+                            <div class="col-md col-sm-9 ">
                                     <select class="form-control" id="mincapacity" name="nmincapacity">
                                             <option value="0">Select</option>
                                             <option value="7">1</option>

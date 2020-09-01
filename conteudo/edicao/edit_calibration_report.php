@@ -226,6 +226,9 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                             <div class="col-md-2 col-sm-9">
                                 <input type="text" name="capacity" value="<?php echo $row_report['capacity']; ?>" class="form-control">
                             </div>
+                            <div class="col-md-auto col-sm-9">
+                                <label class="col-form-label col-md col-sm-3 ">X </label>
+                            </div>
                             <?php
                                 $show_capacity = "";
 
@@ -281,6 +284,9 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                     case 17:
                                         $show_capacity = ".0005";
                                         break;
+                                    case 18:
+                                        $show_capacity = "¼";
+                                        break;
                                 }
 
                                 $show_nmeasure = "";
@@ -314,7 +320,7 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                         break;
                                     }
                                 ?>
-                            <div class="col-md-2 col-sm-9 ">
+                            <div class="col-md col-sm-9 ">
                                     <select class="form-control" id="mincapacity" name="nmincapacity">
                                             <option value="<?php echo $row_report['nmincapacity']; ?>"><?php echo $show_capacity; ?></option>
                                             <option value="7">1</option>
