@@ -87,7 +87,18 @@ function autocompletar(){
     
     
     //Tratamento da medida inserida no campo TEST LOAD e setagem das variáveis para cálculo das medidas
-    if (convpw1 == 10) {
+    if (convpw1 == 5) {
+        cweight1 = 5
+        cweight2 = 3
+        cweight3 = 2
+        cweight4 = 1
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.6*convpe1)
+        cerror3 = (0.4*convpe1)
+        cerror4 = (0.2*convpe1)
+
+    }else if (convpw1 == 10) {
         cweight1 = 10
         cweight2 = 5
         cweight3 = 3
@@ -164,7 +175,29 @@ function autocompletar(){
         cerror3 = (0.5*convpe1)
         cerror4 = (0.25*convpe1)
 
-    }else if (convpw1 == 400) {
+    }else if (convpw1 == 250) {
+        cweight1 = 250
+        cweight2 = 200
+        cweight3 = 100
+        cweight4 = 50
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.8*convpe1)
+        cerror3 = (0.4*convpe1)
+        cerror4 = (0.2*convpe1)
+
+    }else if (convpw1 == 300) {
+        cweight1 = 300
+        cweight2 = 200
+        cweight3 = 100
+        cweight4 = 50
+
+        cerror1 = (1*convpe1)
+        cerror2 = ((2/3)*convpe1)
+        cerror3 = ((1/3)*convpe1)
+        cerror4 = ((1/6)*convpe1)
+
+    } else if (convpw1 == 400) {
         cweight1 = 400
         cweight2 = 200
         cweight3 = 100
@@ -197,6 +230,17 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.1*convpe1)
 
+    }else if (convpw1 == 1400) {
+        cweight1 = 1400
+        cweight2 = 700
+        cweight3 = 350
+        cweight4 = 175
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.5*convpe1)
+        cerror3 = (0.25*convpe1)
+        cerror4 = (0.125*convpe1)
+
     } else if (convpw1 == 2000) {
         cweight1 = 2000
         cweight2 = 1000
@@ -208,7 +252,29 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.125*convpe1)
 
-    } else if (convpw1 == 5000) {
+    }else if (convpw1 == 2500) {
+        cweight1 = 2500
+        cweight2 = 2000
+        cweight3 = 1000
+        cweight4 = 500
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.8*convpe1)
+        cerror3 = (0.4*convpe1)
+        cerror4 = (0.2*convpe1)
+
+    }else if (convpw1 == 3000) {
+        cweight1 = 3000
+        cweight2 = 2000
+        cweight3 = 1000
+        cweight4 = 500
+
+        cerror1 = (1*convpe1)
+        cerror2 = ((2/3)*convpe1)
+        cerror3 = ((1/3)*convpe1)
+        cerror4 = ((1/6)*convpe1)
+
+    }  else if (convpw1 == 5000) {
         cweight1 = 5000
         cweight2 = 3000
         cweight3 = 2000
@@ -318,7 +384,29 @@ function autocompletar(){
         cerror3 = (10/23*convpe1)
         cerror4 = (5/23*convpe1)
 
-    }else if (convpw1 = "") {
+    }else if (convpw1 == 25000) {
+        cweight1 = 25000
+        cweight2 = 20000
+        cweight3 = 10000
+        cweight4 = 5000
+
+        cerror1 = (1*convpe1)
+        cerror2 = (0.8*convpe1)
+        cerror3 = (0.4*convpe1)
+        cerror4 = (0.2*convpe1)
+
+    }else if (convpw1 == 30000) {
+        cweight1 = 30000
+        cweight2 = 20000
+        cweight3 = 10000
+        cweight4 = 5000
+
+        cerror1 = (1*convpe1)
+        cerror2 = ((2/3)*convpe1)
+        cerror3 = ((1/3)*convpe1)
+        cerror4 = ((1/6)*convpe1)
+
+    } else if (convpw1 = "") {
         //alert("The 'Test Load' field needs to be filled.");
     }else {
         //alert("The 'Test Load' field has a measurement not handled by the system, please enter the data manually.");
@@ -405,10 +493,10 @@ function autocompletar(){
 // 4 = kg
     //If que controla os tipos de certificados que serão atribuidos conforme o tipo de peso utilizado.
     if (cmeasuretype == 2 || cmeasuretype == 4 || cmeasuretype == 5 ){
-        document.getElementById('cnistid').value = "180625002"
-        document.getElementById('cstdcert').value = "11886"
-        document.getElementById('cstdcertdate').value = "2018-06"
-        document.getElementById('cstdcertdue').value = "2020-06"
+        document.getElementById('cnistid').value = "200204001"
+        document.getElementById('cstdcert').value = "13282"
+        document.getElementById('cstdcertdate').value = "2020-02"
+        document.getElementById('cstdcertdue').value = "2022-02"
         
         document.getElementById('cnistid2').value = "-"
         document.getElementById('cstdcert2').value = "-"
@@ -416,10 +504,10 @@ function autocompletar(){
         document.getElementById('cstdcertdue2').value = ""
         
     } else if (cmeasuretype == 3){
-        document.getElementById('cnistid').value = "180821002"
-        document.getElementById('cstdcert').value = "12014"
-        document.getElementById('cstdcertdate').value = "2018-08"
-        document.getElementById('cstdcertdue').value = "2020-08"
+        document.getElementById('cnistid').value = "200204001"
+        document.getElementById('cstdcert').value = "13283"
+        document.getElementById('cstdcertdate').value = "2020-02"
+        document.getElementById('cstdcertdue').value = "2022-02"
         
         document.getElementById('cnistid2').value = "-"
         document.getElementById('cstdcert2').value = "-"
@@ -427,10 +515,10 @@ function autocompletar(){
         document.getElementById('cstdcertdue2').value = ""
         
     }else if (cmeasuretype == 1 && ctestload < 50 ){
-        document.getElementById('cnistid').value = "180821002"
-        document.getElementById('cstdcert').value = "12014"
-        document.getElementById('cstdcertdate').value = "2018-08"
-        document.getElementById('cstdcertdue').value = "2020-08"
+        document.getElementById('cnistid').value = "200204001"
+        document.getElementById('cstdcert').value = "13283"
+        document.getElementById('cstdcertdate').value = "2020-02"
+        document.getElementById('cstdcertdue').value = "2022-02"
         
         document.getElementById('cnistid2').value = "-"
         document.getElementById('cstdcert2').value = "-"
@@ -438,16 +526,17 @@ function autocompletar(){
         document.getElementById('cstdcertdue2').value = ""
         
     }else if (cmeasuretype == 1 && ctestload >= 50 && ctestload < 1000){
-        document.getElementById('cnistid').value = "180821002"
-        document.getElementById('cstdcert').value = "13195"
-        document.getElementById('cstdcertdate').value = "2020-01"
-        document.getElementById('cstdcertdue').value = "2022-01"
+        document.getElementById('cnistid').value = "191003002"
+        document.getElementById('cstdcert').value = "12933"
+        document.getElementById('cstdcertdate').value = "2019-12"
+        document.getElementById('cstdcertdue').value = "2021-12"
         
         if (ctestload <= 150){
-            document.getElementById('cnistid2').value = "180821002"
-            document.getElementById('cstdcert2').value = "12014"
-            document.getElementById('cstdcertdate2').value = "2018-08"
-            document.getElementById('cstdcertdue2').value = "2020-08"
+            document.getElementById('cnistid2').value = "200204001"
+            document.getElementById('cstdcert2').value = "13283"
+            document.getElementById('cstdcertdate2').value = "2020-02"
+            document.getElementById('cstdcertdue2').value = "2022-02"
+
         }else{
             document.getElementById('cnistid2').value = "-"
             document.getElementById('cstdcert2').value = "-"
@@ -460,11 +549,18 @@ function autocompletar(){
         document.getElementById('cstdcert').value = "11885"
         document.getElementById('cstdcertdate').value = "2018-06"
         document.getElementById('cstdcertdue').value = "2020-06"
-        
-        document.getElementById('cnistid2').value = "-"
-        document.getElementById('cstdcert2').value = "-"
-        document.getElementById('cstdcertdate2').value = ""
-        document.getElementById('cstdcertdue2').value = ""
+
+        if (ctestload <= 4000){
+            document.getElementById('cnistid2').value = "191003002"
+            document.getElementById('cstdcert2').value = "12933"
+            document.getElementById('cstdcertdate2').value = "2019-12"
+            document.getElementById('cstdcertdue2').value = "2021-12"
+        }else{
+            document.getElementById('cnistid2').value = "-"
+            document.getElementById('cstdcert2').value = "-"
+            document.getElementById('cstdcertdate2').value = ""
+            document.getElementById('cstdcertdue2').value = ""
+        }
     }
     
     if (valbase == 0.25 ){
