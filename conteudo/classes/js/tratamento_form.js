@@ -83,6 +83,10 @@ function autocompletar(){
 
         casasdec = 4
 
+    }else if (cmincap == 19 || cmincap == 20 || cmincap == 21 ) {
+
+        casasdec = 5
+
     }
     
     
@@ -484,6 +488,18 @@ function autocompletar(){
     } else if (cmincap == 18 ) {
 
         valbase = 0.25
+
+    }else if (cmincap == 19 ) {
+
+        valbase = 0.00001
+
+    }else if (cmincap == 20 ) {
+
+        valbase = 0.00002
+
+    }else if (cmincap == 21 ) {
+
+        valbase = 0.00005
 
     } 
     // 

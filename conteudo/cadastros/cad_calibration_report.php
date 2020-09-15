@@ -242,6 +242,9 @@ include_once ("../classes/conexoes/conexao.php");
                                             <option value="15">.0001</option>
                                             <option value="16">.0002</option>
                                             <option value="17">.0005</option>
+                                            <option value="19">.00001</option>
+                                            <option value="20">.00002</option>
+                                            <option value="21">.00005</option>
                                             <option value="18">¼</option>
                                     </select>
                             </div>

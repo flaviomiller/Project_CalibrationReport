@@ -284,6 +284,15 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                     case 17:
                                         $show_capacity = ".0005";
                                         break;
+                                    case 19:
+                                        $show_capacity = ".00001";
+                                        break;
+                                    case 20:
+                                        $show_capacity = ".00002";
+                                        break;
+                                    case 21:
+                                        $show_capacity = ".00005";
+                                        break;
                                     case 18:
                                         $show_capacity = "¼";
                                         break;
@@ -340,6 +349,9 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                             <option value="15">.0001</option>
                                             <option value="16">.0002</option>
                                             <option value="17">.0005</option>
+                                            <option value="19">.00001</option>
+                                            <option value="20">.00002</option>
+                                            <option value="21">.00005</option>
                                             <option value="18">¼</option>
                                     </select>
                             </div>
