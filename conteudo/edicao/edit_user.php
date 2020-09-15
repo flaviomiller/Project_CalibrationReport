@@ -187,7 +187,7 @@ $row_user = mysqli_fetch_assoc($resultado_user);
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">E-Mail </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="email" name="email" value="<?php echo $row_user['email']; ?>" class="form-control" onkeyup="maiuscula(this)">
+                                <input type="email" name="email" value="<?php echo $row_user['email']; ?>" class="form-control" onkeyup="minuscula(this)">
                             </div>
                     </div>
                     <div class="form-group row">

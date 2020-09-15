@@ -765,6 +765,11 @@ function maiuscula(conteudo){
     conteudo.value = resconvertido;
 }
 
+function minuscula(conteudo){
+    resconvertido = conteudo.value.toLowerCase();
+    conteudo.value = resconvertido;
+}
+
 //funcao que oculta os campos relacionados as medidas e certificados quando flegado o campo Unable to calibrate
 function verificafleg(){
     controle = window.document.getElementById("comment").value;
