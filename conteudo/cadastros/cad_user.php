@@ -173,19 +173,19 @@ ob_start();
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Name </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">E-Mail </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">User </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="user" class="form-control">
+                                <input type="text" name="user" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>                      
                     <div class="form-group row">
@@ -197,7 +197,7 @@ ob_start();
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Tech ID </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="techid" class="form-control">
+                                <input type="text" name="techid" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="ln_solid"></div>

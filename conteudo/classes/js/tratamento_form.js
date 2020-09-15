@@ -760,6 +760,10 @@ function datas(){
     document.getElementById('data1').value = vdata.value;
 }
 
+function maiuscula(conteudo){
+    resconvertido = conteudo.value.toUpperCase();
+    conteudo.value = resconvertido;
+}
 
 //funcao que oculta os campos relacionados as medidas e certificados quando flegado o campo Unable to calibrate
 function verificafleg(){

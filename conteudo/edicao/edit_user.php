@@ -181,25 +181,25 @@ $row_user = mysqli_fetch_assoc($resultado_user);
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Name </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="name" value="<?php echo $row_user['name']; ?>" class="form-control">
+                                <input type="text" name="name" value="<?php echo $row_user['name']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">E-Mail </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="email" name="email" value="<?php echo $row_user['email']; ?>" class="form-control">
+                                <input type="email" name="email" value="<?php echo $row_user['email']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">User </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="user" value="<?php echo $row_user['user']; ?>" class="form-control">
+                                <input type="text" name="user" value="<?php echo $row_user['user']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>                      
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Tech ID </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="techid" value="<?php echo $row_user['techid']; ?>" class="form-control">
+                                <input type="text" name="techid" value="<?php echo $row_user['techid']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="ln_solid"></div>

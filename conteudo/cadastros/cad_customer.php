@@ -178,31 +178,31 @@ include_once ("../classes/conexoes/conexao.php");
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Company </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="customer_name" class="form-control">
+                                <input type="text" name="customer_name" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Addres </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="addres" class="form-control">
+                                <input type="text" name="addres" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">City </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="city" class="form-control">
+                                <input type="text" name="city" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>                      
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">State </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="state" class="form-control">
+                                <input type="text" name="state" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Zip </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" id="zip" name="zip" class="form-control">
+                                <input type="text" id="zip" name="zip" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                     <div class="ln_solid"></div>

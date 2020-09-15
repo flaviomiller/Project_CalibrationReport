@@ -202,22 +202,22 @@ include_once ("../classes/conexoes/conexao.php");
                             
                             <label class="col-form-label col-md-3 col-sm-3 ">Control# </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="control" class="form-control">
+                                <input type="text" name="control" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Manufacturer </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="manufacturer" class="form-control">
+                                <input type="text" name="manufacturer" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                    <div class="form-group row">
                             
                             <label class="col-form-label col-md-3 col-sm-3 ">Model </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="model" class="form-control">
+                                <input type="text" name="model" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Capacity </label>
                             <div class="col-md-2 col-sm-9">
-                                <input type="text" name="capacity" class="form-control">
+                                <input type="text" name="capacity" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <div class="col-md-auto col-sm-9">
                                 <label class="col-form-label col-md-auto col-sm-3 ">X </label>
@@ -253,17 +253,17 @@ include_once ("../classes/conexoes/conexao.php");
                             
                             <label class="col-form-label col-md-3 col-sm-3 ">S/N </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="sn" class="form-control">
+                                <input type="text" name="sn" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Location </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="location" class="form-control">
+                                <input type="text" name="location" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>                      
                     <div class="form-group row">
                     <label class="col-form-label col-md-3 col-sm-3 ">Type </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="type" class="form-control">
+                                <input type="text" name="type" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     
                             

@@ -209,22 +209,22 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                    <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Control# </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="control" value="<?php echo $row_report['control']; ?>" class="form-control">
+                                <input type="text" name="control" value="<?php echo $row_report['control']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Manufacturer </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="manufacturer" value="<?php echo $row_report['manufacturer']; ?>" class="form-control">
+                                <input type="text" name="manufacturer" value="<?php echo $row_report['manufacturer']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>
                    <div class="form-group row">
                             
                             <label class="col-form-label col-md-3 col-sm-3 ">Model </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="model" value="<?php echo $row_report['model']; ?>" class="form-control">
+                                <input type="text" name="model" value="<?php echo $row_report['model']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Capacity </label>
                             <div class="col-md-2 col-sm-9">
-                                <input type="text" name="capacity" value="<?php echo $row_report['capacity']; ?>" class="form-control">
+                                <input type="text" name="capacity" value="<?php echo $row_report['capacity']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <div class="col-md-auto col-sm-9">
                                 <label class="col-form-label col-md col-sm-3 ">X </label>
@@ -359,17 +359,17 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">S/N </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="sn" value="<?php echo $row_report['sn']; ?>" class="form-control">
+                                <input type="text" name="sn" value="<?php echo $row_report['sn']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <label class="col-form-label col-md-1 col-sm-3 ">Location </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="location" value="<?php echo $row_report['location']; ?>" class="form-control">
+                                <input type="text" name="location" value="<?php echo $row_report['location']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>                      
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Type </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="type" value="<?php echo $row_report['type']; ?>" class="form-control">
+                                <input type="text" name="type" value="<?php echo $row_report['type']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <label class="col-md-1 col-sm-3  control-label"></label>
 
