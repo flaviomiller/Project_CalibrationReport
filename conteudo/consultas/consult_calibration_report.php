@@ -158,7 +158,7 @@ $_SESSION['controle'] = "";
                     <div class="x_title">
                         <form method="POST" action="">
                         <div class="form-group row">
-                            <div class="col-md-5 col-sm-10 ">
+                            <div class="col-md-4 col-sm-10 ">
                                     <select name="customer_cont" class="form-control">
                                             <option value="">Choose Company</option>
                                             <?php
@@ -171,7 +171,6 @@ $_SESSION['controle'] = "";
                                             ?>
                                     </select>
                             </div>
-
                             <div class="col-md-4 col-sm-10 ">
                                     <select name="dtmeasurement_cont" class="form-control">
                                             <option value="">Choose Date</option>
@@ -179,16 +178,36 @@ $_SESSION['controle'] = "";
                                                 $results_report = "SELECT * FROM reports GROUP BY dtmeasurement";
                                                 $resultado_report = mysqli_query($conn, $results_report);
                                                 while ($row_report = mysqli_fetch_assoc($resultado_report)){ ?>
-                                                <option value="<?php echo $row_report['dtmeasurement']; ?>"><?php echo $row_report['dtmeasurement']; ?>
+                                                <option value="<?php echo $row_report['dtmeasurement']; ?>"><?php 
+                                                
+                                                $dataselect = new DateTime($row_report['dtmeasurement']);
+                                                echo $dataselect -> format('m/d/Y');
+                                                
+                                                ?>
                                                 </option><?php
                                                 }
                                             ?>
                                     </select>
                             </div>
+                            <div class="col-md-4 col-sm-10 ">
+                                    <select name="tech_cont" class="form-control">
+                                            <option value="">Choose Tech</option>
+                                            <?php
+                                                $results_user = "SELECT * FROM user";
+                                                $resultado_user = mysqli_query($conn, $results_user);
+                                                while ($row_user = mysqli_fetch_assoc($resultado_user)){ ?>
+                                                <option value="<?php echo $row_user['user_id']; ?>"><?php echo $row_user['techid'] . " | " . $row_user['name']; ?>
+                                                </option><?php
+                                                }
+                                            ?>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-md-2 col-sm-9">
                                     <button type="submit" class="btn btn-success" name="search">Search</button>
                             </div>
-                          </div>
+                        </div>
                             <?php
                                 if(isset($_SESSION['msg'])){
                                 echo $_SESSION['msg'];
@@ -245,16 +264,41 @@ $_SESSION['controle'] = "";
 
                                       $customer_control = $_POST['customer_cont'];
                                       $dtmeasurement_control = $_POST['dtmeasurement_cont'];
+                                      $tech_control = $_POST['tech_cont'];
                                       $_SESSION['controle'] = "";
                                       
-                                      if(!empty($customer_control) && !empty($dtmeasurement_control)){ 
-                                      $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND dtmeasurement = '$dtmeasurement_control' LIMIT $inicio, $qtd_result_pg";
-                                      } elseif(!empty($customer_control) && empty($dtmeasurement_control)){ 
+                                      if(!empty($customer_control) && !empty($dtmeasurement_control) && !empty($tech_control)){ 
+                                      
+                                        $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND dtmeasurement = '$dtmeasurement_control' AND techid = '$tech_control' LIMIT $inicio, $qtd_result_pg";
+
+                                      }elseif(!empty($customer_control) && !empty($dtmeasurement_control) && empty($tech_control)){ 
+                                      
+                                        $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND dtmeasurement = '$dtmeasurement_control' LIMIT $inicio, $qtd_result_pg";
+
+                                      } elseif(!empty($customer_control) && empty($dtmeasurement_control) && !empty($tech_control)){ 
+                                      
+                                        $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND techid = '$tech_control' LIMIT $inicio, $qtd_result_pg";
+
+                                      }elseif(!empty($customer_control) && empty($dtmeasurement_control) && empty($tech_control)){ 
+
                                         $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' LIMIT $inicio, $qtd_result_pg";
-                                      }elseif(empty($customer_control) && !empty($dtmeasurement_control)){ 
+
+                                      }elseif(empty($customer_control) && !empty($dtmeasurement_control) && empty($tech_control)){ 
+
                                         $selects = "SELECT * FROM reports  WHERE dtmeasurement = '$dtmeasurement_control' LIMIT $inicio, $qtd_result_pg";
-                                      }elseif(empty($customer_control) && empty($dtmeasurement_control)){ 
+
+                                      }elseif(empty($customer_control) && !empty($dtmeasurement_control) && !empty($tech_control)){ 
+                                      
+                                        $selects = "SELECT * FROM reports  WHERE dtmeasurement = '$dtmeasurement_control' AND techid = '$tech_control' LIMIT $inicio, $qtd_result_pg";
+
+                                      }elseif(empty($customer_control) && empty($dtmeasurement_control) && !empty($tech_control)){ 
+
+                                        $selects = "SELECT * FROM reports  WHERE techid = '$tech_control' LIMIT $inicio, $qtd_result_pg";
+
+                                      }elseif(empty($customer_control) && empty($dtmeasurement_control) && empty($tech_control)){ 
+
                                         $selects = "SELECT * FROM reports LIMIT $inicio, $qtd_result_pg";
+
                                       }
                                     }                                    
 
@@ -329,11 +373,13 @@ $_SESSION['controle'] = "";
                                         $result_user = "SELECT * FROM `user` WHERE user_id = '$techi_id'";
                                         $resultado_user = mysqli_query($conn, $result_user);
                                         $row_user = mysqli_fetch_assoc($resultado_user);
+
+                                        $dataMesurement = new DateTime($rows_report['dtmeasurement']);
                                         
                                         echo "<tbody>";
                                         echo "<tr class='even pointer'>";
                                         echo "<td>" .$rows_report['id']. "</td>"
-                                                . "<td>" .$rows_report['dtmeasurement']. "</td>"
+                                                . "<td>" . $dataMesurement -> format('m/d/Y') . "</td>"
                                                 . "<td>" .$row_customer['customer_name']. "</td>"
                                                 . "<td>" .$row_user['techid']. "</td>"
                                                 . "<td>" .$rows_report['location']. "</td>"

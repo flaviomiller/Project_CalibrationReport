@@ -1,13 +1,8 @@
-<?php
-session_start();
-include_once ("../classes/conexoes/conexao.php");
-
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
+    <!-- Meta, title, CSS, favicons, etc.  -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,6 +40,7 @@ include_once ("../classes/conexoes/conexao.php");
                 <span>Welcome,</span>
                 <h2>
                     <?php
+                    session_start();
                     if(!empty($_SESSION['name'])){ 
                         echo $_SESSION['name'];
                         } else {
@@ -135,8 +131,9 @@ include_once ("../classes/conexoes/conexao.php");
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Selection Screen</h3>
+                <h3>Reports Download</h3>
               </div>
+
               <div class="title_right">
                 <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                   <div class="input-group">
@@ -147,94 +144,39 @@ include_once ("../classes/conexoes/conexao.php");
                   </div>
                 </div>
               </div>
+              
+              <div class="x_content">
+                <div class="control-group row">
+									<label class="control-label col-md-9 col-sm-9 ">Reports List</label>
+										
+                        <?php
+                        
+
+                          foreach(glob("../impressoes/*.*") as $v){
+
+                            $name = basename($v);
+                            echo '<div class="col-md-9 col-sm-9 " >';
+                            echo '<ul>';
+                            echo '<i class="fa fa-file-pdf-o"></i> &nbsp; <a href="baixar.php?file=' . $name . '">' . $name . '</a>';
+                            echo '</ul>';     
+                            echo '</div>';
+                          }
+                        
+                        ?>
+                    
+                </div>
+              </div>
             </div>
-            <!-- page content body -->
+
             <div class="clearfix"></div>
+
             <div class="row">
               <div class="col-md-12 col-sm-12  ">
-                <!-- page content body Inserir o Forumlário a partir daqui-->
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Pre-selection of data <small></small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                            </ul>
-                            <div class="clearfix"></div>
-                    </div>
-                    <form method="POST" action="valida_select_company.php">
-                    <div class="form-group row">                        
-                            <label class="control-label col-md-3 col-sm-3 ">Company <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-9 ">
-                                    <select name="customer_id" class="form-control">
-                                            <option>Choose Company</option>
-                                            <?php
-                                                $results_empresas = "SELECT * FROM customer ORDER BY 	customer_name";
-                                                $resultado_empresa = mysqli_query($conn, $results_empresas);
-                                                while ($row_empresas = mysqli_fetch_assoc($resultado_empresa)){ ?>
-                                                <option value="<?php echo $row_empresas['customer_id']; ?>"><?php echo $row_empresas['customer_name']; ?>
-                                                </option><?php
-                                                }
-                                            ?>
-                                    </select>
-                            </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="control-label col-md-3 col-sm-3 ">Tech <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-9 ">
-                                    <select name="techid" class="select2_single form-control" tabindex="-1">
-                                            <option>Choose Tech</option>
-                                            <?php
-                                                $results_users = "SELECT * FROM user";
-                                                $resultado_user = mysqli_query($conn, $results_users);
-                                                while ($row_users = mysqli_fetch_assoc($resultado_user)){ ?>
-                                                <option value="<?php echo $row_users['user_id']; ?>"><?php echo $row_users['name']; ?>
-                                                </option><?php
-                                                }
-                                            ?>
-                                    </select>
-                            </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Measurement Date <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-9 ">
-                                    <input id="data" name="dtmeasurement" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)" onchange="datas()">
-                                    <script>
-                                            function timeFunctionLong(input) {
-                                                    setTimeout(function() {
-                                                            input.type = 'text';
-                                                    }, 60000);
-                                            }
-                                    </script>
-                            </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Date due <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9 col-sm-9">
-                                <input type="number" name="dtdue" class="form-control" id="inputSuccess3" placeholder="Select how many months for next survey">
-                            </div>
-                    </div>
-                    
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                            <div class="col-md-9 col-sm-9  offset-md-3">
-                                    <a class="btn btn-primary" href="../cadastros/cad_customer.php" role="button">New</a>
-                                    <button type="submit" class="btn btn-success" name="btnSelectCompany">Next</button>
-                            </div>
-                    </div>
-                  </form>
-                </div>
-                
+                  
               </div>
-                
-                <!-- /final Formulario -->
-                
-             </div>
             </div>
+          </div>
         </div>
-      </div>
         <!-- /page content -->
 
         <!-- footer content -->

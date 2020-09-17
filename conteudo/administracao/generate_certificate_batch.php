@@ -60,9 +60,9 @@ include_once ("../classes/conexoes/conexao.php");
             $stdCertDue2 = new DateTime($row_report['stdcertdue2']);
 
             $leiaute = $row_report['stdcertdate2'];
-            $nome1 = $row_report['id'];
-            $nome2 = $row_report['customer_id'];
-            $nome3 = date("Ymd");
+            $nome1 = $row_customer['customer_name'];
+            $nome2 = $dataMesurement -> format('m.d');
+			$nome = $nome1 ." ".$nome2.".pdf";
 
             $lertpmedida = $row_report['nmeasure'];
 
@@ -555,22 +555,19 @@ use Dompdf\Dompdf;
 require_once ("dompdf/autoload.inc.php");
 
 $dompdf = new DOMPDF();
+$dompdf->load_html($gerahtml);
+$dompdf->render();
 
-$dompdf->load_html('
-' . $gerahtml . '
-            ');
-     $dompdf->render();
-     
-     //$output = $dompdf->output();
-    //file_put_contents("../impressoes/REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf", $output);
-        
-     $dompdf->stream(
-             "REPORTID" . $nome1 ."CMID". $nome2 ."DT".$nome3.".pdf",
-             array(
-                 "Attachment"=> false
-             )
-        );           
-	//header("Location: batch_printing.php");
+//Salvar em um diretório
+$output = $dompdf->output();
+file_put_contents("../impressoes/". $nome, $output);
 
+//header("Location: download_report.php");
+header("Location: valida_send_email.php?btnSendEmail&arquivo=$nome&nome_empresa=$nome1&data=$nome2");
+//echo  "<script>alert('Relatório gerado com Sucesso!);</script>";
+//Renderizar e baixaxr imediatemente
+//$dompdf->stream($nome,array("Attachment"=> false));
+
+		
 
 ?>

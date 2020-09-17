@@ -2,6 +2,19 @@
 session_start();
 include_once ("../classes/conexoes/conexao.php");
 $_SESSION['controle'] = "";
+
+$nomedoarquivo = filter_input(INPUT_GET, 'nome_arquivo', FILTER_SANITIZE_STRING);
+
+if (!empty($_GET['nome_arquivo'])) {
+
+  $nomearucompleto = rawurlencode($_GET['nome_arquivo']);
+
+} else{
+
+  $nomearucompleto = "";
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -159,7 +172,7 @@ $_SESSION['controle'] = "";
                         <form method="POST" action="">
                         <div class="form-group row">
                             <div class="col-md-4 col-sm-9 ">
-                                    <select name="customer_cont" class="form-control">
+                                    <select name="customer_cont" class="form-control" > <!--required="required"-->
                                             <option value="">Choose Company</option>
                                             <?php
                                                 $results_empresas = "SELECT * FROM customer";
@@ -173,22 +186,34 @@ $_SESSION['controle'] = "";
                             </div>
 
                             <div class="col-md-3 col-sm-9 ">
-                                    <select name="dtmeasurement_cont" class="form-control">
+                                    <select name="dtmeasurement_cont" class="form-control"> <!--required="required"-->
                                             <option value="">Choose Date</option>
                                             <?php
                                                 $results_report = "SELECT * FROM reports GROUP BY dtmeasurement";
                                                 $resultado_report = mysqli_query($conn, $results_report);
                                                 while ($row_report = mysqli_fetch_assoc($resultado_report)){ ?>
-                                                <option value="<?php echo $row_report['dtmeasurement']; ?>"><?php echo $row_report['dtmeasurement']; ?>
+                                                <option value="<?php echo $row_report['dtmeasurement']; ?>"><?php
+                                                
+                                                $dataselect = new DateTime($row_report['dtmeasurement']);
+                                                echo $dataselect -> format('m/d/Y');
+                                                
+                                                ?>
                                                 </option><?php
                                                 }
                                             ?>
                                     </select>
                             </div>
-                            <div class="col-md-4 col-sm-9">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-9 col-sm-9">
                                     <button type="submit" class="btn btn-success" name="search">Search</button>
 
-                                    <a class="btn btn-primary" href="generate_certificate_batch.php" role="button">Print</a>
+                                    <a class="btn btn-primary" href="generate_certificate_batch.php" role="button">Generate report</a>
+
+                                    <a class="btn btn-primary" href="download_report.php"  role="button">Download Report</a>
+
+                                    <!--<a class="btn btn-primary" href=download_report.php?file="<?php echo $nomearucompleto; ?>"  role="button">Download Report</a>-->
+                                    
                             </div>
                           </div>
                             <?php
@@ -218,7 +243,6 @@ $_SESSION['controle'] = "";
                             <th class="column-title">Manufacturer </th>
                             <th class="column-title">Model </th>
                             <th class="column-title">Serial Number </th>
-                            <th class="column-title no-link last"><span class="nobr">Actions</span>
                             </th>
                             <th class="bulk-actions" colspan="7">
                               <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -279,49 +303,15 @@ $_SESSION['controle'] = "";
                                           
                                             }else{ 
                                               
-
-                                              //$_SESSION['controle'] = "teste";
                                               $_SESSION['controle'] = $_SESSION['controle'] . ","  . $_SESSION['valor'];
                                               
                                           
                                             }
                                         
                                         }else{
-                                            
-                                            //echo "segundo if";
-                                            //unset($_SESSION['controle']);
-                                            //$_SESSION['controle'] = "";
-                                            //header("Location: testesdefuncoes.php");
                                         
                                         }
-                                        
-                                        /*
-                                        $array = explode(",", $_SESSION['controle']);
-                                        
-                                        print_r ($array);
-                                  
-                                        echo "<br><br>";
-                                  
-                                        $_SESSION['quantidade'] = count($array);
-                                  
-                                        echo $_SESSION['quantidade'];
-                                  
-                                        echo "<br><br>";
-                                         
-                                        $controle = 0;
-                                        while ($controle < $_SESSION['quantidade'] ){
-                                          print_r($array[$controle]);
-                                          echo "<br><br>";
-                                          $controle = $controle + 1;
-                                          //sleep(1);    */
-                                        //} 
-                                  
                                       
-                                      
-                                      //header("Location: ../cadastros/cad_calibration_report.php");
-
-
-
                                         
                                         $result_customer = "SELECT * FROM `customer` WHERE customer_id = '$customer_id'";
                                         $resultado_customer = mysqli_query($conn, $result_customer);
@@ -331,30 +321,26 @@ $_SESSION['controle'] = "";
                                         $result_user = "SELECT * FROM `user` WHERE user_id = '$techi_id'";
                                         $resultado_user = mysqli_query($conn, $result_user);
                                         $row_user = mysqli_fetch_assoc($resultado_user);
+
+                                        $dataMesurement = new DateTime($rows_report['dtmeasurement']);
+
                                         
                                         echo "<tbody>";
                                         echo "<tr class='even pointer'>";
                                         echo "<td>" .$rows_report['id']. "</td>"
-                                                . "<td>" .$rows_report['dtmeasurement']. "</td>"
+                                                . "<td>" . $dataMesurement -> format('m/d/Y') . "</td>"
                                                 . "<td>" .$row_customer['customer_name']. "</td>"
                                                 . "<td>" .$row_user['techid']. "</td>"
                                                 . "<td>" .$rows_report['location']. "</td>"
                                                 . "<td>" .$rows_report['control']. "</td>"
                                                 . "<td>" .$rows_report['manufacturer']. "</td>"
                                                 . "<td>" .$rows_report['model']. "</td>"
-                                                . "<td>" .$rows_report['sn']. "</td>"
-                                                . "<td class=' last'>"
-                                                . "<a href='../edicao/edit_calibration_report.php?id=" .$rows_report['id']. "'>"
-                                                . "<i class='fa fa-edit'> | </i></a>"
-                                                . "<a href='../edicao/process_delete_calibrationreport.php?id=" .$rows_report['id']. "'>"
-                                                . " <i class='fa fa-eraser'> | </i></a>"
-                                                . "<a href='../administracao/generate_certificate.php?id=" .$rows_report['id']. "'>"
-                                                . " <i class='fa fa-print'></i></a></td>";
+                                                . "<td>" .$rows_report['sn']. "</td>";
                                         }
                                         echo "</tr>";
                                         echo "</tbody>";
                                         echo "</table>";
-                                        //echo $_SESSION['controle'] . "<br><br>";                                        
+                                     
 
 
                                         //Paginação - Somar a quatidade de relatórios cadastrados
