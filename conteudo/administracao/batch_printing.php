@@ -175,7 +175,7 @@ if (!empty($_GET['nome_arquivo'])) {
                                     <select name="customer_cont" class="form-control" > <!--required="required"-->
                                             <option value="">Choose Company</option>
                                             <?php
-                                                $results_empresas = "SELECT * FROM customer";
+                                                $results_empresas = "SELECT * FROM customer ORDER BY 	customer_name";
                                                 $resultado_empresa = mysqli_query($conn, $results_empresas);
                                                 while ($row_empresas = mysqli_fetch_assoc($resultado_empresa)){ ?>
                                                 <option value="<?php echo $row_empresas['customer_id']; ?>"><?php echo $row_empresas['customer_name']; ?>

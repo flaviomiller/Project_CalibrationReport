@@ -200,7 +200,7 @@ include_once ("../classes/conexoes/conexao.php");
                                     
                                     $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
 
-                                    $qtd_result_pg = 5;
+                                    $qtd_result_pg = 19;
 
                                     $inicio = ($qtd_result_pg * $pagina) - $qtd_result_pg;
 
