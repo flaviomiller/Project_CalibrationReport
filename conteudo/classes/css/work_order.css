@@ -1,0 +1,124 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+div {
+    color:black; 
+    font-family:Georgia,"Times New Roman",Times,serif;
+    width: 1025px;
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+    form-align: center;
+}
+
+div.rodape{
+    color:black; 
+    font-family:Arial, Helvetica, sans-serif;
+    width: 1025px;
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+    form-align: center;
+
+}
+
+div.pai {
+    color:black; 
+    font-family:Arial, Helvetica, sans-serif;
+    width: 1030px;
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+    form-align: center;
+    float: left;
+}
+
+div.cabecalho{
+    color:black; 
+    font-family:Arial, Helvetica, sans-serif;
+    width: 1020px;
+    border: 1px solid black;
+    padding: 2px;
+    margin-top : .5em;
+    margin-bottom : .5em;
+    text-align: center; 
+    float: left;
+}
+
+div.tableft {
+
+    float: left;
+    
+}
+
+div.topleftimg {
+    font-family:Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    background-color: White;
+    font-size:13px;
+    width: 9%;
+    border: 0px solid black;
+    padding: 2px;
+    text-align: left;
+    float: left;
+    
+}
+ div.topleft {
+    font-family:Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    background-color: white;
+    font-size:10px;
+    width: 20%;
+    border: 0px solid black;
+    padding: 10px;
+    padding-right: 80px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    text-align: left;
+    float: left;
+    
+}
+
+div.topright {
+    font-family:Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    background-color: white;
+    font-size:10px;
+    width: 25%;
+    border: 0px solid black;
+    padding: 10px;
+    padding-left: 55px;
+    text-align: left;
+    float: left
+}
+
+div.topcenter {
+    font-family:Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    background-color: white;
+    font-size:13px;
+    width: 20%;
+    border: 0px solid black;
+    padding-left: 100px;
+    text-align: center;
+    float: left
+}
+
+table{
+    width: 100%;
+    margin-top : .5em;
+    margin-bottom : .5em;
+    text-align: center;
+  }
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:10px 0px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;overflow:hidden;padding:10px 0px;word-break:normal;}
+.tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+.tg .tg-91w8{border-color:inherit;font-size:6px;text-align:center;vertical-align:middle}
+.tg .tg-l6li{border-color:inherit;font-size:6px;text-align:center;vertical-align:middle}
+.tg .tg-azew{border-color:inherit;font-size:6px;text-align:center;vertical-align:middle}
+.tg .tg-73a0{border-color:inherit;font-size:8px;text-align:left;vertical-align:middle; padding-left:4px}
+.tg .tg-9o1m{border-color:inherit;font-size:8px;text-align:center;vertical-align:middle}
+.tg .tg-f4iu{border-color:inherit;font-size:8px;text-align:center;vertical-align:middle}

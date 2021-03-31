@@ -189,7 +189,7 @@ if (!empty($_GET['nome_arquivo'])) {
                                     <select name="dtmeasurement_cont" class="form-control"> <!--required="required"-->
                                             <option value="">Choose Date</option>
                                             <?php
-                                                $results_report = "SELECT * FROM reports GROUP BY dtmeasurement";
+                                                $results_report = "SELECT * FROM reports GROUP BY dtmeasurement DESC";
                                                 $resultado_report = mysqli_query($conn, $results_report);
                                                 while ($row_report = mysqli_fetch_assoc($resultado_report)){ ?>
                                                 <option value="<?php echo $row_report['dtmeasurement']; ?>"><?php

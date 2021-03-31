@@ -72,7 +72,7 @@ $resultado_calibration_report = mysqli_query($conn, $result_calibration_report);
 
 if(mysqli_insert_id($conn)){
     $_SESSION['msg'] = "Report inserted successfully";
-    header("Location: ../cadastros/cad_calibration_report.php");
+    header("Location: ../administracao/select_scale.php");
 
 } else {
     $_SESSION['msg'] = "Error inserting the report";

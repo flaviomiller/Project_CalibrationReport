@@ -188,7 +188,7 @@ include_once ("../classes/conexoes/conexao.php");
                                                 $results_users = "SELECT * FROM user";
                                                 $resultado_user = mysqli_query($conn, $results_users);
                                                 while ($row_users = mysqli_fetch_assoc($resultado_user)){ ?>
-                                                <option value="<?php echo $row_users['user_id']; ?>"><?php echo $row_users['name']; ?>
+                                                <option value="<?php echo $row_users['user_id']; ?>"><?php echo $row_users['name'] . " | " . $row_users['techid']; ?>
                                                 </option><?php
                                                 }
                                             ?>
@@ -198,7 +198,7 @@ include_once ("../classes/conexoes/conexao.php");
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Measurement Date <span class="required">*</span>
                             </label>
-                            <div class="col-md-9 col-sm-9 ">
+                            <div class="col-md-4 col-sm-9 ">
                                     <input id="data" name="dtmeasurement" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)" onchange="datas()">
                                     <script>
                                             function timeFunctionLong(input) {
@@ -208,11 +208,10 @@ include_once ("../classes/conexoes/conexao.php");
                                             }
                                     </script>
                             </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Date due <span class="required">*</span>
+                    
+                            <label class="col-form-label col-md-1 col-sm-3 ">Date due <span class="required">*</span>
                             </label>
-                            <div class="col-md-9 col-sm-9">
+                            <div class="col-md-4 col-sm-9">
                                 <input type="number" name="dtdue" class="form-control" id="inputSuccess3" placeholder="Select how many months for next survey">
                             </div>
                     </div>

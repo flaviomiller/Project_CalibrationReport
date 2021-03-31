@@ -207,22 +207,17 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                     </div>
                     <div class="ln_solid"></div>
                    <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Control# </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="control" value="<?php echo $row_report['control']; ?>" class="form-control" onkeyup="maiuscula(this)">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Manufacturer </label>
+                            <label class="col-form-label col-md-3 col-sm-3 ">Manufacturer </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" name="manufacturer" value="<?php echo $row_report['manufacturer']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
-                    </div>
-                   <div class="form-group row">
-                            
-                            <label class="col-form-label col-md-3 col-sm-3 ">Model </label>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Model </label>
                             <div class="col-md-4 col-sm-9">
                                 <input type="text" name="model" value="<?php echo $row_report['model']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Capacity </label>
+                    </div>
+                   <div class="form-group row">
+                            <label class="col-form-label col-md-3 col-sm-3 ">Capacity </label>
                             <div class="col-md-2 col-sm-9">
                                 <input type="text" name="capacity" value="<?php echo $row_report['capacity']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
@@ -256,6 +251,9 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                         break;
                                     case 8:
                                         $show_capacity = "2";
+                                        break;
+                                    case 22:
+                                        $show_capacity = "4";
                                         break;
                                     case 9:
                                         $show_capacity = "5";
@@ -296,6 +294,10 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                     case 18:
                                         $show_capacity = "¼";
                                         break;
+                                    case 23:
+                                        $show_capacity = "½";
+                                        break;
+
                                 }
 
                                 $show_nmeasure = "";
@@ -328,12 +330,24 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                         $show_ndif = "-";
                                         break;
                                     }
+
+                                $show_type = "";
+
+                                switch ($row_report['type']) {
+                                    case " ":
+                                          $show_type = "IND";
+                                          break;
+                                    case "BASE":
+                                          $show_type = "BASE";
+                                          break;
+                                    }
                                 ?>
                             <div class="col-md col-sm-9 ">
                                     <select class="form-control" id="mincapacity" name="nmincapacity">
                                             <option value="<?php echo $row_report['nmincapacity']; ?>"><?php echo $show_capacity; ?></option>
                                             <option value="7">1</option>
                                             <option value="8">2</option>
+                                            <option value="22">4</option>
                                             <option value="9">5</option>
                                             <option value="10">10</option>
                                             <option value="11">20</option>
@@ -352,8 +366,28 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                                             <option value="19">.00001</option>
                                             <option value="20">.00002</option>
                                             <option value="21">.00005</option>
+                                            <option value="23">½</option>
                                             <option value="18">¼</option>
                                     </select>
+                            </div>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Measure </label>
+                            <div class="col-md-1 col-sm-9 ">
+                                    <select class="form-control" id="measure" name="nmeasure">
+                                            <option value="<?php echo $row_report['nmeasure']; ?>"><?php echo $show_nmeasure; ?></option>
+                                            <option value="1">LB</option>
+                                            <option value="2">g</option>
+                                            <option value="3">oz</option>
+                                            <option value="4">kg</option>
+                                            <option value="5">mg</option>
+                                    </select>
+                            </div>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Type </label>
+                            <div class="col-md-2 col-sm-9">
+                                <select class="form-control" id="type" name="type">
+                                      <option value="<?php echo $row_report['type']; ?>"><?php echo $show_type; ?></option>
+                                      <option value=" ">IND</option>
+                                      <option value="BASE">BASE</option>
+                                </select>
                             </div>
                     </div>
                     <div class="form-group row">
@@ -367,34 +401,24 @@ $row_report = mysqli_fetch_assoc($resultado_report);
                             </div>
                     </div>                      
                     <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Type </label>
+                    <label class="col-form-label col-md-3 col-sm-3 ">Control# </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="type" value="<?php echo $row_report['type']; ?>" class="form-control" onkeyup="maiuscula(this)">
+                                <input type="text" name="control" value="<?php echo $row_report['control']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <label class="col-md-1 col-sm-3  control-label"></label>
-
                             <div class="col-md-3 col-sm-9 ">
                                     <div class="checkbox">
-                                            <label><input type="checkbox" id="itemCheck" name="itemCheck"  class="flat" onchange="verificafleg()" disabled> Unable to calibrate</label>
+                                            <label><input type="checkbox" id="itemCheck" name="itemCheck"  class="flat" onchange="verificafleg()"> Unable to calibrate</label>
                                     </div>
-                                    
                             </div>
                     </div>
+                    <div class="ln_solid"></div>
                     <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 ">Test load </label>
-                            <div class="col-md-2 col-sm-9">
+                            <div class="col-md-4 col-sm-9">
                                 <input type="text" id="cpw" name="preweight" value="<?php echo $row_report['preweight']; ?>" class="form-control" onchange="autocompletar()">
                             </div>
-                            <div class="col-md-2 col-sm-9 ">
-                                    <select class="form-control" id="measure" name="nmeasure">
-                                            <option value="<?php echo $row_report['nmeasure']; ?>"><?php echo $show_nmeasure; ?></option>
-                                            <option value="1">LB</option>
-                                            <option value="2">g</option>
-                                            <option value="3">oz</option>
-                                            <option value="4">kg</option>
-                                            <option value="5">mg</option>
-                                    </select>
-                            </div>
+                            
                             <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
                             <div class="col-md-2 col-sm-9">
                                 <input type="text" id="cpe" name="preerror" value="<?php echo $row_report['preerror']; ?>" class="form-control" onblur="autocompletar()">

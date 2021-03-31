@@ -1,7 +1,5 @@
 <?php
 
-//$_RETORNA_ID['rtid'];
-
 include_once ("../classes/conexoes/conexao.php");
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);

@@ -15,7 +15,7 @@ if(!$btnSelectCompany){
     $_SESSION['dtmeasurement'] = $dataAtual; 
     $_SESSION['dtdue'] = $dataRetorno -> format('Y-m'); 
 
-    header("Location: ../cadastros/cad_calibration_report.php");
+    header("Location: ../administracao/select_scale.php");
 
     }else{
         $_SESSION['msg'] = "Selection of data"; 

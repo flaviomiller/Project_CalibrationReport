@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 include_once ("../classes/conexoes/conexao.php");
 $_SESSION['controle'] = "";
@@ -136,7 +136,7 @@ $_SESSION['controle'] = "";
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Consult Report</h3>
+                <h3>Work Order</h3>
               </div>
               <div class="title_right">
                 <div class="col-md-5 col-sm-5   form-group pull-right top_search">
@@ -158,11 +158,11 @@ $_SESSION['controle'] = "";
                     <div class="x_title">
                         <form method="POST" action="">
                         <div class="form-group row">
-                            <div class="col-md-4 col-sm-10 ">
+                            <div class="col-md-4 col-sm-9 ">
                                     <select name="customer_cont" class="form-control">
                                             <option value="">Choose Company</option>
                                             <?php
-                                                $results_empresas = "SELECT * FROM customer ORDER BY customer_name";
+                                                $results_empresas = "SELECT * FROM customer";
                                                 $resultado_empresa = mysqli_query($conn, $results_empresas);
                                                 while ($row_empresas = mysqli_fetch_assoc($resultado_empresa)){ ?>
                                                 <option value="<?php echo $row_empresas['customer_id']; ?>"><?php echo $row_empresas['customer_name']; ?>
@@ -171,14 +171,15 @@ $_SESSION['controle'] = "";
                                             ?>
                                     </select>
                             </div>
-                            <div class="col-md-4 col-sm-10 ">
+
+                            <div class="col-md-3 col-sm-9 ">
                                     <select name="dtmeasurement_cont" class="form-control">
                                             <option value="">Choose Date</option>
                                             <?php
-                                                $results_report = "SELECT * FROM reports GROUP BY dtmeasurement DESC";
+                                                $results_report = "SELECT * FROM reports GROUP BY dtmeasurement";
                                                 $resultado_report = mysqli_query($conn, $results_report);
                                                 while ($row_report = mysqli_fetch_assoc($resultado_report)){ ?>
-                                                <option value="<?php echo $row_report['dtmeasurement']; ?>"><?php 
+                                                <option value="<?php echo $row_report['dtmeasurement']; ?>"><?php
                                                 
                                                 $dataselect = new DateTime($row_report['dtmeasurement']);
                                                 echo $dataselect -> format('m/d/Y');
@@ -189,32 +190,14 @@ $_SESSION['controle'] = "";
                                             ?>
                                     </select>
                             </div>
-                            <div class="col-md-4 col-sm-10 ">
-                                    <select name="tech_cont" class="form-control">
-                                            <option value="">Choose Tech</option>
-                                            <?php
-                                                $results_user = "SELECT * FROM user";
-                                                $resultado_user = mysqli_query($conn, $results_user);
-                                                while ($row_user = mysqli_fetch_assoc($resultado_user)){ ?>
-                                                <option value="<?php echo $row_user['user_id']; ?>"><?php echo $row_user['name'] . " | " . $row_user['techid']; ?>
-                                                </option><?php
-                                                }
-                                            ?>
-                                    </select>
-                            </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-md-2 col-sm-9">
+                            <div class="col-md-4 col-sm-9">
                                     <button type="submit" class="btn btn-success" name="search">Search</button>
+
+                                    <a class="btn btn-primary" href="generate_work_order_cover.php" role="button">Print</a>
                             </div>
-                        </div>
-                        <div class="alert alert-success" role="alert">
-                              Report successfully deleted!
-                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                        </div>
-                        
+                          </div>
                             <?php
                                 if(isset($_SESSION['msg'])){
                                 echo $_SESSION['msg'];
@@ -242,7 +225,6 @@ $_SESSION['controle'] = "";
                             <th class="column-title">Manufacturer </th>
                             <th class="column-title">Model </th>
                             <th class="column-title">Serial Number </th>
-                            <th class="column-title no-link last"><span class="nobr">Actions</span>
                             </th>
                             <th class="bulk-actions" colspan="7">
                               <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -258,7 +240,7 @@ $_SESSION['controle'] = "";
                                     $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
 
                                     //Seta a quantidade de resultados por página
-                                    $qtd_result_pg = 2000;
+                                    $qtd_result_pg = 500;
 
                                     //Calculo do inicio da visualização
                                     $inicio = ($qtd_result_pg * $pagina) - $qtd_result_pg;
@@ -271,41 +253,16 @@ $_SESSION['controle'] = "";
 
                                       $customer_control = $_POST['customer_cont'];
                                       $dtmeasurement_control = $_POST['dtmeasurement_cont'];
-                                      $tech_control = $_POST['tech_cont'];
                                       $_SESSION['controle'] = "";
                                       
-                                      if(!empty($customer_control) && !empty($dtmeasurement_control) && !empty($tech_control)){ 
-                                      
-                                        $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND dtmeasurement = '$dtmeasurement_control' AND techid = '$tech_control' LIMIT $inicio, $qtd_result_pg";
-
-                                      }elseif(!empty($customer_control) && !empty($dtmeasurement_control) && empty($tech_control)){ 
-                                      
-                                        $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND dtmeasurement = '$dtmeasurement_control' LIMIT $inicio, $qtd_result_pg";
-
-                                      } elseif(!empty($customer_control) && empty($dtmeasurement_control) && !empty($tech_control)){ 
-                                      
-                                        $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND techid = '$tech_control' LIMIT $inicio, $qtd_result_pg";
-
-                                      }elseif(!empty($customer_control) && empty($dtmeasurement_control) && empty($tech_control)){ 
-
+                                      if(!empty($customer_control) && !empty($dtmeasurement_control)){ 
+                                      $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' AND dtmeasurement = '$dtmeasurement_control' LIMIT $inicio, $qtd_result_pg";
+                                      } elseif(!empty($customer_control) && empty($dtmeasurement_control)){ 
                                         $selects = "SELECT * FROM reports  WHERE customer_id = '$customer_control' LIMIT $inicio, $qtd_result_pg";
-
-                                      }elseif(empty($customer_control) && !empty($dtmeasurement_control) && empty($tech_control)){ 
-
+                                      }elseif(empty($customer_control) && !empty($dtmeasurement_control)){ 
                                         $selects = "SELECT * FROM reports  WHERE dtmeasurement = '$dtmeasurement_control' LIMIT $inicio, $qtd_result_pg";
-
-                                      }elseif(empty($customer_control) && !empty($dtmeasurement_control) && !empty($tech_control)){ 
-                                      
-                                        $selects = "SELECT * FROM reports  WHERE dtmeasurement = '$dtmeasurement_control' AND techid = '$tech_control' LIMIT $inicio, $qtd_result_pg";
-
-                                      }elseif(empty($customer_control) && empty($dtmeasurement_control) && !empty($tech_control)){ 
-
-                                        $selects = "SELECT * FROM reports  WHERE techid = '$tech_control' LIMIT $inicio, $qtd_result_pg";
-
-                                      }elseif(empty($customer_control) && empty($dtmeasurement_control) && empty($tech_control)){ 
-
+                                      }elseif(empty($customer_control) && empty($dtmeasurement_control)){ 
                                         $selects = "SELECT * FROM reports LIMIT $inicio, $qtd_result_pg";
-
                                       }
                                     }                                    
 
@@ -382,6 +339,7 @@ $_SESSION['controle'] = "";
                                         $row_user = mysqli_fetch_assoc($resultado_user);
 
                                         $dataMesurement = new DateTime($rows_report['dtmeasurement']);
+
                                         
                                         echo "<tbody>";
                                         echo "<tr class='even pointer'>";
@@ -393,18 +351,11 @@ $_SESSION['controle'] = "";
                                                 . "<td>" .$rows_report['control']. "</td>"
                                                 . "<td>" .$rows_report['manufacturer']. "</td>"
                                                 . "<td>" .$rows_report['model']. "</td>"
-                                                . "<td>" .$rows_report['sn']. "</td>"
-                                                . "<td class=' last'>"
-                                                . "<a href='../edicao/edit_calibration_report.php?id=" .$rows_report['id']. "'>"
-                                                . "<i class='fa fa-edit'> | </i></a>"
-                                                . "<a href='../edicao/process_delete_calibrationreport.php?id=" .$rows_report['id']. "' data-toggle='modal' data-target='#apagarRegistro' class='fa fa-eraser'></a>"
-                                                . "<a href='../administracao/generate_certificate.php?id=" .$rows_report['id']. "'>"
-                                                . " <i class='fa fa-print'></i></a></td>";
-                                              }
+                                                . "<td>" .$rows_report['sn']. "</td>";
+                                        }
                                         echo "</tr>";
                                         echo "</tbody>";
                                         echo "</table>";
-                                        
                                         //echo $_SESSION['controle'] . "<br><br>";                                        
 
 
@@ -441,23 +392,6 @@ $_SESSION['controle'] = "";
 
                                         echo "<a href='batch_printing.php?pagina=$quantidade_pg'>Last page</a> ";
                                 ?>
-                        
-                        <nav aria-label="...">
-                          <ul class="pagination pagination-sm">
-                            <li class="page-item disabled">
-                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active" aria-current="page">
-                              <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#">Next</a>
-                            </li>
-                          </ul>
-                        </nav>
-
                     </div>								
                   </div>
                 </div>
@@ -470,29 +404,6 @@ $_SESSION['controle'] = "";
             </div>
         </div>
       </div>
-
-      <!--modal Apagar registro-->
-      <div class="modal fade" id="apagarRegistro" tabindex="-1" aria-labelledby="apagarRegistroLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header bg-danger text-white">
-              <h5 class="modal-title" id="exampleModalLabel">Delete report</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-            Are you sure you want to delete the selected report?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
         <!-- /page content -->
 
         <!-- footer content -->

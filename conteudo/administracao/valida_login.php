@@ -6,6 +6,7 @@ $btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_STRING);
 if($btnLogin){
     $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    //$password = md5($password);
     //echo "$user - $password";
     if((!empty($user)) AND (!empty($password))){    
         $result_usuario = "SELECT user_id, name, email, user, password, techid FROM user WHERE user='$user' LIMIT 1";
@@ -14,10 +15,10 @@ if($btnLogin){
             $row_usuario = mysqli_fetch_assoc($resultado_usuario);
             if(password_verify($password, $row_usuario['password'])){
                 $_SESSION['user_id'] = $row_usuario['id'];
-		$_SESSION['name'] = $row_usuario['name'];
-		$_SESSION['email'] = $row_usuario['email'];
+		        $_SESSION['name'] = $row_usuario['name'];
+		        $_SESSION['email'] = $row_usuario['email'];
                 $_SESSION['techid'] = $row_usuario['techid'];
-		header("Location: administration.php");
+		        header("Location: administration.php");
             } else {
                 $_SESSION['msg'] = "Incorrect username or password";
                 header("Location: login.php");

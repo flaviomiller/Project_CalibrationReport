@@ -48,9 +48,9 @@ function autocompletar(){
         measureselec = "g"
     } else if (cmeasure == 3) {
         measureselec = "oz"
-    } else if (cmeasure == 4) {
+    }else if (cmeasure == 4) {
         measureselec = "kg"
-    } else if (cmeasure == 5) {
+    }else if (cmeasure == 5) {
         measureselec = "mg"
     }
 
@@ -75,15 +75,15 @@ function autocompletar(){
 
         casasdec = 0
 
-    } else if (cmincap == 12 || cmincap == 13 || cmincap == 14 ) {
+    }else if (cmincap == 12 || cmincap == 13 || cmincap == 14 ) {
 
         casasdec = 3
 
-    } else if (cmincap == 15 || cmincap == 16 || cmincap == 17 ) {
+    }else if (cmincap == 15 || cmincap == 16 || cmincap == 17 ) {
 
         casasdec = 4
 
-    } else if (cmincap == 19 || cmincap == 20 || cmincap == 21 ) {
+    }else if (cmincap == 19 || cmincap == 20 || cmincap == 21 ) {
 
         casasdec = 5
 
@@ -91,29 +91,7 @@ function autocompletar(){
     
     
     //Tratamento da medida inserida no campo TEST LOAD e setagem das variáveis para cálculo das medidas
-    if (convpw1 == 1) {
-        cweight1 = 1
-        cweight2 = .5
-        cweight3 = .3
-        cweight4 = .1
-
-        cerror1 = (1*convpe1)
-        cerror2 = (0.5*convpe1)
-        cerror3 = (0.3*convpe1)
-        cerror4 = (0.1*convpe1)
-
-    } else if (convpw1 == 2) {
-        cweight1 = 2
-        cweight2 = .5
-        cweight3 = .3
-        cweight4 = .1
-
-        cerror1 = (1*convpe1)
-        cerror2 = (0.5*convpe1)
-        cerror3 = (0.3*convpe1)
-        cerror4 = (0.1*convpe1)
-
-    } else if (convpw1 == 5) {
+    if (convpw1 == 5) {
         cweight1 = 5
         cweight2 = 3
         cweight3 = 2
@@ -124,7 +102,7 @@ function autocompletar(){
         cerror3 = (0.4*convpe1)
         cerror4 = (0.2*convpe1)
 
-    } else if (convpw1 == 10) {
+    }else if (convpw1 == 10) {
         cweight1 = 10
         cweight2 = 5
         cweight3 = 3
@@ -134,17 +112,6 @@ function autocompletar(){
         cerror2 = (0.5*convpe1)
         cerror3 = (0.3*convpe1)
         cerror4 = (0.1*convpe1)
-
-    } else if (convpw1 == 15) {
-        cweight1 = 15
-        cweight2 = 10
-        cweight3 = 5
-        cweight4 = 3
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((2/3)*convpe1)
-        cerror3 = ((1/3)*convpe1)
-        cerror4 = ((1/6)*convpe1)
 
     } else if (convpw1 == 20) {
         cweight1 = 20
@@ -179,7 +146,7 @@ function autocompletar(){
         cerror3 = ((1/3)*convpe1)
         cerror4 = ((1/6)*convpe1)
 
-    } else if (convpw1 == 32) {
+    }else if (convpw1 == 32) {
         cweight1 = 32
         cweight2 = 24
         cweight3 = 16
@@ -245,7 +212,7 @@ function autocompletar(){
         cerror3 = (0.4*convpe1)
         cerror4 = (0.2*convpe1)
 
-    } else if (convpw1 == 300) {
+    }else if (convpw1 == 300) {
         cweight1 = 300
         cweight2 = 200
         cweight3 = 100
@@ -267,7 +234,7 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.125*convpe1)
 
-    } else if (convpw1 == 500) {
+    }else if (convpw1 == 500) {
         cweight1 = 500
         cweight2 = 300
         cweight3 = 200
@@ -289,7 +256,7 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.1*convpe1)
 
-    } else if (convpw1 == 1400) {
+    }else if (convpw1 == 1400) {
         cweight1 = 1400
         cweight2 = 700
         cweight3 = 350
@@ -299,17 +266,6 @@ function autocompletar(){
         cerror2 = (0.5*convpe1)
         cerror3 = (0.25*convpe1)
         cerror4 = (0.125*convpe1)
-
-    } else if (convpw1 == 1500) {
-        cweight1 = 1500
-        cweight2 = 1000
-        cweight3 = 500
-        cweight4 = 250
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((2/3)*convpe1)
-        cerror3 = ((1/3)*convpe1)
-        cerror4 = ((1/6)*convpe1)
 
     } else if (convpw1 == 2000) {
         cweight1 = 2000
@@ -322,7 +278,7 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.125*convpe1)
 
-    } else if (convpw1 == 2500) {
+    }else if (convpw1 == 2500) {
         cweight1 = 2500
         cweight2 = 2000
         cweight3 = 1000
@@ -333,7 +289,7 @@ function autocompletar(){
         cerror3 = (0.4*convpe1)
         cerror4 = (0.2*convpe1)
 
-    } else if (convpw1 == 3000) {
+    }else if (convpw1 == 3000) {
         cweight1 = 3000
         cweight2 = 2000
         cweight3 = 1000
@@ -344,18 +300,7 @@ function autocompletar(){
         cerror3 = ((1/3)*convpe1)
         cerror4 = ((1/6)*convpe1)
 
-    } else if (convpw1 == 4000) {
-        cweight1 = 4000
-        cweight2 = 2000
-        cweight3 = 1000
-        cweight4 = 500
-
-        cerror1 = (1*convpe1)
-        cerror2 = (0.5*convpe1)
-        cerror3 = (0.25*convpe1)
-        cerror4 = (0.125*convpe1)
-
-    } else if (convpw1 == 5000) {
+    }  else if (convpw1 == 5000) {
         cweight1 = 5000
         cweight2 = 3000
         cweight3 = 2000
@@ -366,29 +311,18 @@ function autocompletar(){
         cerror3 = (0.4*convpe1)
         cerror4 = (0.2*convpe1)
 
-    } else if (convpw1 == 6000) {
-        cweight1 = 6000
-        cweight2 = 3000
-        cweight3 = 2000
-        cweight4 = 1000
-
-        cerror1 = (1*convpe1)
-        cerror2 = (0.5*convpe1)
-        cerror3 = (0.25*convpe1)
-        cerror4 = (0.1*convpe1)
-
-    } else if (convpw1 == 8000) {
-        cweight1 = 8000
-        cweight2 = 4000
-        cweight3 = 2000
-        cweight4 = 1000
+    }else if (convpw1 == 4000) {
+        cweight1 = 4000
+        cweight2 = 2000
+        cweight3 = 1000
+        cweight4 = 500
 
         cerror1 = (1*convpe1)
         cerror2 = (0.5*convpe1)
         cerror3 = (0.25*convpe1)
         cerror4 = (0.125*convpe1)
 
-    }  else if (convpw1 == 10000) {
+    } else if (convpw1 == 10000) {
         cweight1 = 10000
         cweight2 = 5000
         cweight3 = 2500
@@ -399,18 +333,7 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.1*convpe1)
         
-    }else if (convpw1 == 12000) {
-        cweight1 = 12000
-        cweight2 = 10000
-        cweight3 = 5000
-        cweight4 = 2500
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((10/12)*convpe1)
-        cerror3 = ((5/12)*convpe1)
-        cerror4 = ((25/120)*convpe1)
-
-    }  else if (convpw1 == 14000) {
+    }else if (convpw1 == 14000) {
         cweight1 = 14000
         cweight2 = 7000
         cweight3 = 3500
@@ -421,27 +344,16 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.125*convpe1)
 
-    } else if (convpw1 == 15000) {
+    }else if (convpw1 == 15000) {
         cweight1 = 15000
         cweight2 = 10000
         cweight3 = 5000
         cweight4 = 2500
 
         cerror1 = (1*convpe1)
-        cerror2 = ((10/15)*convpe1)
-        cerror3 = ((5/15)*convpe1)
-        cerror4 = ((25/150)*convpe1)
-
-    } else if (convpw1 == 17000) {
-        cweight1 = 17000
-        cweight2 = 10000
-        cweight3 = 5000
-        cweight4 = 2500
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((10/17)*convpe1)
-        cerror3 = ((5/17)*convpe1)
-        cerror4 = ((25/170)*convpe1)
+        cerror2 = (10/15*convpe1)
+        cerror3 = (5/15*convpe1)
+        cerror4 = (25/150*convpe1)
 
     } else if (convpw1 == 20000) {
         cweight1 = 20000
@@ -454,29 +366,18 @@ function autocompletar(){
         cerror3 = (0.25*convpe1)
         cerror4 = (0.125*convpe1)
 
-    } else if (convpw1 == 20500) {
-        cweight1 = 20500
-        cweight2 = 15000
-        cweight3 = 10000
-        cweight4 = 5000
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((150/205)*convpe1)
-        cerror3 = ((100/205)*convpe1)
-        cerror4 = ((50/205)*convpe1)
-
-    } else if (convpw1 == 21000) {
+    }else if (convpw1 == 21000) {
         cweight1 = 21000
         cweight2 = 15000
         cweight3 = 10000
         cweight4 = 5000
 
         cerror1 = (1*convpe1)
-        cerror2 = ((15/21)*convpe1)
-        cerror3 = ((10/21)*convpe1)
-        cerror4 = ((5/21)*convpe1)
+        cerror2 = (15/21*convpe1)
+        cerror3 = (10/21*convpe1)
+        cerror4 = (5/21*convpe1)
 
-    } else if (convpw1 == 21500) {
+    }else if (convpw1 == 21500) {
         cweight1 = 21500
         cweight2 = 15000
         cweight3 = 10000
@@ -486,28 +387,6 @@ function autocompletar(){
         cerror2 = ((150/215)*convpe1)
         cerror3 = ((100/215)*convpe1)
         cerror4 = ((50/215)*convpe1)
-
-    } else if (convpw1 == 21600) {
-        cweight1 = 21600
-        cweight2 = 15000
-        cweight3 = 10000
-        cweight4 = 5000
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((150/216)*convpe1)
-        cerror3 = ((100/216)*convpe1)
-        cerror4 = ((50/216)*convpe1)
-
-    } else if (convpw1 == 21700) {
-        cweight1 = 21700
-        cweight2 = 15000
-        cweight3 = 10000
-        cweight4 = 5000
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((150/217)*convpe1)
-        cerror3 = ((100/217)*convpe1)
-        cerror4 = ((50/217)*convpe1)
 
     } else if (convpw1 == 22000) {
         cweight1 = 22000
@@ -531,17 +410,6 @@ function autocompletar(){
         cerror3 = ((10/23)*convpe1)
         cerror4 = ((5/23)*convpe1)
 
-    } else if (convpw1 == 24000) {
-        cweight1 = 24000
-        cweight2 = 15000
-        cweight3 = 10000
-        cweight4 = 5000
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((15/24)*convpe1)
-        cerror3 = ((10/24)*convpe1)
-        cerror4 = ((5/24)*convpe1)
-
     } else if (convpw1 == 25000) {
         cweight1 = 25000
         cweight2 = 20000
@@ -553,18 +421,7 @@ function autocompletar(){
         cerror3 = (0.4*convpe1)
         cerror4 = (0.2*convpe1)
 
-    } else if (convpw1 == 26000) {
-        cweight1 = 26000
-        cweight2 = 20000
-        cweight3 = 10000
-        cweight4 = 5000
-
-        cerror1 = (1*convpe1)
-        cerror2 = ((20/26)*convpe1)
-        cerror3 = ((10/26)*convpe1)
-        cerror4 = ((5/26)*convpe1)
-
-    } else if (convpw1 == 30000) {
+    }else if (convpw1 == 30000) {
         cweight1 = 30000
         cweight2 = 20000
         cweight3 = 10000
@@ -577,7 +434,7 @@ function autocompletar(){
 
     } else if (convpw1 = "") {
         //alert("The 'Test Load' field needs to be filled.");
-    } else {
+    }else {
         //alert("The 'Test Load' field has a measurement not handled by the system, please enter the data manually.");
     }
     
@@ -626,27 +483,27 @@ function autocompletar(){
 
         valbase = 20
 
-    } else if (cmincap == 12 ) {
+    }  else if (cmincap == 12 ) {
 
         valbase = 0.001
 
-    } else if (cmincap == 13 ) {
+    }  else if (cmincap == 13 ) {
 
         valbase = 0.002
 
-    } else if (cmincap == 14 ) {
+    }  else if (cmincap == 14 ) {
 
         valbase = 0.005
 
-    } else if (cmincap == 15 ) {
+    }  else if (cmincap == 15 ) {
 
         valbase = 0.0001
 
-    } else if (cmincap == 16 ) {
+    }  else if (cmincap == 16 ) {
 
         valbase = 0.0002
 
-    } else if (cmincap == 17 ) {
+    }  else if (cmincap == 17 ) {
 
         valbase = 0.0005
 
@@ -669,10 +526,7 @@ function autocompletar(){
     } else if (cmincap == 22 ) {
 
         valbase = 4
-	} else if (cmincap == 23 ) {
 
-        valbase = 9
-	}
     // 
 // 1 = LB
 // 2 = g
@@ -701,7 +555,7 @@ function autocompletar(){
         document.getElementById('cstdcertdate2').value = ""
         document.getElementById('cstdcertdue2').value = ""
         
-    } else if (cmeasuretype == 1 && ctestload < 50 ){
+    }else if (cmeasuretype == 1 && ctestload < 50 ){
         document.getElementById('cnistid').value = "200204001"
         document.getElementById('cstdcert').value = "13283"
         document.getElementById('cstdcertdate').value = "2020-02"
@@ -712,7 +566,7 @@ function autocompletar(){
         document.getElementById('cstdcertdate2').value = ""
         document.getElementById('cstdcertdue2').value = ""
         
-    } else if (cmeasuretype == 1 && ctestload >= 50 && ctestload < 1000){
+    }else if (cmeasuretype == 1 && ctestload >= 50 && ctestload < 1000){
         document.getElementById('cnistid').value = "191003002"
         document.getElementById('cstdcert').value = "12933"
         document.getElementById('cstdcertdate').value = "2019-12"
@@ -724,83 +578,56 @@ function autocompletar(){
             document.getElementById('cstdcertdate2').value = "2020-02"
             document.getElementById('cstdcertdue2').value = "2022-02"
 
-        } else {
+        }else{
             document.getElementById('cnistid2').value = "-"
             document.getElementById('cstdcert2').value = "-"
             document.getElementById('cstdcertdate2').value = ""
             document.getElementById('cstdcertdue2').value = ""
         }
         
-    } else if (cmeasuretype == 1 && ctestload >= 1000 ){
-        document.getElementById('cnistid').value = "201117001"
-        document.getElementById('cstdcert').value = "13896"
-        document.getElementById('cstdcertdate').value = "2020-10"
-        document.getElementById('cstdcertdue').value = "2022-10"
+    }else if (cmeasuretype == 1 && ctestload >= 1000 ){
+        document.getElementById('cnistid').value = "200107003"
+        document.getElementById('cstdcert').value = "13197"
+        document.getElementById('cstdcertdate').value = "2019-01"
+        document.getElementById('cstdcertdue').value = "2021-01"
 
         if (ctestload <= 4000){
             document.getElementById('cnistid2').value = "191003002"
             document.getElementById('cstdcert2').value = "12933"
             document.getElementById('cstdcertdate2').value = "2019-12"
             document.getElementById('cstdcertdue2').value = "2021-12"
-        } else {
+        }else{
             document.getElementById('cnistid2').value = "-"
             document.getElementById('cstdcert2').value = "-"
-            document.getElementById('cstdcertdate2').value = "-"
-            document.getElementById('cstdcertdue2').value = "-"
+            document.getElementById('cstdcertdate2').value = ""
+            document.getElementById('cstdcertdue2').value = ""
         }
     }
     
-    if (valbase == 0.25 || valbase == 9 ){
-
-        if (valbase == 9){
-
-            valbase = 0.5
-            
-            converte(cerror1)
-            fracsinais(ajustada, difselec, measureselec)
-            verror1 = imprime 
-        
-            calcula(cerror2, valbase)//chama a função que faz o calculo do valor
-            converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
-            fracsinais(ajustada, difselec, measureselec)//chama a função que converte e concatena sinais de + ou - no resultado
-            verror2 = imprime //atribui o resultado a variável que será impressa em tela.
-        
-            calcula(cerror3, valbase)
-            converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
-            fracsinais(ajustada, difselec, measureselec)
-            verror3 = imprime
-        
-            calcula(cerror4, valbase)
-            converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
-            fracsinais(ajustada, difselec, measureselec)
-            verror4 = imprime
-
-        } else {
-
-            converte(cerror1)
-            fracsinais(ajustada, difselec, measureselec)
-            verror1 = imprime 
-        
-            calcula(cerror2, valbase)//chama a função que faz o calculo do valor
-            converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
-            fracsinais(ajustada, difselec, measureselec)//chama a função que converte e concatena sinais de + ou - no resultado
-            verror2 = imprime //atribui o resultado a variável que será impressa em tela.
-            
-            calcula(cerror3, valbase)
-            converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
-            fracsinais(ajustada, difselec, measureselec)
-            verror3 = imprime
-            
-            calcula(cerror4, valbase)
-            converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
-            fracsinais(ajustada, difselec, measureselec)
-            verror4 = imprime
-
-        }
+    if (valbase == 0.25 ){
 
         //alert("Eu sou um alert!");
 
-    } else {
+        converte(cerror1)
+        fracsinais(ajustada, difselec, measureselec)
+        verror1 = imprime 
+        
+        calcula(cerror2, valbase)//chama a função que faz o calculo do valor
+        converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        fracsinais(ajustada, difselec, measureselec)//chama a função que converte e concatena sinais de + ou - no resultado
+        verror2 = imprime //atribui o resultado a variável que será impressa em tela.
+        
+        calcula(cerror3, valbase)
+        converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        fracsinais(ajustada, difselec, measureselec)
+        verror3 = imprime
+        
+        calcula(cerror4, valbase)
+        converte(res) //chama a função que converte o resultado em string e elimina os ZEROS antes do ponto
+        fracsinais(ajustada, difselec, measureselec)
+        verror4 = imprime
+
+    }else{
 
         ajustar(cerror1)
         sinais(ajustado, difselec, measureselec)
@@ -833,7 +660,7 @@ function autocompletar(){
         controle_resto = num % piso
         if (resto >= (piso/2)){
             resto = piso
-        } else {
+        }else{
             resto = 0
         }
         res = ((Math.trunc(divisao)*piso) + resto)/1000000000
@@ -852,13 +679,13 @@ function autocompletar(){
             if (compara == 0 && typeof(compara_1) == "string" ){
                 ajustado = "." + divide[1]
 
-            } else if (compara == 0 && typeof(compara_1) == "undefined" ){
+            }else if (compara == 0 && typeof(compara_1) == "undefined" ){
                 ajustado = 0
 
-            } else if (compara > 0 && typeof(compara_1) == "undefined" ){
+            }else if (compara > 0 && typeof(compara_1) == "undefined" ){
                 ajustado = compara
 
-            } else if (compara > 0 && compara_1 > 0 ){
+            }else if (compara > 0 && compara_1 > 0 ){
                 ajustado = compara + "." + compara_1
 
             }
@@ -876,26 +703,26 @@ function autocompletar(){
         if (comparar == 0 && typeof(comparar_1) == "string" ){
             if (comparar_1 == 5){
                 convertida_1 = "½"
-            } else if (comparar_1 == 25){
+            }else if (comparar_1 == 25){
                 convertida_1 = "¼"
-            } else if (comparar_1 == 75){
+            }else if (comparar_1 == 75){
                 convertida_1 = "¾"
             }
             ajustada = convertida_1
 
-        } else if (comparar == 0 && typeof(comparar_1) == "undefined" ){
+        }else if (comparar == 0 && typeof(comparar_1) == "undefined" ){
             ajustada = 0
 
-        } else if (comparar > 0 && typeof(comparar_1) == "undefined" ){
+        }else if (comparar > 0 && typeof(comparar_1) == "undefined" ){
             ajustada = comparar
 
-        } else if (comparar > 0 && comparar_1 > 0 ){
+        }else if (comparar > 0 && comparar_1 > 0 ){
             convertida = comparar
             if (comparar_1 == 5){
                 convertida_1 = "½"
-            } else if (comparar_1 == 25){
+            }else if (comparar_1 == 25){
                 convertida_1 = "¼"
-            } else if (comparar_1 == 75){
+            }else if (comparar_1 == 75){
                 convertida_1 = "¾"
             }
             ajustada = comparar + convertida_1
@@ -972,7 +799,7 @@ function minuscula(conteudo){
 function verificafleg(){
     controle = window.document.getElementById("comment").value;
     if (controle == ""){
-        document.getElementById('comment').value = "UNABLE TO CALIBRATE.";
+        document.getElementById('comment').value = "Unable to calibrate.";
   
         document.getElementById('ocultar').setAttribute("hidden", "hidden");
         document.getElementById('ocultar1').setAttribute("hidden", "hidden");
@@ -995,7 +822,7 @@ function verificafleg(){
         document.getElementById('ocultar18').setAttribute("hidden", "hidden");
         document.getElementById('ocultar19').setAttribute("hidden", "hidden");
 
-    } else if (controle = "UNABLE TO CALIBRATE.") {
+    } else if (controle = "Unable to calibrate.") {
         document.getElementById('comment').value = "";
         
         document.getElementById('ocultar').removeAttribute("hidden", "hidden");

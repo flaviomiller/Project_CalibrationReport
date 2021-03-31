@@ -59,7 +59,8 @@ include_once ("../classes/conexoes/conexao.php");
             $stdCertDate2 = new DateTime($row_report['stdcertdate2']);
             $stdCertDue2 = new DateTime($row_report['stdcertdue2']);
 
-            $leiaute = $row_report['stdcertdate2'];
+            $unablecalibrate = $row_report['stdcertdate'];
+			$leiaute = $row_report['stdcertdate2'];
             $nome1 = $row_customer['customer_name'];
             $nome2 = $dataMesurement -> format('m.d');
 			$nome = $nome1 ." ".$nome2.".pdf";
@@ -506,6 +507,7 @@ include_once ("../classes/conexoes/conexao.php");
 				$html .= '</thead>';
 				$html .= '<tbody>';
 				$html .= '<tr>';
+				if (!empty($unablecalibrate)) {
 				$html .= '<td class="tg-6hxq" colspan="2">' . $dataMesurement -> format('m/d/Y') . "</td>";
 				$html .= '<td class="tg-6hxq">' . $dataDue -> format('m/Y') . "</td>";
 				$html .= '<td class="tg-6hxq">' . $row_user['techid'] . "</td>";
@@ -513,7 +515,15 @@ include_once ("../classes/conexoes/conexao.php");
 				$html .= '<td class="tg-6hxq">' . $row_report['stdcert'] . "</td>";
 				$html .= '<td class="tg-6hxq" colspan="2">' . $stdCertDate -> format('m/Y') . "</td>";
 				$html .= '<td class="tg-6hxq" colspan="2">' . $stdCertDue -> format('m/Y') . "</td>";
-
+				} else {
+					$html .= '<td class="tg-6hxq" colspan="2"> &nbsp; </td>';
+					$html .= '<td class="tg-6hxq"> </td>';
+					$html .= '<td class="tg-6hxq"> </td>';
+					$html .= '<td class="tg-6hxq"> </td>';
+					$html .= '<td class="tg-6hxq"> </td>';
+					$html .= '<td class="tg-6hxq" colspan="2"> </td>';
+					$html .= '<td class="tg-6hxq" colspan="2"> </td>';
+				}
 				$html .= '</tr>';
 				$html .= '</tbody>';
 

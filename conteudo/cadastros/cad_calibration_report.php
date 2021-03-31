@@ -21,6 +21,7 @@ include_once ("../classes/conexoes/conexao.php");
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../jquery/jquery-ui.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
@@ -180,6 +181,7 @@ include_once ("../classes/conexoes/conexao.php");
                                         $resultado_customer = mysqli_query($conn, $result_customer);
                                         $row_customer = mysqli_fetch_assoc($resultado_customer);
                                     echo $row_customer['customer_name']; ?>">
+                                    <a href='../administracao/select_company.php'><span class="fa fa-exchange form-control-feedback right" aria-hidden="true"></span></a>
                             </div>
                     </div>
                     <div class="form-group row">   
@@ -200,97 +202,186 @@ include_once ("../classes/conexoes/conexao.php");
                     <div class="ln_solid"></div>
                    <div class="form-group row">
                             
-                            <label class="col-form-label col-md-3 col-sm-3 ">Control# </label>
+                            <label class="col-form-label col-md-3 col-sm-3 ">Manufacturer </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="control" class="form-control" onkeyup="maiuscula(this)">
+                                <input type="text" name="manufacturer" readonly="readonly" value="<?php echo $_SESSION['manufacturer']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Manufacturer </label>
+
+                            <label class="col-form-label col-md-1 col-sm-3 ">Model </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="manufacturer" class="form-control" onkeyup="maiuscula(this)">
+                                <input type="text" name="model" readonly="readonly" value="<?php echo $_SESSION['model']; ?>" class="form-control" onkeyup="maiuscula(this)">
+                                <a href='../administracao/select_scale.php'><span class="fa fa-exchange form-control-feedback right" aria-hidden="true"></span></a>
                             </div>
+
                     </div>
                    <div class="form-group row">
                             
-                            <label class="col-form-label col-md-3 col-sm-3 ">Model </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="model" class="form-control" onkeyup="maiuscula(this)">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Capacity </label>
+                            
+                            <label class="col-form-label col-md-3 col-sm-3 ">Capacity </label>
                             <div class="col-md-2 col-sm-9">
-                                <input type="text" name="capacity" class="form-control" onkeyup="maiuscula(this)">
+                                <input type="text" name="capacity" readonly="readonly" value="<?php echo $_SESSION['capacity']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                             <div class="col-md-auto col-sm-9">
                                 <label class="col-form-label col-md-auto col-sm-3 ">X </label>
                             </div>
+                            
+                            <?php
+                                $show_capacity = "";
+
+                                switch ($_SESSION['nmincapacity']) {
+                                    case 1:
+                                        $show_capacity = ".01";
+                                        break;
+                                    case 2:
+                                        $show_capacity = ".02";
+                                        break;
+                                    case 3:
+                                        $show_capacity = ".05";
+                                        break;
+                                    case 4:
+                                        $show_capacity = ".1";
+                                        break;
+                                    case 5:
+                                        $show_capacity = ".2";
+                                        break;
+                                    case 6:
+                                        $show_capacity = ".5";
+                                        break;
+                                    case 7:
+                                        $show_capacity = "1";
+                                        break;
+                                    case 8:
+                                        $show_capacity = "2";
+                                        break;
+                                    case 22:
+                                        $show_capacity = "4";
+                                        break;
+                                    case 9:
+                                        $show_capacity = "5";
+                                        break;
+                                    case 10:
+                                        $show_capacity = "10";
+                                        break;
+                                    case 11:
+                                        $show_capacity = "20";
+                                        break;
+                                    case 12:
+                                        $show_capacity = ".001";
+                                        break;
+                                    case 13:
+                                        $show_capacity = ".002";
+                                        break;
+                                    case 14:
+                                        $show_capacity = ".005";
+                                        break;
+                                    case 15:
+                                        $show_capacity = ".0001";
+                                        break;
+                                    case 16:
+                                        $show_capacity = ".0002";
+                                        break;
+                                    case 17:
+                                        $show_capacity = ".0005";
+                                        break;
+                                    case 19:
+                                        $show_capacity = ".00001";
+                                        break;
+                                    case 20:
+                                        $show_capacity = ".00002";
+                                        break;
+                                    case 21:
+                                        $show_capacity = ".00005";
+                                        break;
+                                    case 18:
+                                        $show_capacity = "¼";
+                                        break;
+                                    case 23:
+                                        $show_capacity = "½";
+                                        break;
+
+                                }
+
+                                $show_nmeasure = "";
+
+                                switch ($_SESSION['nmeasure']) {
+                                    case 1:
+                                        $show_nmeasure = "LB";
+                                        break;
+                                    case 2:
+                                        $show_nmeasure = "g";
+                                        break;
+                                    case 3:
+                                        $show_nmeasure = "oz";
+                                        break;
+                                    case 4:
+                                          $show_nmeasure = "kg";
+                                          break;
+                                    case 5:
+                                          $show_nmeasure = "mg";
+                                          break;
+                                    }
+
+                                $show_type = "";
+
+                                switch ($_SESSION['type']) {
+                                    case " ":
+                                         $show_type = "IND";
+                                         break;
+                                    case "BASE":
+                                         $show_type = "BASE";
+                                         break;
+                                    }
+
+                                ?>
+
                             <div class="col-md col-sm-9 ">
-                                    <select class="form-control" id="mincapacity" name="nmincapacity">
-                                            <option value="0">Select</option>
-                                            <option value="7">1</option>
-                                            <option value="8">2</option>
-                                            <option value="9">5</option>
-                                            <option value="10">10</option>
-                                            <option value="11">20</option>
-                                            <option value="4">.1</option>
-                                            <option value="5">.2</option>
-                                            <option value="6">.5</option>
-                                            <option value="1">.01</option>
-                                            <option value="2">.02</option>
-                                            <option value="3">.05</option>
-                                            <option value="12">.001</option>
-                                            <option value="13">.002</option>
-                                            <option value="14">.005</option>
-                                            <option value="15">.0001</option>
-                                            <option value="16">.0002</option>
-                                            <option value="17">.0005</option>
-                                            <option value="19">.00001</option>
-                                            <option value="20">.00002</option>
-                                            <option value="21">.00005</option>
-                                            <option value="18">¼</option>
+                                    <select class="form-control" id="mincapacity" name="nmincapacity" readonly="readonly">
+                                            <option value="<?php echo $_SESSION['nmincapacity']; ?>"><?php echo $show_capacity; ?></option>
+                                    </select>
+                            </div>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Measure </label>
+                            <div class="col-md-1 col-sm-9">
+                                    <select class="form-control" id="measure" name="nmeasure" readonly="readonly">
+                                            <option value="<?php echo  $_SESSION['nmeasure']; ?>"><?php echo $show_nmeasure; ?></option>
+                                    </select>
+                            </div>
+                            <label class="col-form-label col-md-1 col-sm-3 ">Type</label>
+                            <div class="col-md-2 col-sm-9">
+                                  <select class="form-control" id="type" name="type" readonly="readonly">
+                                            <option value="<?php echo $_SESSION['type']; ?>"><?php echo $show_type; ?></option>
                                     </select>
                             </div>
                     </div>
                     <div class="form-group row">
-                            
-                            <label class="col-form-label col-md-3 col-sm-3 ">S/N </label>
+                    <label class="col-form-label col-md-3 col-sm-3 ">S/N </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="sn" class="form-control" onkeyup="maiuscula(this)">
+                                <input type="text" name="sn" id="sn" readonly="readonly" value="<?php echo $_SESSION['sn']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Location </label>
+                    <label class="col-form-label col-md-1 col-sm-3 ">Location </label>
                             <div class="col-md-4 col-sm-9">
-                                <input type="text" name="location" class="form-control" onkeyup="maiuscula(this)">
+                                <input type="text" name="location" readonly="readonly" value="<?php echo $_SESSION['location']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
                     </div>                      
                     <div class="form-group row">
-                    <label class="col-form-label col-md-3 col-sm-3 ">Type </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="type" class="form-control" onkeyup="maiuscula(this)">
+                    <label class="col-form-label col-md-3 col-sm-3 ">Control#</label>
+                            <div class="col-md-4 col-sm-9 ">
+                                  <input type="text" name="control" readonly="readonly" value="<?php echo $_SESSION['control']; ?>" class="form-control" onkeyup="maiuscula(this)">
                             </div>
-                    
-                            
                             <label class="col-md-1 col-sm-3  control-label"></label>
-
                             <div class="col-md-3 col-sm-9 ">
                                     <div class="checkbox">
-                                            <label><input type="checkbox" id="itemCheck" name="itemCheck" class="flat" onchange="verificafleg()"> Unable to calibrate</label>
+                                            <label><input type="checkbox" id="itemCheck" name="itemCheck"  class="flat" onchange="verificafleg()"> Unable to calibrate</label>
                                     </div>
-                                    
-                            </div>
+                            </div> 
                     </div>
+                    <div class="ln_solid"></div>
                     <div id="ocultar" class="form-group row">
+                                                       
                             <label id="testload" class="col-form-label col-md-3 col-sm-3 ">Test load </label>
-                            <div class="col-md-2 col-sm-9">
+                            <div class="col-md-4 col-sm-9">
                                 <input type="text" id="cpw" name="preweight" class="form-control" onchange="autocompletar()">
                             </div>
-                            <div class="col-md-2 col-sm-9 ">
-                                    <select class="form-control" id="measure" name="nmeasure">
-                                            <option value="0">Measure</option>
-                                            <option value="1">LB</option>
-                                            <option value="2">g</option>
-                                            <option value="3">oz</option>
-                                            <option value="4">kg</option>
-                                            <option value="5">mg</option>
-                                    </select>
-                            </div>
+                            
                             <label  class="col-form-label col-md-1 col-sm-3 ">Error </label>
                             <div class="col-md-2 col-sm-2">
                                 <input type="text" id="cpe" name="preerror" class="form-control" onblur="autocompletar()">
@@ -310,162 +401,173 @@ include_once ("../classes/conexoes/conexao.php");
                             </div>
                     </div>
                     <div id="ocultar16" class="ln_solid"></div>
-                    <div id="ocultar1" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpw1" name="preweight1" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpe1" name="preerror1" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar2" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpw2" name="preweight2" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpe2" name="preerror2" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar3" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpw3" name="preweight3" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpe3" name="preerror3" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar4" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpw4" name="preweight4" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpe4" name="preerror4" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar5" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpw5" name="preweight5" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cpe5" name="preerror5" class="form-control">
-                            </div>
-                    </div>
                     
-                    <div id="ocultar17" class="ln_solid"></div>
-                    <div id="ocultar6" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="caw1" name="afterweight1" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cae1" name="aftererror1" class="form-control">
-                            </div>
+
+                    <div align="right" >                
+
+                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      
                     </div>
-                    <div id="ocultar7" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="caw2" name="afterweight2" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cae2" name="aftererror2" class="form-control">
-                            </div>
+
+
+                    <div class="x_content" style="display:none;">
+                        <div id="ocultar1" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpw1" name="preweight1" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpe1" name="preerror1" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar2" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpw2" name="preweight2" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpe2" name="preerror2" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar3" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpw3" name="preweight3" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpe3" name="preerror3" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar4" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpw4" name="preweight4" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpe4" name="preerror4" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar5" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpw5" name="preweight5" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cpe5" name="preerror5" class="form-control">
+                                </div>
+                        </div>
+                        
+                        <div id="ocultar17" class="ln_solid"></div>
+                        <div id="ocultar6" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="caw1" name="afterweight1" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cae1" name="aftererror1" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar7" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="caw2" name="afterweight2" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cae2" name="aftererror2" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar8"class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="caw3" name="afterweight3" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cae3" name="aftererror3" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar9" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="caw4" name="afterweight4" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cae4" name="aftererror4" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar10" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="caw5" name="afterweight5" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" id="cae5" name="aftererror5" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar18" class="ln_solid"></div>
+                        <div id="ocultar11" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Date Calibration </label>
+                                <div class="col-md-4 col-sm-9 ">
+                                    <input id="data1" readonly="readonly" name="dtcalibration" id="cdtcalibration" value="<?php echo $_SESSION['dtmeasurement']; ?>" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Date due </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" name="dtdue" id="cdtdue" readonly="readonly" value="<?php echo $_SESSION['dtdue']; ?>" class="form-control">
+                                </div>
+                        </div>
+                        
+                        <div id="ocultar12" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">NIST ID# </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" readonly="readonly" id="cnistid" name="nistid" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Std Cert# </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" readonly="readonly" id="cstdcert" name="stdcert" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar13" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Std Cert. Date </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" readonly="readonly" id="cstdcertdate" name="stdcertdate" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Std Cert Due </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" readonly="readonly" id="cstdcertdue" name="stdcertdue" class="form-control">
+                                </div>
+                        </div>
+                        
+                        <div id="ocultar14" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">NIST ID# </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" readonly="readonly" id="cnistid2" name="nistid2" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Std Cert# </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" readonly="readonly" id="cstdcert2" name="stdcert2" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar15" class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 ">Std Cert. Date </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" readonly="readonly" id="cstdcertdate2" name="stdcertdate2" class="form-control">
+                                </div>
+                                <label class="col-form-label col-md-1 col-sm-3 ">Std Cert Due </label>
+                                <div class="col-md-4 col-sm-9">
+                                    <input type="text" readonly="readonly" id="cstdcertdue2" name="stdcertdue2" class="form-control">
+                                </div>
+                        </div>
+                        <div id="ocultar19" class="ln_solid"></div>
                     </div>
-                    <div id="ocultar8"class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="caw3" name="afterweight3" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cae3" name="aftererror3" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar9" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="caw4" name="afterweight4" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cae4" name="aftererror4" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar10" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Weight </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="caw5" name="afterweight5" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Error </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" id="cae5" name="aftererror5" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar18" class="ln_solid"></div>
-                    <div id="ocultar11" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Date Calibration </label>
-                            <div class="col-md-4 col-sm-9 ">
-                                    <input id="data1" readonly="readonly" name="dtcalibration" value="<?php echo $_SESSION['dtmeasurement']; ?>" class="date-picker form-control" type="text" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Date due </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" name="dtdue" readonly="readonly" value="<?php echo $_SESSION['dtdue']; ?>" class="form-control">
-                            </div>
-                    </div>
-                    
-                    <div id="ocultar12" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">NIST ID# </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" readonly="readonly" id="cnistid" name="nistid" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Std Cert# </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" readonly="readonly" id="cstdcert" name="stdcert" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar13" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Std Cert. Date </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" readonly="readonly" id="cstdcertdate" name="stdcertdate" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Std Cert Due </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" readonly="readonly" id="cstdcertdue" name="stdcertdue" class="form-control">
-                            </div>
-                    </div>
-                    
-                    <div id="ocultar14" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">NIST ID# </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" readonly="readonly" id="cnistid2" name="nistid2" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Std Cert# </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" readonly="readonly" id="cstdcert2" name="stdcert2" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar15" class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 ">Std Cert. Date </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" readonly="readonly" id="cstdcertdate2" name="stdcertdate2" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-1 col-sm-3 ">Std Cert Due </label>
-                            <div class="col-md-4 col-sm-9">
-                                <input type="text" readonly="readonly" id="cstdcertdue2" name="stdcertdue2" class="form-control">
-                            </div>
-                    </div>
-                    <div id="ocultar19" class="ln_solid"></div>
                     <div class="form-group">
                             <div class="col-md-9 col-sm-9  offset-md-3">
                                     <button type="button" class="btn btn-success" <?php $_SESSION['controle'] = ""; ?>>Reset</button>
@@ -473,6 +575,7 @@ include_once ("../classes/conexoes/conexao.php");
                                     <button type="button" class="btn btn-success"><a href='../administracao/generate_certificate.php?lote=true'>Print</a></button>
                             </div>
                     </div>
+                  
                   </form>
                 </div>
                 
@@ -506,12 +609,11 @@ include_once ("../classes/conexoes/conexao.php");
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="../jquery/jquery-ui.js"></script>
     
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-    <script>
-
-
-    </script>
+    
+    <!-- Custom Search Scripts -->
   </body>
 </html>

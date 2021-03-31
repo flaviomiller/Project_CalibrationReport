@@ -1,0 +1,201 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+div {
+    color:black; 
+    font-family:Georgia,"Times New Roman",Times,serif;
+    width: 1025px;
+    border: 0px solid black;
+    padding: 2px;
+    text-align: center;
+    form-align: center;
+}
+
+div.rodape{
+    color:black; 
+    font-family:Arial, Helvetica, sans-serif;
+    position: absolute;
+    width: 1025px;
+    top: 570px;
+    border: 0px solid black;
+    padding: 1px;
+    text-align: center;
+    form-align: center;
+    
+}
+
+div.rodape_2{
+    color:black; 
+    font-family:Arial, Helvetica, sans-serif;
+    position: absolute;
+    width: 1025px;
+    top: 630px;
+    border: 0px solid black;
+    padding: 1px;
+    text-align: center;
+    form-align: center;
+    
+}
+
+div.pai {
+    color:black; 
+    font-family:Arial, Helvetica, sans-serif;
+    width: 1030px;
+    height: 550;
+    border: 0px solid black;
+    padding: 2px;
+    text-align: center;
+    form-align: center;
+    position: absolute;
+    page-break-after: always;
+}
+
+div.pailist {
+    color:black; 
+    font-family:Arial, Helvetica, sans-serif;
+    width: 1030px;
+    height: 550;
+    border: 0px solid black;
+    padding: 2px;
+    text-align: center;
+    form-align: center;
+    position: absolute;
+    page-break-after: always;
+}
+
+div.cabecalho{
+    border-collapse:collapse;
+    border-spacing:100;
+    position: absolute;
+}
+
+
+div.tableft {
+
+    position: absolute;
+    width: 1030px;
+    height: 400;
+    top: 75px;
+    
+}
+
+div.topleftimg {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    font-size:13px;
+    width: 90;
+    border: 0px solid black;
+    padding: 0px;
+    text-align: left;
+    
+    
+}
+ div.topleft {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    font-size:9px;
+    position: absolute;
+    top: 30px;
+    left: 80;
+    width: 200px;
+    border: 0px solid black;
+    padding: 0px;
+    text-align: left;
+}
+
+div.topleft_2 {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    font-size:9px;
+    position: absolute;
+    top: 3px;
+    left: 160;
+    width: 300px;
+    border: 0px solid black;
+    padding: 0px;
+    text-align: left;
+}
+
+div.topright {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    font-size:9px;
+    width: 190px;
+    left: 600;
+    top: 5;
+    border: 0px solid black;
+    padding: 0px;
+    text-align: left;
+    position: absolute;
+}
+
+div.topright_2 {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    font-size:9px;
+    width: 190px;
+    left: 640;
+    top: 2;
+    border: 0px solid black;
+    padding: 0px;
+    text-align: left;
+    position: absolute;
+}
+
+div.topcenter {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    font-size:13px;
+    width: 90px;
+    border: 0px solid black;
+    padding: 0px;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 400;
+}
+
+div.topcenter_2 {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    font-size:13px;
+    width: 90px;
+    border: 0px solid black;
+    padding: 0px;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 500;
+}
+
+p {
+    margin: 10;
+  }
+
+table{
+    width: 100%;
+    margin-top : 0px;
+    margin-bottom : .5em;
+    text-align: center;
+  }
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:10px;overflow:hidden;padding:0px 0px;word-break:normal;height: 20px}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:10px;font-weight:normal;overflow:hidden;padding:0px 0px;word-break:normal;height: 20px;}
+.tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+.tg .tg-91w8{border-color:inherit;font-size:6px;text-align:center;vertical-align:middle}
+.tg .tg-l6li{border-color:inherit;font-size:6px;text-align:center;vertical-align:middle}
+.tg .tg-azew{border-color:inherit;font-size:6px;text-align:center;vertical-align:middle}
+.tg .tg-73a0{border-color:inherit;font-size:8px;text-align:left;vertical-align:middle; padding-left:4px}
+.tg .tg-73a1{border-color:inherit;font-size:8px;text-align:left;vertical-align:middle; padding-left:4px}
+.tg .tg-9o1m{border-color:inherit;font-size:8px;text-align:center;vertical-align:middle}
+.tg .tg-f4iu{border-color:inherit;font-size:8px;text-align:center;vertical-align:middle}
+
+input.titulo {
+
+vertical-align: -3px;
+
+}
